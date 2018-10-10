@@ -1,0 +1,2972 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href="../../CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../CSS/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../assets/skin/layer.css" rel="stylesheet" />
+    <link href="../../CSS/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="lib/StarRating/CSS/star-rating.min.css" rel="stylesheet" />
+    <style>
+        .dib {
+            display: inline-block;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .calendarWrapper {
+            width: 1190px;
+            margin: 0 auto 15px;
+        }
+
+        #calendar {
+            width: 885px;
+            background: #fff;
+            padding: 15px 10px;
+        }
+
+        .calendarWrapper .rightSidePanel {
+            width: 240px;
+            padding: 0px 15px;
+        }
+
+        .cal-ul ul li {
+            list-style: none;
+            text-align: center;
+        }
+
+        .cal-ul {
+            margin-left: -50px;
+            float: left;
+            margin-top: 50px;
+        }
+
+        .dib {
+            float: left;
+        }
+
+        .cal-ul ul li {
+            margin-left: -30px;
+            height: 54px;
+            width: 150px;
+            vertical-align: middle;
+            background-color: RGB(109,161,221);
+            color: white;
+            font-size: 18px;
+        }
+
+        .fc-event-inner {
+            text-align: center;
+        }
+
+        .fc-event {
+            margin-top: 10px;
+        }
+
+        .popover {
+            width: 500px;
+        }
+
+        #popOverBox {
+            font-size: 12px;
+        }
+
+        .form-group {
+            font-size: 12px;
+        }
+    </style>
+    <script src="../../JS/jquery-1.10.2.js"></script>
+    <script src="../../JS/ExtendJS.js"></script>
+    <script src='fullcalendar/fullcalendar.js'></script>
+    <script src="../../JS/bootstrap.min.js"></script>
+    <script src="lib/StarRating/Script/star-rating.min.js"></script>
+    <script src="../../JS/layer.js"></script>
+    <script src="../../JS/bootstrap-datepicker.js"></script>
+
+    <script type="text/javascript">
+        var tempEvent;
+        var nextIndex = 0;
+        var prevIndex = 0;
+        /** 当天信息初始化 **/
+        $(document).ready(function () {
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+
+                editable: true,
+                defaultView: "basicWeek",
+                disableDragging: true,
+                disableResizing: false,
+                eventLimit: true,
+                //events: [
+                //    {
+                //        title: 'All Day Event',
+                //        start: new Date(y, m, 1)
+                //    },
+                //    {
+                //        title: '8:00-9:00',
+                //        start: new Date("2017-4-9 8:00"),
+                //        end: new Date("2017-4-9 10:00"),
+                //        consultWay: 1,
+                //        consultQuestion: 2,
+                //        consultPlace: '北京',
+                //        PrevAppointTime: 3
+
+                //    },
+                //    {
+                //        id: 999,
+                //        title: 'Repeating Event',
+                //        start: new Date(y, m, d - 3, 16, 0),
+                //        allDay: false
+                //    },
+                //    {
+                //        id: 999,
+                //        title: 'Repeating Event',
+                //        start: new Date(y, m, d + 4, 16, 0),
+                //        allDay: false
+                //    },
+                //    {
+                //        id: 6,
+                //        title: 'Repeating Event',
+                //        start: new Date(y, m, d, 1, 0),
+                //        allDay: false
+                //    },
+                //    {
+                //        title: 'Meeting',
+                //        start: new Date(y, m, d, 10, 30),
+                //        allDay: false
+                //    },
+                //    {
+                //        title: 'Lunch',
+                //        start: new Date(y, m, d, 12, 0),
+                //        end: new Date(y, m, d, 14, 0),
+                //        allDay: false
+                //    },
+                //    {
+                //        title: 'Birthday Party',
+                //        start: new Date(y, m, d + 1, 19, 0),
+                //        end: new Date(y, m, d + 1, 22, 30),
+                //        content: '这是一个内容测试',
+                //        allDay: false
+                //    }
+                //],
+                dayClick: function (dayDate, allDay, jsEvent, view) { //点击单元格事件
+                    tempDate = $.fullCalendar.formatDate(dayDate, "yyyy/MM/dd");
+                    var currentDate = new Date(tempDate);
+                    var dateNow = new Date(window.GetNowTime());
+                    if (navigator.userAgent.indexOf("Firefox") > -1) {
+                        var currentDateArray = tempDate.split("/");
+                        var nowDateArray = window.GetNowTime().split("-");
+                        currentDate = new Date(currentDateArray[0], currentDateArray[1], currentDateArray[2], "", "");
+                        dateNow = new Date(nowDateArray[0], nowDateArray[1], nowDateArray[2], "", "");
+                    }
+                    if (currentDate < dateNow) {
+                        return;
+                    }
+                    ClearDistributeWorkInfo();
+                    if (userRoleType != 3) {
+                        $(".modal-title").text("排班")
+                        $("#chooseCounselorDiv").hide();
+                        $("#applyDateDiv").hide();
+                        $("#weekDiv").hide();
+                        $("#showDistriWork").modal("show");
+                        $("#prevApplyDays").find("option:eq(0)")[0].selected = true;
+                        var tempEle = document.getElementById("saveInfo");
+                        tempEle.removeEventListener("click", UpdateAppointmentInfo);
+                        tempEle.addEventListener("click", SaveAppointmentInfo);
+                    }
+                },
+                loading: function (bool) {
+                    if (bool)
+                        $("#msgTopTipWrapper").show();
+                    else
+                        $("#msgTopTipWrapper").fadeOut();
+                },
+                eventAfterRender: function (event, element, view) {//数据绑定上去后添加相应信息在页面上
+
+                    var fend = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm");
+                    var fstart = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm");
+                    var dateTimeNow = window.GetNowTimeContainHourAndMinutes();
+                    var dateEnd = new Date(fend);
+                    var dateStart = new Date(fstart);
+                    var dateNow = new Date(dateTimeNow);
+                    var hours = event.prevConsultDateTime;
+                    var prevDate;
+                    if (hours != 0) {
+                        prevDate = new Date(window.GetAddHoursDate(hours, fstart));
+                    }
+
+                    if (event.appointmentState == '空闲') {
+                        $(element).css("background-color", "RGB(164,210,117)");
+                    }
+                    if (event.appointmentState == '待确认') {
+                        $(element).css("background-color", "RGB(235,179,68)");
+                    }
+                    if (event.appointmentState == "已预约") {
+                        $(element).css("background-color", "RGB(235,115,116)");
+                    }
+                    if (event.appointmentState == "未通过") {
+                        $(element).css("background-color", "RGB(187,187,188)");
+                    }
+                    if (event.applyUserID != userID && userRoleType == 3) {
+                        $(element).css("background-color", "RGB(164,210,117)");
+                    }
+                    if (dateEnd < dateNow) {
+                        $(element).css("background-color", "RGB(242,242,242)");
+                        $(element).css("border", "1px solid black");
+                    }
+                    if (prevDate != undefined) {
+                        if (dateNow > prevDate && dateStart > dateNow && userRoleType == 3 && event.applyUserID != userID) {
+                            $(element).css("background-color", "RGB(187,187,188)");
+                        }
+                    }
+                    if (event.appointmentState == "已预约" && event.applyUserID != userID && userRoleType == 3 && (event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)")) {
+                        $(element).css("background-color", "RGB(187,187,188)");
+                    }
+                    var confbg = '';
+                    if (event.id == 19) {
+                        confbg = confbg + '<span class="fc-event-bg"></span>';
+                    } else if (event.confid == 2) {
+                        confbg = confbg + '<span class="fc-event-bg"></span>';
+                    } else if (event.confid == 3) {
+                        confbg = confbg + '<span class="fc-event-bg"></span>';
+                    } else if (event.confid == 4) {
+                        confbg = confbg + '<span class="fc-event-bg"></span>';
+                    } else if (event.confid == 5) {
+                        confbg = confbg + '<span class="fc-event-bg"></span>';
+                    } else if (event.confid == 6) {
+                        confbg = confbg + '<span class="fc-event-bg"></span>';
+                    } else {
+                        confbg = confbg + '<span class="fc-event-bg"></span>';
+                    }
+
+                    //  var titlebg = '<span class="fc-event-conf" style="background:' + event.confcolor + '">' + event.confshortname + '</span>';
+
+                    //                if (event.repweeks > 0) {
+                    //                    titlebg = titlebg + '<span class="fc-event-conf" style="background:#fff;top:0;right:15;color:#3974BC;font-weight:bold">R</span>';
+                    //                }
+
+                    if (view.name == "month") {//按月份
+                        var evtcontent = '<div class="fc-event-vert"><a>';
+                        evtcontent = evtcontent + confbg;
+                        evtcontent = evtcontent + '<span class="fc-event-titlebg">' + fstart + " - " + fend + event.fullname + '</span>';
+
+                        element.html(evtcontent);
+                    } else if (view.name == "agendaWeek") {//按周
+                        var evtcontent = '<a>';
+                        evtcontent = evtcontent + confbg;
+                        evtcontent = evtcontent + '<span class="fc-event-time">' + fstart + "-" + fend + '</span>';
+                        evtcontent = evtcontent + '<span>' + event.fullname + '</span>';
+
+                        element.html(evtcontent);
+                    } else if (view.name == "agendaDay") {//按日
+                        var evtcontent = '<a>';
+                        evtcontent = evtcontent + confbg;
+                        evtcontent = evtcontent + '<span class="fc-event-time" style="text-align:center">' + fstart + " - " + fend + '</span>';
+                        //              evtcontent = evtcontent + '<span>Room: ' + event.confname + '</span>';
+                        //                evtcontent = evtcontent + '<span>Host: ' + event.fullname + '</span>';
+                        //                    evtcontent = evtcontent + '<span>Topic: ' + event.topic + '</span>';
+                        // evtcontent = evtcontent + '</a><span class="ui-icon ui-icon-arrow-2-n-s"><div class="ui-resizable-handle ui-resizable-s"></div></span>';
+                        element.html(evtcontent);
+                    }
+                },
+                eventMouseover: function (calEvent, jsEvent, view) {
+                    //var fstart = $.fullCalendar.formatDate(calEvent.start, "yyyy/MM/dd HH:mm");
+                    //var fend = $.fullCalendar.formatDate(calEvent.end, "yyyy/MM/dd HH:mm");
+                    //$(this).attr('title', fstart + " - " + fend + " " + "标题" + " : " + calEvent.title);
+                    //$(this).css('font-weight', 'normal');
+                    //$(this).tooltip({
+                    //    effect: 'toggle',
+                    //    cancelDefault: true
+                    //});
+
+
+                },
+                eventClick: function (event) {
+                    var fend = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm");
+                    var fstart = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm");
+                    var dateTimeNow = window.GetNowTimeContainHourAndMinutes();
+                    var dateEnd = new Date(fend);
+                    var dateStart = new Date(fstart);
+                    var dateNow = new Date(dateTimeNow);
+                    //alert(2);
+                    //var fstart = $.fullCalendar.formatDate(event.start, "HH:mm");
+                    //var fend = $.fullCalendar.formatDate(event.end, "HH:mm");
+                    ////  var schdata = { sid: event.sid, deleted: 1, uid: event.uid };
+                    //var selectdate = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
+                    //$("#start").val(fstart);
+
+
+                    //$("#title").val(event.title); //标题
+                    //$("#details").val(event.description); //内容
+                    //$("#chengdu").val(event.confname); //重要程度
+                    //预约信息点击事件，弹出详细信息
+                    var tempHtml = '';
+                    var appointmentState = "";
+                    var hours = event.prevConsultDateTime;
+                    var prevDate;
+                    if (hours != 0) {
+                        prevDate = new Date(window.GetAddHoursDate(hours, fstart));
+                    }
+                    if ((dateNow > prevDate) && hours != 0) {
+                        appointmentState = "不可预约";
+                    } else {
+                        appointmentState = event.appointmentState;
+                    }
+                    if ((event.consultWay == "团体(在线)" || event.consultWay == "团体(面谈)")) {
+                        var peopleCountState = "";
+                        if (event.awaitAuditPeople == 0 && event.throughtAuditPeople == 0) {
+                            appointmentState = "空闲";
+                        }
+                        if (event.awaitAuditPeople != 0) {
+                            appointmentState = "未确认" + event.awaitAuditPeople + "人";
+                        }
+                        if (event.awaitAuditPeople == 0 && event.throughtAuditPeople != 0 && (event.serviceUsersAmount == 0 || event.serviceUsersAmount > 0)) {
+                            appointmentState = "未确认0人";
+                        }
+                        if ((event.throughtAuditPeople == event.serviceUsersAmount) && event.serviceUsersAmount > 0) {
+                            appointmentState = "已预约";
+                        }
+                        tempHtml += '<div class="row">' +
+                        '<div class="form-group">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">预约状态:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">' + appointmentState + '</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                        if (event.serviceUsersAmount == 0) {
+                            peopleCountState = "(" + event.throughtAuditPeople + ")" + "不限";
+                        } else {
+                            peopleCountState = "(" + event.throughtAuditPeople + ")" + event.serviceUsersAmount;
+                        }
+                        tempHtml += '<div class="row">' +
+                        '<div class="form-group">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">人数状态:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">' + peopleCountState + '</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                    }
+                    if (userRoleType == 2) {
+                        if ((event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.appointmentState == "已预约") {
+                            var applyPerson;
+                            $.ajax({
+                                url: "Ajax/AppointmentManagement.ashx?operationType=GetApplyPerson",
+                                type: "GET",
+                                data: { distriID: event.id },
+                                dataType: "text",
+                                async: false,
+                                success: function (result) {
+                                    applyPerson = result;
+                                }
+                            })
+
+                            tempHtml += '<div class="row">' +
+                            '<div class="form-group">' +
+                                '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">预约状态:</label>' +
+                                '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                    '<label class="control-label">' + appointmentState + '</label>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                            tempHtml += '<div class="row">' +
+                            '<div class="form-group" style="margin-top: 20px">' +
+                                '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">预约人:</label>' +
+                                '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                    '<label class="control-label">' + applyPerson + '</label>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                        }
+                    }
+                    if (userRoleType == 3) {
+                        if ((event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.appointmentState == "已预约") {
+                            if (event.applyUserID == userID) {
+                                appointmentState = "已预约";
+                            } else {
+                                appointmentState = "不可预约";
+                            }
+
+                            tempHtml += '<div class="row">' +
+                            '<div class="form-group">' +
+                                '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">预约状态:</label>' +
+                                '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                    '<label class="control-label">' + appointmentState + '</label>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                        }
+                    }
+                    if (userRoleType == 3 && (event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.appointmentState == "待确认") {
+                        var tempResult = 0;
+                        $.ajax({
+                            url: "Ajax/AppointmentManagement.ashx?operationType=IsAppointment",
+                            type: "GET",
+                            data: { distriID: event.id },
+                            async: false,
+                            dataType: "text",
+                            success: function (result) {
+                                tempResult = result;
+                            }
+                        })
+                        if (tempResult == 0) {
+                            tempHtml += '<div class="row">' +
+                        '<div class="form-group">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">预约状态:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">空闲</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                        } else {
+                            tempHtml += '<div class="row">' +
+                        '<div class="form-group">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">预约状态:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">待确认</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                        }
+
+                    }
+                    if ((userRoleType == 2) && (event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.appointmentState == "待确认") {
+                        tempHtml += '<div class="row">' +
+                    '<div class="form-group">' +
+                        '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">预约状态:</label>' +
+                        '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                            '<label class="control-label">待确认</label>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+                    }
+                    tempHtml += '<div class="row">' +
+                        '<div class="form-group" style="margin-top: 20px">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">咨询方式:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">' + event.consultWay + '</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                    if (event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") {
+                        var questionTypeName;
+                        if (event.questionTypeID == 0) {
+                            questionTypeName = "不限";
+                        } else {
+                            questionTypeName = event.questionTypeName;
+                        }
+                        tempHtml += '<div class="row">' +
+                        '<div class="form-group" style="margin-top: 20px">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">问题类型:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">' + questionTypeName + '</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                    }
+                    if (event.consultWay == "团体(在线)" || event.consultWay == "团体(面谈)") {
+                        tempHtml += '<div class="row">' +
+                        '<div class="form-group" style="margin-top: 20px">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">咨询主题:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">' + event.consultSubjectName + '</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                        tempHtml += '<div class="row">' +
+                        '<div class="form-group" style="margin-top: 20px">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">问题类型:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">' + event.questionTypeName + '</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                    }
+                    if (event.consultWay == "个体(面谈)" || event.consultWay == "团体(面谈)") {
+                        tempHtml += '<div class="row">' +
+                        '<div class="form-group" style="margin-top: 20px">' +
+                            '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">咨询地点:</label>' +
+                            '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                '<label class="control-label">' + event.consultPlace + '</label>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                    }
+                    if (userRoleType == 3 && event.applyUserID == userID && event.appointmentState == "未通过") {
+                        if (event.refuseReason != "无") {
+                            tempHtml += '<div class="row">' +
+                            '<div class="form-group" style="margin-top: 20px">' +
+                                '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">拒绝原因:</label>' +
+                                '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                    '<label class="control-label">' + event.refuseReason + '</label>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                        }
+                    }
+                    if (dateEnd < dateNow && event.appointmentState == "已预约" && (event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.consultResultCommentLevel != 0) {
+                        tempHtml += '<div class="row">' +
+                            '<div class="form-group" style="margin-top: 20px">' +
+                                '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right;">效果评价:</label>' +
+                                '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                                    '<label class="control-label" style="color:RGB(231,167,27)">' + window.GetStarString(event.consultResultCommentLevel) + '</label>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                    }
+
+                    if (dateStart > dateNow) {
+                        if (hours == 0 || prevDate > dateNow || userRoleType == 2) {
+                            if (userRoleType == 1) {
+                                if (event.appointmentState == "空闲") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px">' +
+                                    '<div class="col-sm-6  col-xs-6 text-right">' +
+                                        '<button  onclick="ShowAppointmentInfo()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">修改预约</button>' +
+                                    '</div>' +
+                                    '<div class="col-sm-6  col-xs-6  text-right">' +
+                                        '<button type="button" onclick="DeleteAppointmentInfo()" class="btn btn-sm" style="background-color:RGB(223,81,70);color:white" data-dismiss="modal" >删除预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                            }
+                            if (userRoleType == 2) {
+                                if ((event.consultWay == "团体(在线)" || event.consultWay == "团体(面谈)") && event.appointmentState == "待确认") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                    '<div class="col-sm-12  col-xs-12">' +
+                                        '<button  onclick="HandleWithAppointment()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">处理预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if ((event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.appointmentState == "待确认") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px;">' +
+                                    '<div class="col-sm-6  col-xs-6 text-right">' +
+                                        '<button  onclick="InitiateAppointment()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">主动预约</button>' +
+                                    '</div>' +
+                                    '<div class="col-sm-6  col-xs-6 text-right">' +
+                                        '<button  onclick="HandleWithAppointment()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">处理预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if ((event.consultWay == "团体(在线)" || event.consultWay == "团体(面谈)") && event.appointmentState == "空闲") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px">' +
+                                    '<div class="col-sm-6  col-xs-6 text-right">' +
+                                        '<button  onclick="ShowAppointmentInfo()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">修改预约</button>' +
+                                    '</div>' +
+                                    '<div class="col-sm-6  col-xs-6  text-right">' +
+                                        '<button type="button" onclick="DeleteAppointmentInfo()" class="btn btn-sm" style="background-color:RGB(223,81,70);color:white" data-dismiss="modal" >删除预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if ((event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.appointmentState == "已预约") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px">' +
+                                    '<div class="col-sm-6  col-xs-6 text-right">' +
+                                        '<button  onclick="CheckAppointment()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">查看预约</button>' +
+                                    '</div>' +
+                                    '<div class="col-sm-6  col-xs-6  text-right">' +
+                                        '<button type="button" onclick="CancelAppointment()" class="btn btn-sm" style="background-color:RGB(223,81,70);color:white" data-dismiss="modal" >取消预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if ((event.consultWay == "团体(在线)" || event.consultWay == "团体(面谈)") && event.appointmentState == "已预约") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                    '<div class="col-sm-12  col-xs-12">' +
+                                        '<button  onclick="CheckGroupAppointment()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">查看预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if ((event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.appointmentState == "空闲") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px">' +
+                                        '<div class="col-sm-4  col-xs-4 text-right">' +
+                                        '<button  onclick="InitiateAppointment()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">主动预约</button>' +
+                                    '</div>' +
+                                    '<div class="col-sm-4  col-xs-4 text-right">' +
+                                        '<button  onclick="ShowAppointmentInfo()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">修改预约</button>' +
+                                    '</div>' +
+                                    '<div class="col-sm-4  col-xs-4  text-right">' +
+                                        '<button type="button" onclick="DeleteAppointmentInfo()" class="btn btn-sm" style="background-color:RGB(223,81,70);color:white" data-dismiss="modal" >删除预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                            }
+                            if (userRoleType == 3) {
+                                if (event.appointmentState == "空闲") {
+                                    tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                    '<div class="col-sm-12  col-xs-12 ">' +
+                                        '<button  onclick="FillInAppointmentInfo()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if (event.appointmentState == "已预约" && (event.consultWay == "团体(在线)" || event.consultWay == "团体(面谈)") && event.applyUserID != userID) {
+                                    tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                    '<div class="col-sm-12  col-xs-12 ">' +
+                                        '<button  onclick="FillInAppointmentInfo()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if (event.appointmentState == "未通过" && event.applyUserID != userID) {
+                                    tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                    '<div class="col-sm-12  col-xs-12 ">' +
+                                        '<button  onclick="FillInAppointmentInfo()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                }
+                                if (event.appointmentState == "待确认") {
+                                    var tempResult = 0;
+                                    $.ajax({
+                                        url: "Ajax/AppointmentManagement.ashx?operationType=IsAppointment",
+                                        type: "GET",
+                                        data: { distriID: event.id },
+                                        async: false,
+                                        dataType: "text",
+                                        success: function (result) {
+                                            tempResult = result;
+                                        }
+                                    })
+                                    if (tempResult == 0) {
+                                        tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                    '<div class="col-sm-12  col-xs-12 ">' +
+                                    '<button  onclick="FillInAppointmentInfo()" type="button" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">预约</button>' +
+                                    '</div>' +
+                                '</div>';
+                                    } else {
+                                        tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                    '<div class="col-sm-12  col-xs-12 ">' +
+                                        '<button type="button" onclick="UserCancelAppointment()" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">取消</button>' +
+                                    '</div>' +
+                                '</div>';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (userRoleType == 3) {
+                        if (dateEnd < dateNow) {
+                            var isComment = 0;
+                            $.ajax({
+                                url: "Ajax/AppointmentManagement.ashx?operationType=GetAppointmentIsComment",
+                                type: "GET",
+                                data: { userID: userID, questionTypeID: event.questionTypeID, counselorID: counselorID },
+                                dataType: "text",
+                                async: false,
+                                success: function (result) {
+                                    isComment = result;
+                                }
+                            })
+                            if (event.appointmentState == "已预约" && isComment <= 0 && (event.consultWay == "个体(在线)" || event.consultWay == "个体(面谈)") && event.applyUserID == userID) {
+                                tempHtml += '<div class="row" style="margin-top: 20px;text-align:center">' +
+                                '<div class="col-sm-12  col-xs-12 ">' +
+                                    '<button type="button" onclick="ShowStartModel()" data-mark="showInfo" class="btn btn-sm" style="background-color:RGB(65,139,200) ; color: white">咨询效果评价</button>' +
+                                '</div>' +
+                            '</div>';
+                            }
+                        }
+                    }
+                    tempEvent = event;
+                    $(this).popover({
+                        trigger: 'manual',
+                        placement: 'left', //placement of the popover. also can use top, bottom, left or right
+                        title: '<div style="text-align:center; color:red; text-decoration:underline; font-size:14px;width:100%;"> ' + event.consultWay + '</div>', //this is the top title bar of the popover. add some basic css
+                        html: 'true', //needed to show html of course
+                        content: '<div id="popOverBox" style="width:100%">' +
+                            tempHtml +
+
+                            '</div>',
+                        animation: false
+                    }).on("click", function () {
+                        if (event.applyPerson != "无") {
+                            $("[data-mark='showInfo']").attr("disabled", "disabled");
+                        }
+                        var _this = this;
+                        $(this).popover("show");
+                        $(this).siblings(".popover").on("mouseleave", function () {
+                            $(_this).popover('hide');
+                        });
+                    }).on("mouseleave", function () {
+                        var _this = this;
+                        setTimeout(function () {
+                            if (!$(".popover:hover").length) {
+                                $(_this).popover("hide")
+                            }
+                        }, 0);
+                    });
+                }
+            });
+
+            //var prevString = $(".fc-grid").find("table").find("thead").find("tr:first").find("th:first").text();
+            //var prevHtml = '<span class="fc-button fc-button-prev fc-state-default fc-corner-left" unselectable="on"><span class="">‹'+prevString+'</span></span>';
+            //$(".fc-grid").find("table").find("thead").find("tr:first").find("th:first").append(prevHtml)
+            //动态添加批量排班按钮
+            $(".fc-header").find("tbody").find("td:eq(2)").removeClass("fc-header-left");
+            var tempHtml = "<td style='text-align:center'><button class='btn-info btn-sm' data-mark='bulkDistriWork'>批量排班</button></td>";
+            $(".fc-header").find("tbody").find("tr").append(tempHtml);
+            $(".fc-header-center").find("span").remove();
+            var html = '<div class="row">' +
+                        '<div class="form-group  text-right">' +
+                        '<div class="col-md-3 col-xs-3">' +
+                        '<input type="text" id="chooseGoDate" readonly="readonly" class="form-control" placeholder="请选择日期" />' +
+                        '</div>' +
+                            '<div class="col-sm-1 col-xs-1">' +
+                                 '<button class="btn btn-info btn-sm" data-mark="goDate">查询</button>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+            $(".fc-header-center").append(html);
+
+        });
+
+        /** 点击咨询师右边图标弹出咨询师的详细信息 **/
+
+        $(document).on("click", ".fa-address-card", function () {
+            $(this).popover({
+                trigger: 'manual',
+                placement: 'right', //placement of the popover. also can use top, bottom, left or right
+                title: '<div style="text-align:center; color:red; text-decoration:underline; font-size:14px;width:100%;">个人简介</div>', //this is the top title bar of the popover. add some basic css
+                html: 'true', //needed to show html of course
+                content: '<div id="popOverBox" style="width:100%;color:black">' +
+                    '<div class="row">' +
+                '<div class="form-group">' +
+                    '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">姓名:</label>' +
+                    '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                        '<label class="control-label">' + $(this).attr("data-name") + '</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="row">' +
+                '<div class="form-group  text-right" style="margin-top: 20px">' +
+                    '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">登录名:</label>' +
+                    '<div class="col-sm-6 col-xs-6" style="text-align:left">' +
+                        '<label class="control-label">' + $(this).attr("data-loginName") + '</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="row">' +
+                '<div class="form-group  text-right" style="margin-top: 20px">' +
+                    '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">性别:</label>' +
+                    '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                        '<label class="control-label">' + $(this).attr("data-sex") + '</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="row">' +
+                '<div class="form-group  text-right" style="margin-top: 20px">' +
+                    '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">擅长领域:</label>' +
+                    '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                        '<label class="control-label">' + $(this).attr("data-couSkilledField") + '</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="row">' +
+                '<div class="form-group  text-right" style="margin-top: 20px">' +
+                    '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">简介:</label>' +
+                    '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                        '<label class="control-label">' + $(this).attr("data-couIntroduce") + '</label>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="row">' +
+                '<div class="form-group  text-right" style="margin-top: 20px">' +
+                    '<label class="col-sm-6  col-xs-4 control-label" style="text-align:right">评价:</label>' +
+                    '<div class="col-sm-6  col-xs-6" style="text-align:left">' +
+                        '<label class="control-label" style="color:RGB(231,167,27)">' + window.GetStarString($(this).attr("data-score")) + '</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+                    '</div>',
+                animation: false
+            }).on("click", function () {
+                var _this = this;
+
+                $(this).popover("show");
+                $(this).siblings(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function () {
+                var _this = this;
+                setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide")
+                    }
+                }, 0);
+            });
+        })
+        //加载咨询师信息的方法
+        function LoadCounselorInfo() {
+            $.ajax({
+                url: "Ajax/AppointmentManagement.ashx?operationType=GetAllCounselorInfo",
+                type: "GET",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    var tempHtml = '<ul><li><span><i class="fa fa-angle-up"></i></span></li>';
+
+                    $.each(data, function (index, item) {
+                        if (index == 0) {
+                            tempHtml += '<li style="background-color:RGB(0,91,143);"><span style="margin-top:40%;" data-checked="checked"  class="counselorInfo" data-uid ="' + item["UID"] + '">' + item["UserName"] + '&nbsp;<i class="fa fa-address-card" aria-hidden="true" data-name="' + item["UserName"] + '" data-loginName="' + item["LoginName"] + '" data-sex="' + item["Sex"] + '" data-score="' + item["Score"] + '" data-couSkilledField="' + item["SkilledField"] + '" data-couIntroduce="' + item["Introduce"] + '"></i></span></li>';
+                        }
+                        else if (index >= 10) {
+                            tempHtml += '<li style="display:none"><span class="counselorInfo" data-uid ="' + item["UID"] + '">' + item["UserName"] + '&nbsp;<i class="fa fa-address-card" aria-hidden="true" data-name="' + item["UserName"] + '" data-loginName="' + item["LoginName"] + '" data-sex="' + item["Sex"] + '" data-score="' + item["Score"] + '" data-couSkilledField="' + item["SkilledField"] + '" data-couIntroduce="' + item["Introduce"] + '"></i></span></li>';
+                        }
+                        else {
+                            tempHtml += '<li><span class="counselorInfo" data-uid ="' + item["UID"] + '">' + item["UserName"] + '&nbsp;<i class="fa fa-address-card" aria-hidden="true" data-name="' + item["UserName"] + '" data-loginName="' + item["LoginName"] + '" data-sex="' + item["Sex"] + '" data-score="' + item["Score"] + '" data-couSkilledField="' + item["SkilledField"] + '" data-couIntroduce="' + item["Introduce"] + '"></i></span></li>';
+                        }
+                    })
+                    tempHtml += '<li><span><i class="fa fa-angle-down"></i></span></li></ul>';
+                    $(".cal-ul").append(tempHtml);
+                }
+            })
+        }
+        //咨询师上一页方法
+        $(document).on("click", ".fa-angle-up", function () {
+            var counselorArray = $(".counselorInfo");
+            var counselorCount = $(".counselorInfo").length;
+            if (prevIndex < 10) {
+                //layer.msg("没有更多咨询师了，已经到头了", { icon: 5, time: 2000 });
+                return;
+            }
+            prevIndex -= 10;
+            if (nextIndex == counselorCount) {
+                var temp = Math.floor(counselorCount / 10);
+                nextIndex = nextIndex - (counselorCount - temp * 10);
+            } else {
+                nextIndex -= 10;
+            }
+            for (var i = prevIndex; i <= nextIndex; i++) {
+                $(this).parent().parent().parent().find("li:eq(" + i + ")").show();
+            }
+            for (var i = nextIndex + 1; i <= nextIndex + 10; i++) {
+                if (i > counselorCount) {
+                    break;
+                }
+                $(this).parent().parent().parent().find("li:eq(" + i + ")").hide();
+            }
+        })
+        //咨询师下一页方法
+        $(document).on("click", ".fa-angle-down", function () {
+            var counselorArray = $(".counselorInfo");
+            var counselorCount = $(".counselorInfo").length;
+            if (nextIndex >= counselorCount) {
+                //layer.msg("没有更多咨询师了，已经到底了", { icon: 5, time: 2000 });
+                return;
+            }
+            if (nextIndex == 0) {
+                nextIndex = 10;
+                prevIndex = 1;
+            }
+            nextIndex += 10;
+            prevIndex += 10;
+            if (nextIndex > counselorCount) {
+                nextIndex = counselorCount;
+            }
+            for (var i = prevIndex; i <= nextIndex; i++) {
+                $(this).parent().parent().parent().find("li:eq(" + i + ")").show();
+            }
+            for (var i = 1; i <= 10; i++) {
+                $(this).parent().parent().parent().find("li:eq(" + (prevIndex - i) + ")").hide();
+            }
+        })
+        //点击咨询师加载预约信息
+        $(document).on("click", ".counselorInfo", function () {
+            var array = $(".cal-ul").find("ul").find("li").find("span").not(this);
+            var length = array.length;
+            for (var i = 0; i < length; i++) {
+                $(array[i]).removeAttr("data-checked");
+                $(array[i]).parent().css('background-color', '');
+            }
+            $(this).attr("data-checked", "checked");
+            $(this).parent().css("background-color", "RGB(0,91,143)");
+            $("#calendar").fullCalendar('removeEvents');
+            counselorID = $(this).attr("data-uid");
+            LoadDistributeWork(counselorID);
+        })
+        //咨询主题change事件
+        $(document).on("change", "#consultSubject", function () {
+            var subjectText = $(this).find("option:selected").text();
+            if (subjectText == "已有主题") {
+                $("#subjectTypeDiv").hide();
+                $("#newConsultSubject").hide();
+                $("#subject").show();
+                $("#subjectType").hide();
+                $("#subjectTypeText").show();
+                LoadConsultSubject();
+                var consultSubjectID = $("#subject").find("option:selected").val();
+                LoadConsultSubjectInfoByID(consultSubjectID);
+            }
+            if (subjectText == "新建主题") {
+                $("#subject").hide();
+                $("#newConsultSubject").show();
+                $("#subjectContent").val("");
+                $("#applyCondition").val("");
+                $("#subjectTypeDiv").show();
+                $("#subjectType").show();
+                $("#subjectTypeText").hide();
+                $("#subjectContent").removeAttr("readonly");
+                $("#applyCondition").removeAttr("readonly");
+                $("#subjectType").find("option[value='0']").remove();
+                $("#newConsultSubject").val("");
+            }
+        })
+        //加载咨询主题
+        function LoadConsultSubject() {
+            $("#subject").find("option").remove();
+            var getSubjectParam = {
+                type: "get",
+                dataType: "json",
+                async: false,
+                url: "Ajax/AppointmentManagement.ashx?operationType=GetConsultSubject",
+                callBack: function (result) {
+                    $.each(result, function (index, item) {
+                        $("#subject").append("<option value='" + item.ConsultSubjectID + "'>" + item.ConsultSubjectName + "</option>");
+                    })
+                }
+
+            }
+            window.NewAJAX(getSubjectParam);
+        }
+        //加载咨询主题信息方法
+        function LoadConsultSubjectInfoByID(val) {
+
+            var getSubjectInfoParam = {
+                type: "get",
+                dataType: "json",
+                async: false,
+                data: { consultSubjectID: val },
+                url: "Ajax/AppointmentManagement.ashx?operationType=GetConsultSubjectInfo",
+                callBack: function (result) {
+                    $("#subjectContent").val(result[0].ConsultSubjectContent);
+                    $("#subjectContent").attr("readonly", "readonly");
+                    $("#applyCondition").val(result[0].ConsultSubjectApplyCondition);
+                    $("#applyCondition").attr("readonly", "readonly");
+                    $("#subjectTypeText").val(result[0].ConsultSubjectTypeName);
+                    $("#subjectTypeText").attr("readonly", "readonly");
+                }
+            }
+            window.NewAJAX(getSubjectInfoParam);
+        }
+        //主题的change事件
+        $(document).on("change", "#subject", function () {
+            var consultSubjectID = $("#subject").find("option:selected").val();
+            LoadConsultSubjectInfoByID(consultSubjectID);
+        })
+        //咨询方式的change事件
+        $(document).on("change", "#consultWay", function () {
+            var consultWayText = $(this).find("option:selected").text();
+            if (consultWayText == "团体(在线)" || consultWayText == "团体(面谈)") {
+                $("#setPersonAmountDiv").show();
+                $("#subjectDiv").show();
+                $("#subjectContentDiv").show();
+                $("#applyConditionDiv").show();
+                $("#consultSubjectDiv").show();
+                $("#subjectTypeText").show();
+                $("#subjectType").hide();
+                LoadConsultSubject();
+                var consultSubjectID = $("#subject").find("option:selected").val();
+                LoadConsultSubjectInfoByID(consultSubjectID)
+            }
+            if (consultWayText == "团体(面谈)" || consultWayText == "个体(面谈)") {
+                $("#consultPlaceDiv").show();
+            }
+            if (consultWayText == "团体(在线)" || consultWayText == "个体(在线)") {
+                $("#consultPlaceDiv").hide();
+            }
+            if (consultWayText == "个体(在线)" || consultWayText == "个体(面谈)") {
+                $("#setPersonAmountDiv").hide();
+                $("#subjectDiv").hide();
+                $("#subjectContentDiv").hide();
+                $("#applyConditionDiv").hide();
+                $("#consultSubjectDiv").hide();
+                $("#subjectTypeText").hide();
+                $("#subjectType").show();
+            }
+        })
+    </script>
+
+</head>
+<body>
+    <div class="row"><div class="col-md-12" id="test">tet</div></div>
+    <div class="calendarWrapper">
+        <div style="margin-left: 520px; margin-top: 20px; margin-bottom: 50px;"><img id="colorExplain" src="../../Img/yystate.png" /></div>
+        <div class="cal-ul">
+        </div>
+        <div id="calendar" class="dib"></div>
+    </div>
+
+    <div class="modal fade" id="showDistriWork" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-top: 20%; width: 100%">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left: -2%; margin: 0px 5px;">
+                    ×
+                </button>
+                <h4 class="modal-title text-center" style="color: #4CB1CF; margin-top: 30px; font-size: 25px; font-weight: 700"></h4>
+
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="form-group  text-right">
+                            <label class="col-sm-3  col-xs-4 control-label">咨询方式:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <select id="consultWay" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="chooseCounselorDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">咨询师选择:</label>
+                            <div class="col-sm-6 col-xs-6">
+                                <select id="counselor" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="applyDateDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">*预约日期:</label>
+                            <div class="col-sm-6 col-xs-6">
+                                <input type="text" id="startDate" oninput="JudgeStartDate()" class="form-control" placeholder="选择开始时间" /><span class="col-md-3">----</span><input type="text" id="endDate" class="form-control" placeholder="选择结束时间" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="weekDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">*星&nbsp;&nbsp;期:</label>
+                            <div class="col-sm-6 col-xs-6">
+                                <span id="weekList"><input type="checkbox" data-mark="weekChoose" value="0" disabled="disabled" />日&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="1" data-mark="weekChoose" disabled="disabled" />一&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="2" data-mark="weekChoose" disabled="disabled" />二&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="3" data-mark="weekChoose" disabled="disabled" />三&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="4" data-mark="weekChoose" disabled="disabled" />四&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="5" data-mark="weekChoose" disabled="disabled" />五&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="6" data-mark="weekChoose" disabled="disabled" />六</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">*时间段:</label>
+                            <div  style="float:left;margin-left:20px;">
+                                <span>
+                                    <select id="startHour">
+                                        <option>00</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                        <option>05</option>
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option>08</option>
+                                        <option>09</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                        <option>23</option>
+                                    </select>
+                                </span>
+                              
+                                <span>
+                                    <select id="startMinutes">
+                                        <option>00</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                        <option>05</option>
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option>08</option>
+                                        <option>09</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                        <option>23</option>
+                                        <option>24</option>
+                                        <option>25</option>
+                                        <option>26</option>
+                                        <option>27</option>
+                                        <option>28</option>
+                                        <option>29</option>
+                                        <option>30</option>
+                                        <option>31</option>
+                                        <option>32</option>
+                                        <option>33</option>
+                                        <option>34</option>
+                                        <option>35</option>
+                                        <option>36</option>
+                                        <option>37</option>
+                                        <option>38</option>
+                                        <option>39</option>
+                                        <option>40</option>
+                                        <option>41</option>
+                                        <option>42</option>
+                                        <option>43</option>
+                                        <option>44</option>
+                                        <option>45</option>
+                                        <option>46</option>
+                                        <option>47</option>
+                                        <option>48</option>
+                                        <option>49</option>
+                                        <option>50</option>
+                                        <option>51</option>
+                                        <option>52</option>
+                                        <option>53</option>
+                                        <option>54</option>
+                                        <option>55</option>
+                                        <option>56</option>
+                                        <option>57</option>
+                                        <option>58</option>
+                                        <option>59</option>
+                                    </select>
+                                </span>
+                                <span>-----</span>
+                                <span>
+                                    <select id="endHour">
+                                        <option>00</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                        <option>05</option>
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option>08</option>
+                                        <option>09</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                        <option>23</option>
+                                    </select>
+                                </span>
+                                <span>
+                                    <select id="endMinutes">
+                                        <option>00</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                        <option>05</option>
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option>08</option>
+                                        <option>09</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                        <option>23</option>
+                                        <option>24</option>
+                                        <option>25</option>
+                                        <option>26</option>
+                                        <option>27</option>
+                                        <option>28</option>
+                                        <option>29</option>
+                                        <option>30</option>
+                                        <option>31</option>
+                                        <option>32</option>
+                                        <option>33</option>
+                                        <option>34</option>
+                                        <option>35</option>
+                                        <option>36</option>
+                                        <option>37</option>
+                                        <option>38</option>
+                                        <option>39</option>
+                                        <option>40</option>
+                                        <option>41</option>
+                                        <option>42</option>
+                                        <option>43</option>
+                                        <option>44</option>
+                                        <option>45</option>
+                                        <option>46</option>
+                                        <option>47</option>
+                                        <option>48</option>
+                                        <option>49</option>
+                                        <option>50</option>
+                                        <option>51</option>
+                                        <option>52</option>
+                                        <option>53</option>
+                                        <option>54</option>
+                                        <option>55</option>
+                                        <option>56</option>
+                                        <option>57</option>
+                                        <option>58</option>
+                                        <option>59</option>
+                                    </select>
+                                </span>
+                                </div>
+
+                            </div>
+                    </div>
+                    <div class="row" id="consultSubjectDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">咨询问题:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <select id="consultSubject" class="form-control">
+                                    <option>已有主题</option>
+                                    <option>新建主题</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="subjectDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">*主题:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <select id="subject" class="form-control"></select>
+                                <input id="newConsultSubject" maxlength="30" class="form-control" style="display:none" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="subjectContentDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">内容:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="subjectContent" maxlength="500" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="applyConditionDiv" style="display:none;">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">报名条件:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <textarea id="applyCondition" maxlength="500" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">问题类型:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="subjectTypeText" class="form-control" readonly="readonly" style="display:none" />
+                                <select id="subjectType" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="consultPlaceDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">*咨询地点:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="consultPlace" maxlength="20" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="setPersonAmountDiv" style="display:none">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">人数设置:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="setPersonAmount" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">提前预约时间:</label>
+                            <div class="col-sm-6  col-xs-6 text-left">
+                                <select id="prevApplyDays">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                    <option>21</option>
+                                    <option>22</option>
+                                    <option>23</option>
+                                    <option>24</option>
+                                </select>小时
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-6  col-xs-6 text-right">
+                            <button id="saveInfo" type="button" class="btn btn-sm" style="background-color: orange; color: white">保存</button>
+                        </div>
+                        <div class="col-sm-2  col-xs-3  text-right">
+                            <button type="button" class="btn btn-sm" data-dismiss="modal" style=" color: white">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-top: 20%; width: 100%">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left: -2%; margin: 0px 5px;">
+                    ×
+                </button>
+                <h4 class="modal-title text-center" style="color: #4CB1CF; margin-top: 30px; font-size: 25px; font-weight: 700">预约</h4>
+
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="form-group  text-right">
+                            <label class="col-sm-3  col-xs-4 control-label">姓名:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input type="text" id="userName" class="form-control" readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">登录名:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="loginName" class="form-control" readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">性别:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="sex" class="form-control" readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">咨询方式:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="appConsultWay" class="form-control" readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">问题类型:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <select class="form-control" id="appSubjectType" style="display:none"></select>
+                                <input id="appQuestionType" class="form-control" readonly="readonly" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">*联系方式:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="appTel" maxlength="11" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-3  col-xs-4 control-label">*问题详情:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <textarea id="questionDescribe" maxlength="200" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-6  col-xs-6 text-right">
+                            <button onclick="UserApplyAppointment()" type="button" class="btn btn-sm" style="background-color: orange; color: white">保存</button>
+                        </div>
+                        <div class="col-sm-2  col-xs-3  text-right">
+                            <button type="button" class="btn btn-sm" data-dismiss="modal" style=" color: white">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="starRateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-top: 20%; width: 100%">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left: -2%; margin: 0px 5px;">
+                    ×
+                </button>
+                <h4 class="modal-title text-center" style="color: #4CB1CF; margin-top: 30px; font-size: 25px; font-weight: 700">评分</h4>
+
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="form-group  text-right">
+                            <label class="col-sm-3  col-xs-4 control-label">星级评分:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input id="starLevel" type="number" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-6  col-xs-6 text-right">
+                            <button onclick="AddConsultResultComment()" type="button" class="btn btn-sm" style="background-color: orange; color: white">提交</button>
+                        </div>
+                        <div class="col-sm-2  col-xs-3  text-right">
+                            <button type="button" class="btn btn-sm" data-dismiss="modal" style=" color: white">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="initiateAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-top: 20%; width: 100%">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left: -2%; margin: 0px 5px;">
+                    ×
+                </button>
+                <h4 class="modal-title text-center" style="color: #4CB1CF; margin-top: 30px; font-size: 25px; font-weight: 700">预约</h4>
+
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="form-group  text-right">
+                            <label class="col-sm-3  col-xs-4 control-label">用户登录名:</label>
+                            <div class="col-sm-6  col-xs-6">
+                                <input type="text" class="form-control" id="counLoginName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-6  col-xs-6 text-right">
+                            <button onclick="AddInitiateAppointmentInfo()" type="button" class="btn btn-sm" style="background-color: orange; color: white">提交</button>
+                        </div>
+                        <div class="col-sm-2  col-xs-3  text-right">
+                            <button type="button" class="btn btn-sm" data-dismiss="modal" style=" color: white">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="showAppointmentInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-top: 20%; width: 100%">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-left: -2%; margin: 0px 5px;">
+                    ×
+                </button>
+                <h4 class="modal-title text-center" style="color: #4CB1CF; margin-top: 30px; font-size: 25px; font-weight: 700">修改预约</h4>
+
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="form-group  text-right">
+                            <label class="col-sm-4  col-xs-4 control-label">姓名:</label>
+                            <div class="col-sm-4  col-xs-4 text-left">
+                                <label class="control-label" id="lbUserName"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-4  col-xs-4 control-label">登录名:</label>
+                            <div class="col-sm-6 col-xs-6 text-left">
+                                <label class="control-label" id="lbLoginName"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-4  col-xs-4 control-label">性别:</label>
+                            <div class="col-sm-6 col-xs-6 text-left">
+                                <label class="control-label" id="lbSex"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-4  col-xs-4 control-label">部门:</label>
+                            <div class="col-sm-6 col-xs-6 text-left">
+                                <label class="control-label" id="department"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-4  col-xs-4 control-label">咨询方式:</label>
+                            <div class="col-sm-6  col-xs-6 text-left">
+                                <label class="control-label" id="lbConsultWay"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-4  col-xs-4 control-label">问题类型:</label>
+                            <div class="col-sm-6  col-xs-6 text-left">
+                                <label class="control-label" id="questionType"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-4  col-xs-4 control-label">联系方式:</label>
+                            <div class="col-sm-6  col-xs-6 text-left">
+                                <label class="control-label" id="contactWay"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  text-right" style="margin-top: 20px">
+                            <label class="col-sm-4  col-xs-4 control-label">问题详情:</label>
+                            <div class="col-sm-6  col-xs-6 text-align">
+                                <textarea id="lbQuestionDetail" class="form-control" readonly="readonly"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-12  col-xs-12" style="text-align: center">
+                            <button id="saveInfo" data-dismiss="modal" type="button" class="btn btn-sm" style="background-color: orange; color: white">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</body>
+</html>
+<script>
+    var userRoleType = 0;
+    var userID = 0;//当前系统用户ID
+    var counselorID = 0;
+    var getUserRoleTypeParameter = {
+        type: "get",
+        dataType: "json",
+        async: false,
+        url: "Ajax/AppointmentManagement.ashx?operationType=GetUserRoleTypeAndUserID",
+        callBack: function (result) {
+            userRoleType = result.UserRoleType;
+            userID = result.UserID;
+        }
+    }
+    //得到用户角色类型
+    window.NewAJAX(getUserRoleTypeParameter);
+    if (userRoleType == 2) {
+        $(".cal-ul").hide();
+    }
+    $(document).ready(function () {
+        LoadCounselorInfo();
+        counselorID = $(".cal-ul").find("ul").find("li").find("span[data-checked=checked]").attr("data-uid");
+        if (userRoleType == 2) {
+            var getCurrentUserIDParameter = {
+                type: "get",
+                dataType: "json",
+                async: false,
+                url: "Ajax/AppointmentManagement.ashx?operationType=GetCurrentUserID",
+                callBack: function (result) {
+                    counselorID = result;
+                }
+            }
+            //得到用户角色类型
+            window.NewAJAX(getCurrentUserIDParameter);
+        }
+        LoadDistributeWork(counselorID);
+        //$('#chooseGoDate').datepicker({
+        //    language: "zh-CN",
+        //    format: "yyyy-dd-mm",
+        //    autoclose: true,
+        //    todayHighlight: true,
+        //    language: 'cn',
+        //    format: "yyyy-mm-dd",//日期格式
+        //    endDate: new Date()
+        //}).on("changeMonth", function (ev) {
+
+        //})
+        $("#chooseGoDate").datetimepicker({
+            hour: 5,
+            minute: 20
+        });
+        if (userRoleType == 3) {
+            $("[data-mark='bulkDistriWork']").remove();
+            $("#colorExplain").attr("src", "../../Img/userColorExplain.png");
+        }
+        $(".fc-header-right").remove();
+    })
+    $(document).on("click", ".datepicker-switch", function () {
+        $(".datepicker").removeClass("datepicker-orient-bottom");
+        $(".datepicker").addClass("datepicker-orient-top");
+        $(".datepicker").css("top", "85px");
+    })
+    $(document).on("click", ".month", function () {
+        $(".datepicker").removeClass("datepicker-orient-bottom");
+        $(".datepicker").addClass("datepicker-orient-top");
+        $(".datepicker").css("top", "85px");
+    })
+    $(document).on("click", ".next", function () {
+        $(".datepicker").removeClass("datepicker-orient-bottom");
+        $(".datepicker").addClass("datepicker-orient-top");
+        $(".datepicker").css("top", "85px");
+    })
+    $(document).on("click", ".prev", function () {
+        $(".datepicker").removeClass("datepicker-orient-bottom");
+        $(".datepicker").addClass("datepicker-orient-top");
+        $(".datepicker").css("top", "85px");
+    })
+    $(document).on("click", ".year", function () {
+        $(".datepicker").removeClass("datepicker-orient-bottom");
+        $(".datepicker").addClass("datepicker-orient-top");
+        $(".datepicker").css("top", "85px");
+    })
+
+    $(document).on("click", ".datepicker", function () {
+        $(".datepicker").removeClass("datepicker-orient-bottom");
+        $(".datepicker").addClass("datepicker-orient-top");
+        $(".datepicker").css("top", "85px");
+    })
+    $(document).on("click", "[data-mark='goDate']", function () {
+        if ($("#chooseGoDate").val() == "") {
+            return;
+        }
+        var chooseDate = new Date($("#chooseGoDate").val());
+        var year = chooseDate.getFullYear();
+        var month = chooseDate.getMonth();
+        var day = chooseDate.getDate();
+        $("#calendar").fullCalendar('gotoDate', year, month, day);
+    })
+    //$(document).on("click", "#chooseGoDate", function () {
+    //    $(".datepicker").removeClass("datepicker-orient-bottom");
+    //    $(".datepicker").addClass("datepicker-orient-top");
+    //    $(".datepicker").css("top", "85px");
+    //})
+    //初始化咨询师选择
+    function InitiCounselorSelect() {
+        $("#counselor").find("option").remove();
+        $.ajax({
+            url: "Ajax/AppointmentManagement.ashx?operationType=GetAllCounselorInfo",
+            type: "GET",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                $.each(data, function (index, item) {
+                    $("#counselor").append("<option value='" + item.UID + "'>" + item.UserName + "</option>");
+                })
+            }
+        });
+    }
+    //批量排班方法
+    $(document).on("click", "[data-mark='bulkDistriWork']", function () {
+        ClearDistributeWorkInfo();
+        InitiCounselorSelect();
+        $(".modal-title").text("批量排班");
+        $("#chooseCounselorDiv").show();
+        $("#applyDateDiv").show();
+        $("#weekDiv").show();
+        $('#startDate').datepicker({
+            language: "zh-CN",
+            format: "yyyy-dd-mm",
+            autoclose: true,
+            todayHighlight: true,
+            language: 'cn',
+            format: "yyyy-mm-dd"
+        }).on('changeDate', function (ev) {
+            $('#endDate').datepicker('setStartDate', $("#startDate").val().trim());
+        });
+        $('#startDate').datepicker('setStartDate', window.GetNowTime());
+        $('#endDate').datepicker({
+            language: "zh-CN",
+            format: "yyyy-dd-mm",
+            autoclose: true,
+            todayHighlight: true,
+            language: 'cn',
+            format: "yyyy-mm-dd"
+        }).on('changeDate', function (ev) {
+            var checkArray = $("#weekList").find("input");
+            var length = checkArray.length;
+            for (var i = 0; i < length; i++) {
+                $(checkArray[i]).checked = false;
+                $(checkArray[i]).attr("disabled", "disabled")
+            }
+            JudgeEndDate();
+            $('#startDate').datepicker('setStartDate', window.GetNowTime());
+            $('#startDate').datepicker('setEndDate', $("#endDate").val().trim());
+        });
+        $('#endDate').datepicker('setStartDate', window.GetNowTime());
+        $("#showDistriWork").modal('show');
+        if (userRoleType == 2) {
+            $("#chooseCounselorDiv").hide();
+        }
+        $("#prevApplyDays").find("option:eq(0)")[0].selected = true;
+
+        var tempEle = document.getElementById("saveInfo")
+        tempEle.removeEventListener("click", UpdateAppointmentInfo);
+        tempEle.addEventListener("click", SaveAppointmentInfo);
+
+    })
+    //保存预约信息方法
+    function SaveAppointmentInfo() {
+        var titleText = $($(".modal-title")[0]).text();
+        var uid = uid = counselorID;
+        var startHourAndMinutes = new Date("2017-1-1 " + $("#startHour").val().trim() + ":" + $("#startMinutes").val().trim());
+        var endHourAndMinutes = new Date("2017-1-1 " + $("#endHour").val().trim() + ":" + $("#endMinutes").val().trim());
+        if (startHourAndMinutes >= endHourAndMinutes) {
+            layer.alert("结束时间必须大于开始时间!");
+            return;
+        }
+        if ($("#consultSubject").val().trim() == "新建主题" && $("#newConsultSubject").val().trim() == "") {
+            layer.alert("请输入主题名称!");
+            return;
+        }
+        if (($("#consultWay").val().trim() == "个体(面谈)" || $("#consultWay").val().trim() == "团体(面谈)") && $("#consultPlace").val().trim() == "") {
+            layer.alert("请填写咨询地点");
+            return;
+        }
+        if (titleText == "排班") {
+            var startDate = tempDate;
+            var endDate = tempDate;
+            var weekList = [new Date(tempDate).getDay()];
+            AddAppointmentInfo(uid, weekList, startDate, endDate);
+        }
+        if (titleText == "批量排班") {
+            if ($("#startDate").val().trim() == "") {
+                layer.alert("开始日期不能为空,请选择日期!");
+                return;
+            }
+            if ($("#endDate").val().trim() == "") {
+                layer.alert("结束日期不能为空,请选择日期!");
+                return;
+            }
+            if (userRoleType == 1) {
+                uid = $("#counselor").find("option:selected").val();
+            }
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            var checkBoxArray = $("[data-mark='weekChoose']");
+            var length = checkBoxArray.length;
+            var weekList = [];
+            var isCheckedOne = false;
+            for (var i = 0; i < length; i++) {
+                if ($(checkBoxArray[i])[0].checked) {
+                    isCheckedOne = true;
+                    weekList.push($(checkBoxArray[i]).val());
+                }
+            }
+            if (!isCheckedOne) {
+                layer.alert("请选择所排班的星期！");
+                return;
+            }
+            AddAppointmentInfo(uid, weekList, startDate, endDate);
+
+        }
+    }
+    LoadConsultWay();
+    //加载咨询方式方法
+    function LoadConsultWay() {
+        var param = {
+            type: "get",
+            dataType: "json",
+            url: "Ajax/AppointmentManagement.ashx?operationType=GetConsultWay",
+            callBack: function (result) {
+                $.each(result, function (index, item) {
+                    $("#consultWay").append("<option value='" + item.ConsultWayID + "'>" + item.ConsultWayName + "</option>");
+                })
+
+            }
+
+        }
+        window.NewAJAX(param);
+    }
+    LoadQuestionType();
+    //加载问题类型方法
+    function LoadQuestionType() {
+        $("#subjectType").find("option").remove();
+        var param = {
+            type: "get",
+            dataType: "json",
+            url: "Ajax/AppointmentManagement.ashx?operationType=GetQuestionType",
+            callBack: function (result) {
+                $.each(result, function (index, item) {
+                    if (index == 0) {
+                        $("#subjectType").append("<option value='0'>不限</option>");
+                    }
+                    $("#subjectType").append("<option value='" + item.QuestionTypeID + "'>" + item.QuestionTypeName + "</option>");
+                })
+
+            }
+
+        }
+        window.NewAJAX(param);
+    }
+    //用户预约加载的问题类型
+    function LoadAppQuestionType() {
+        $("#appSubjectType").find("option").remove();
+        var param = {
+            type: "get",
+            dataType: "json",
+            url: "Ajax/AppointmentManagement.ashx?operationType=GetQuestionType",
+            callBack: function (result) {
+                $("#appSubjectType").append("<option value='0'>不限</option>");
+                $.each(result, function (index, item) {
+                    if (index == 0) {
+                    }
+                    $("#appSubjectType").append("<option value='" + item.QuestionTypeID + "'>" + item.QuestionTypeName + "</option>");
+                })
+
+            }
+
+        }
+        window.NewAJAX(param);
+    }
+    //加载咨询师排班信息
+    function LoadDistributeWork(uid) {
+        $.ajax({
+            url: "Ajax/AppointmentManagement.ashx?operationType=GetDistributeWork",
+            type: "GET",
+            dataType: "json",
+            data: { uid: uid, userRoleType: userRoleType },
+            success: function (data) {
+                $("#calendar").fullCalendar('removeEvents');
+                var temp;
+                $.each(data, function (index, item) {
+                    //if (userRoleType == 3) {
+                    //    if ((item["ConsultWay"] == "个体(在线)" || item["ConsultWay"] == "个体(面谈)") && item["ApplyUserID"] != userID && item["ApplyUserID"] != 0 && item["AppointmentState"]!="待确认") {
+                    //        return true;
+                    //    }
+                    //    if ((item["ConsultWay"] == "团体(在线)" || item["ConsultWay"] == "团体(面谈)")) {
+                    //        if ((item["ApplyUserCount"] == item["ServiceUsersAmount"]) && item["ServiceUsersAmount"] != 0) {
+                    //            return true;
+                    //        }
+                    //    }
+                    //}
+                    var days = window.DateMinus(item["StartDate"], item["EndDate"]);
+                    var startDate = item["StartDate"];
+                    var endDate = item["EndDate"];
+                    var weekArray = item["DistributeWeek"].split(',');
+                    if (days >= 1) {
+                        for (var i = 0; i < days + 1; i++) {
+                            var week = new Date(window.GetAddDayDate(startDate, i)).getDay();
+                            if (!weekArray.contains(week)) {
+                                continue;
+                            }
+                            if (userRoleType == 3) {
+                                temp = { title: item["StartHourAndMinutes"] + '-' + item["EndHourAndMinutes"], id: item["DistributeWorkID"], consultWay: item["ConsultWay"], consultSubjectID: item["ConsultSubjectID"], consultSubjectName: item["ConsultSubject"], consultPlace: item["ConsultPlace"], start: new Date(window.GetAddDayDate(startDate, i) + " " + item["StartHourAndMinutes"]), end: new Date(window.GetAddDayDate(startDate, i) + " " + item["EndHourAndMinutes"]), prevConsultDateTime: item["PrevConsultDateTime"], appointmentState: item["AppointmentState"], questionTypeName: item["QuestionTypeName"], startDate: item["StartDate"], endDate: item["EndDate"], questionTypeID: item["QuestionTypeID"], prevConsultDateTime: item["PrevConsultDateTime"], consultWayID: item["ConsultWayID"], startHourAndMinutes: item["StartHourAndMinutes"], endHourAndMinutes: item["EndHourAndMinutes"], distributeWeek: item["DistributeWeek"], consultPlace: item["ConsultPlace"], serviceUsersAmount: item["ServiceUsersAmount"], counselor: item["Counselor"], appointmentID: item["AppointmentID"], consultResultCommentLevel: item["ConsultResultCommentLevel"], refuseReason: item["RefuseReason"], throughtAuditPeople: item["ThroughAuditPeople"], awaitAuditPeople: item["AwaitAuditPeople"], applyUserID: item["ApplyUserID"] };
+                            } else {
+                                temp = { title: item["StartHourAndMinutes"] + '-' + item["EndHourAndMinutes"], id: item["DistributeWorkID"], consultWay: item["ConsultWay"], consultSubjectID: item["ConsultSubjectID"], consultSubjectName: item["ConsultSubject"], consultPlace: item["ConsultPlace"], start: new Date(window.GetAddDayDate(startDate, i) + " " + item["StartHourAndMinutes"]), end: new Date(window.GetAddDayDate(startDate, i) + " " + item["EndHourAndMinutes"]), prevConsultDateTime: item["PrevConsultDateTime"], appointmentState: item["AppointmentState"], questionTypeName: item["QuestionTypeName"], startDate: item["StartDate"], endDate: item["EndDate"], questionTypeID: item["QuestionTypeID"], prevConsultDateTime: item["PrevConsultDateTime"], consultWayID: item["ConsultWayID"], startHourAndMinutes: item["StartHourAndMinutes"], endHourAndMinutes: item["EndHourAndMinutes"], distributeWeek: item["DistributeWeek"], consultPlace: item["ConsultPlace"], serviceUsersAmount: item["ServiceUsersAmount"], counselor: item["Counselor"], appointmentID: item["AppointmentID"], consultResultCommentLevel: item["ConsultResultCommentLevel"], refuseReason: item["RefuseReason"], throughtAuditPeople: item["ThroughAuditPeople"], awaitAuditPeople: item["AwaitAuditPeople"] };
+                            }
+
+                            $("#calendar").fullCalendar('renderEvent', temp, true);
+                        }
+                    }
+                    else {
+                        if (userRoleType == 3) {
+                            temp = { title: item["StartHourAndMinutes"] + '-' + item["EndHourAndMinutes"], id: item["DistributeWorkID"], consultWay: item["ConsultWay"], consultSubjectID: item["ConsultSubjectID"], consultSubjectName: item["ConsultSubject"], consultPlace: item["ConsultPlace"], start: new Date(startDate + " " + item["StartHourAndMinutes"]), end: endDate + " " + item["EndHourAndMinutes"], prevConsultDateTime: item["PrevConsultDateTime"], appointmentState: item["AppointmentState"], questionTypeName: item["QuestionTypeName"], startDate: item["StartDate"], endDate: item["EndDate"], questionTypeID: item["QuestionTypeID"], prevConsultDateTime: item["PrevConsultDateTime"], consultWayID: item["ConsultWayID"], startHourAndMinutes: item["StartHourAndMinutes"], endHourAndMinutes: item["EndHourAndMinutes"], distributeWeek: item["DistributeWeek"], consultPlace: item["ConsultPlace"], serviceUsersAmount: item["ServiceUsersAmount"], counselor: item["Counselor"], appointmentID: item["AppointmentID"], consultResultCommentLevel: item["ConsultResultCommentLevel"], refuseReason: item["RefuseReason"], throughtAuditPeople: item["ThroughAuditPeople"], awaitAuditPeople: item["AwaitAuditPeople"], applyUserID: item["ApplyUserID"] };
+                        } else {
+                            temp = { title: item["StartHourAndMinutes"] + '-' + item["EndHourAndMinutes"], id: item["DistributeWorkID"], consultWay: item["ConsultWay"], consultSubjectID: item["ConsultSubjectID"], consultSubjectName: item["ConsultSubject"], consultPlace: item["ConsultPlace"], start: new Date(startDate + " " + item["StartHourAndMinutes"]), end: endDate + " " + item["EndHourAndMinutes"], prevConsultDateTime: item["PrevConsultDateTime"], appointmentState: item["AppointmentState"], questionTypeName: item["QuestionTypeName"], startDate: item["StartDate"], endDate: item["EndDate"], questionTypeID: item["QuestionTypeID"], prevConsultDateTime: item["PrevConsultDateTime"], consultWayID: item["ConsultWayID"], startHourAndMinutes: item["StartHourAndMinutes"], endHourAndMinutes: item["EndHourAndMinutes"], distributeWeek: item["DistributeWeek"], consultPlace: item["ConsultPlace"], serviceUsersAmount: item["ServiceUsersAmount"], counselor: item["Counselor"], appointmentID: item["AppointmentID"], consultResultCommentLevel: item["ConsultResultCommentLevel"], refuseReason: item["RefuseReason"], throughtAuditPeople: item["ThroughAuditPeople"], awaitAuditPeople: item["AwaitAuditPeople"] };
+                        }
+
+                        $("#calendar").fullCalendar('renderEvent', temp, true);
+                    }
+
+
+                })
+            }
+        })
+    }
+    //判断日期复选框是否禁用
+    function JudgeEndDate() {
+
+        var startDate = $("#startDate").val();
+        var endDate = $("#endDate").val();
+        if (startDate == "") {
+            startDate = window.GetNowTime();
+        }
+        var weekArray = window.GetWeekArray(startDate, endDate);
+        var length = weekArray.length;
+        var isContinue = false;
+        for (var i = 0; i < length; i++) {
+            var checkArray = $("#weekList").find("input");
+            var length = checkArray.length;
+            for (var j = 0; j < length; j++) {
+                if (!$(checkArray[i]).checked) {
+                    isContinue = true;
+                }
+            }
+            if (!isContinue) {
+                break;
+            }
+            if (weekArray[i] == 0) {
+                $("#weekList").find("input[value='0']").removeAttr("disabled");
+            }
+            if (weekArray[i] == 1) {
+                $("#weekList").find("input[value='1']").removeAttr("disabled");
+            }
+            if (weekArray[i] == 2) {
+                $("#weekList").find("input[value='2']").removeAttr("disabled");
+            }
+            if (weekArray[i] == 3) {
+                $("#weekList").find("input[value='3']").removeAttr("disabled");
+            }
+            if (weekArray[i] == 4) {
+                $("#weekList").find("input[value='4']").removeAttr("disabled");
+            }
+            if (weekArray[i] == 5) {
+                $("#weekList").find("input[value='5']").removeAttr("disabled");
+            }
+            if (weekArray[i] == 6) {
+                $("#weekList").find("input[value='6']").removeAttr("disabled");
+            }
+
+        }
+    }
+    //显示预约信息方法
+    function ShowAppointmentInfo() {
+
+        $("#showDistriWork").modal('show');
+        $(".modal-title").text("修改预约");
+        $("#consultSubject").find("option:eq(0)")[0].selected = true;
+        var tempEle = document.getElementById("saveInfo");
+        FillAppointmentInfoModal();
+        tempEle.removeEventListener("click", SaveAppointmentInfo);
+        tempEle.addEventListener("click", UpdateAppointmentInfo);
+    }
+    function FillAppointmentInfoModal() {
+        var event = tempEvent;
+        var consultWayID = event.consultWayID;
+        var consultWay = event.consultWay;
+        var startDateArray = (event.startHourAndMinutes).split(":");
+        var endDateArray = (event.endHourAndMinutes).split(":");
+        var uid = $(".cal-ul").find("ul").find("li").find("span[data-checked=checked]").attr("data-uid");
+        $("#chooseCounselorDiv").hide();
+        $("#startHour").val(startDateArray[0]);
+        $("#startMinutes").val(startDateArray[1]);
+        $("#endHour").val(endDateArray[0]);
+        $("#endMinutes").val(endDateArray[1]);
+        $("#prevApplyDays").val(event.prevConsultDateTime);
+        $("#counselor").find("option").remove();
+        InitiCounselorSelect();
+        $("#counselor").find("option[value=" + uid + "]")[0].selected = true
+        $("#consultWay").find("option[value=" + consultWayID + "]")[0].selected = true;
+        $("#setPersonAmount").val(event.serviceUsersAmount);
+
+        if (consultWay == "个体(在线)" || consultWay == "个体(面谈)") {
+            $("#consultSubjectDiv").hide();
+            $("#subjectDiv").hide();
+            $("#subjectContentDiv").hide();
+            $("#applyConditionDiv").hide();
+            $("#subjectTypeText").hide();
+            $("#subjectType").show();
+            $("#setPersonAmountDiv").hide();
+            var qtID = event.questionTypeID;
+            if ($("#subjectType").find("option").length == 0) {
+                $("#subjectType").append("<option value = '0'>不限</option>");
+            }
+            $("#subjectType").find("option[value='" + qtID + "']")[0].selected = true;
+        }
+        if (consultWay == "团体(在线)" || consultWay == "团体(面谈)") {
+            $("#consultSubjectDiv").show();
+            $("#subjectDiv").show();
+            $("#subjectContentDiv").show();
+            $("#applyConditionDiv").show();
+            $("#subjectTypeText").show();
+            $("#subjectType").hide();
+            $("#setPersonAmountDiv").show();
+            var consultSubject = event.consultSubjectID;
+            $("#newConsultSubject").val(event.consultSubjectName);
+            if ($("#subject").find("option").length != 0) {
+                $("#subject").find("option[value='" + consultSubject + "']")[0].selected = true;
+            } else {
+                LoadConsultSubject();
+                $("#subject").find("option[value='" + consultSubject + "']")[0].selected = true;
+            }
+            LoadConsultSubjectInfoByID(consultSubject);
+        }
+        if (consultWay == "个体(在线)" || consultWay == "团体(在线)") {
+            $("#consultPlaceDiv").hide();
+        }
+        if (consultWay == "个体(面谈)" || consultWay == "团体(面谈)") {
+            var consultPlace = event.consultPlace;
+            $("#consultPlaceDiv").show();
+            $("#consultPlace").val(consultPlace);
+        }
+    }
+    //更新预约方法
+    function UpdateAppointmentInfo(val) {
+        var event = tempEvent;
+        var startDate = event.startDate;
+        var endDate = event.endDate;
+        var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
+        var uid = counselorID;
+        var consultSubject;
+        var consultWayText = $("#consultWay").find("option:selected").text();
+        var subjectText = $("#consultSubject").val();
+
+        if (consultWayText == "团体(面谈)" || consultWayText == "个体(面谈)") {
+            if ($("#consultPlace").val().trim() == "") {
+                layer.alert("请填写面谈地点");
+                return;
+            }
+        }
+        if ($("#setPersonAmount").val().trim() != "") {
+            var peopleCount = $("#setPersonAmount").val().trim();
+
+            if (!window.ValidateNumber(peopleCount)) {
+                layer.alert("您输的内容格式不正确，请输入正整数！");
+                return;
+            }
+        }
+        var beforeWeekArray = (event.distributeWeek).split(",");
+        if (consultWayText == "团体(在线)" || consultWayText == "团体(面谈)") {
+            if (subjectText == "新建主题") {
+                var isAdd = true;
+                if ($("#newConsultSubject").val().trim() == "") {
+                    layer.alert("请填写主题!");
+                    return;
+                }
+                $.ajax({
+                    url: "Ajax/AppointmentManagement.ashx?operationType=JudgeSubjectRepeat",
+                    type: "GET",
+                    data: { subjectName: $("#newConsultSubject").val().trim() },
+                    dataType: "text",
+                    async: false,
+                    success: function (result) {
+                        if (result > 0) {
+                            isAdd = false;
+                        }
+                    }
+                })
+                if (!isAdd) {
+                    layer.alert("该主题已存在");
+                    return;
+                }
+                var subjectEntity = {};
+                subjectEntity.CSName = $("#newConsultSubject").val();
+                subjectEntity.CSContent = $("#subjectContent").val();
+                subjectEntity.CSApplyCondition = $("#applyCondition").val();
+                subjectEntity.QTID = $("#subjectType").find("option:selected").val();
+                subjectEntity.IsDelete = 0;
+                var addSubjectParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { subjectJson: JSON.stringify(subjectEntity) },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=AddConsultSubject",
+                    callBack: function (result) {
+                        if (result.State) {
+                            consultSubject = result.Data;
+                        }
+                    }
+
+                }
+                window.NewAJAX(addSubjectParam);
+            }
+        }
+        if (startDate != endDate) {
+            if (start == startDate) {
+                var firstStartDate = start;
+                var firstEndDate = start;
+                var firstWeekArray = [new Date(start).getDay()];
+                var secondStartDate = window.GetAddDayDate(start, 1);
+                var secondEndDate = endDate;
+                var tempWeekArray = window.GetWeekArray(secondStartDate, secondEndDate)
+                var secondWeekArray = window.GetIntersectArray(beforeWeekArray, tempWeekArray);
+                var entityArray = [];
+                var firstEntity = GetEntity(uid, firstWeekArray, firstStartDate, firstEndDate);
+                if (consultSubject != undefined) {
+                    firstEntity.CSID = consultSubject;
+                }
+                var secondEntity = GetEntity(uid, secondWeekArray, secondStartDate, secondEndDate);
+                entityArray.push(firstEntity);
+                entityArray.push(secondEntity);
+                var updateDistributeWorkParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entityArray), distriID: event.id },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=UpdateDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            if (val != 'AddAppointment') {
+                                layer.msg("修改成功", { icon: 6, time: 2000 });
+                            }
+                            LoadDistributeWork(counselorID);
+                            $("#showDistriWork").modal("hide");
+                        }
+                        else {
+                            layer.msg("修改失败", { icon: 5, time: 2000 });
+                        }
+                    }
+
+                }
+                window.NewAJAX(updateDistributeWorkParam);
+                return;
+            }
+            if (start == endDate) {
+                var firstStartDate = start;
+                var firstEndDate = start;
+                var firstWeekArray = [new Date(start).getDay()];
+                var secondStartDate = startDate;
+                var secondEndDate = window.GetAddDayDate(endDate, -1);
+                var tempWeekArray = window.GetWeekArray(secondStartDate, secondEndDate)
+                var secondWeekArray = window.GetIntersectArray(beforeWeekArray, tempWeekArray);
+                var entityArray = [];
+                var firstEntity = GetEntity(uid, firstWeekArray, firstStartDate, firstEndDate);
+                if (consultSubject != undefined) {
+                    firstEntity.CSID = consultSubject;
+                }
+                var secondEntity = GetEntity(uid, secondWeekArray, secondStartDate, secondEndDate);
+                entityArray.push(firstEntity);
+                entityArray.push(secondEntity);
+                var updateDistributeWorkParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entityArray), distriID: event.id },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=UpdateDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            if (val != 'AddAppointment') {
+                                layer.msg("修改成功", { icon: 6, time: 2000 });
+                            }
+                            LoadDistributeWork(counselorID);
+                            $("#showDistriWork").modal("hide");
+                        }
+                        else {
+                            layer.msg("修改失败", { icon: 5, time: 2000 });
+                        }
+                    }
+
+                }
+                window.NewAJAX(updateDistributeWorkParam);
+                return;
+            }
+            if (start != startDate && start != endDate) {
+                var firstStartDate = startDate;
+                var firstEndDate = window.GetAddDayDate(start, -1);
+                var firstTempWeekArray = window.GetWeekArray(firstStartDate, firstEndDate);
+                var firstWeekArray = window.GetIntersectArray(beforeWeekArray, firstTempWeekArray)
+                var secondStartDate = start;
+                var secondEndDate = start;
+                var secondTempWeekArray = [new Date(start).getDay()]
+                var secondWeekArray = window.GetIntersectArray(beforeWeekArray, secondTempWeekArray);
+                var thirdStartDate = window.GetAddDayDate(start, 1);
+                var thirdEndDate = endDate
+                var thirdTempWeekArray = window.GetWeekArray(thirdStartDate, thirdEndDate);
+                var thirdWeekArray = window.GetIntersectArray(beforeWeekArray, thirdTempWeekArray)
+                var entityArray = [];
+                var firstEntity = GetEntity(uid, firstWeekArray, firstStartDate, firstEndDate);
+                if (consultSubject != undefined) {
+                    firstEntity.CSID = consultSubject;
+                }
+                var secondEntity = GetEntity(uid, secondWeekArray, secondStartDate, secondEndDate);
+                var thirdEntity = GetEntity(uid, thirdWeekArray, thirdStartDate, thirdEndDate);
+                entityArray.push(firstEntity);
+                entityArray.push(secondEntity);
+                entityArray.push(thirdEntity);
+                var updateDistributeWorkParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entityArray), distriID: event.id },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=UpdateDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            if (val != 'AddAppointment') {
+                                layer.msg("修改成功", { icon: 6, time: 2000 });
+                            }
+                            LoadDistributeWork(counselorID);
+                            $("#showDistriWork").modal("hide");
+                        }
+                        else {
+                            layer.msg("修改失败", { icon: 5, time: 2000 });
+                        }
+                    }
+
+                }
+                window.NewAJAX(updateDistributeWorkParam);
+                return;
+            }
+        }
+        var entityArray = [];
+        var firstStartDate = start;
+        var firstEndDate = start;
+        var firstWeekArray = [new Date(start).getDay()];
+        var firstEntity = GetEntity(uid, firstWeekArray, firstStartDate, firstEndDate);
+        if (consultSubject != undefined) {
+            firstEntity.CSID = consultSubject;
+        }
+        entityArray.push(firstEntity);
+        var updateDistributeWorkParam = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { distributeWorkJson: JSON.stringify(entityArray), distriID: event.id },
+            url: "Ajax/AppointmentManagement.ashx?operationType=UpdateDistributeWork",
+            callBack: function (result) {
+                if (result.State) {
+                    if (val != 'AddAppointment') {
+                        layer.msg("修改成功", { icon: 6, time: 2000 });
+                    }
+                    LoadDistributeWork(counselorID);
+                    $("#showDistriWork").modal("hide");
+                }
+                else {
+                    layer.msg("修改失败", { icon: 5, time: 2000 });
+                }
+            }
+
+        }
+        window.NewAJAX(updateDistributeWorkParam);
+    }
+    //添加预约信息方法
+    function AddAppointmentInfo(uid, weekList, startDate, endDate) {
+        var entity = GetEntity(uid, weekList, startDate, endDate);
+        var consultWayText = $("#consultWay").find("option:selected").text();
+        var subjectText = $("#consultSubject").val();
+        if (consultWayText == "团体(面谈)" || consultWayText == "个体(面谈)") {
+            if ($("#consultPlace").val().trim() == "") {
+                layer.alert("请填写面谈地点");
+                return;
+            }
+        }
+        if ($("#setPersonAmount").val().trim() != "") {
+            var peopleCount = $("#setPersonAmount").val().trim();
+
+            if (!window.ValidateNumber(peopleCount)) {
+                layer.alert("您输的内容格式不正确，请输入正整数！");
+                return;
+            }
+        }
+        if (consultWayText == "团体(在线)" || consultWayText == "团体(面谈)") {
+            if (subjectText == "已有主题") {
+                var getSubjectParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entity), userRoleType: userRoleType },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=AddDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            layer.msg("添加成功", { icon: 6, time: 2000 });
+                            LoadDistributeWork(counselorID);
+                            $("#showDistriWork").modal("hide")
+
+                        }
+                        else {
+                            var errorStr = "";
+                            if (result.StartDate == undefined) {
+                                layer.msg("未知原因导致添加失败,请刷新浏览器重新添加", { icon: 5, time: 2000 });
+                            } else {
+                                for (var i = 0; i < result.StartDate.length; i++) {
+                                    if (result.StartDate[i] != result.EndDate[i]) {
+                                        var dateMinus = window.DateMinus(result.StartDate[i], result.EndDate[i]);
+                                        if (dateMinus != 0) {
+                                            for (var j = 0; j <= dateMinus; j++) {
+                                                errorStr += window.GetAddDayDate(result.StartDate[i], j) + " " + result.StartHourAndMinutes[i] + "-" + result.EndHourAndMinutes[i] + "时间段重复，添加失败、\n";
+                                            }
+                                        }
+
+                                    }
+                                    if (result.StartDate[i] == result.EndDate[i]) {
+                                        errorStr += result.StartDate[i] + " " + result.StartHourAndMinutes[i] + "-" + result.EndHourAndMinutes[i] + "时间段重复，添加失败、"
+                                    }
+                                }
+                                layer.alert(errorStr)
+                            }
+                        }
+                    }
+
+                }
+                window.NewAJAX(getSubjectParam);
+            }
+            if (subjectText == "新建主题") {
+                var isAdd = true;
+                if ($("#newConsultSubject").val().trim() == "") {
+                    layer.alert("请填写主题!");
+                    return;
+                }
+                if (!window.ValidateIsContainSpecialChar($("#newConsultSubject").val().trim())) {
+                    layer.alert("主题不允许包含特殊字符，请重新输入！");
+                    return;
+                }
+                $.ajax({
+                    url: "Ajax/AppointmentManagement.ashx?operationType=JudgeSubjectRepeat",
+                    type: "GET",
+                    data: { subjectName: $("#newConsultSubject").val().trim() },
+                    dataType: "text",
+                    async: false,
+                    success: function (result) {
+                        if (result > 0) {
+                            isAdd = false;
+                        }
+                    }
+                })
+                if (!isAdd) {
+                    layer.alert("主题重复，请通过已有主题选择进行添加");
+                    return;
+                }
+                var subjectEntity = {};
+                subjectEntity.CSName = $("#newConsultSubject").val();
+                subjectEntity.CSContent = $("#subjectContent").val();
+                subjectEntity.CSApplyCondition = $("#applyCondition").val();
+                subjectEntity.QTID = $("#subjectType").find("option:selected").val();
+                subjectEntity.IsDelete = 0;
+                var addSubjectParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { subjectJson: JSON.stringify(subjectEntity) },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=AddConsultSubject",
+                    callBack: function (result) {
+                        if (result.State) {
+                            entity.CSID = result.Data;
+                        }
+                    }
+
+                }
+                window.NewAJAX(addSubjectParam);
+                var getDistributeWorkParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entity), userRoleType: userRoleType },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=AddDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            layer.msg("添加成功", { icon: 6, time: 2000 });
+                            LoadDistributeWork(counselorID);
+                            $("#showDistriWork").modal("hide");
+                        }
+                        else {
+                            var errorStr = "";
+                            if (result.StartDate == undefined) {
+                                layer.msg("未知原因导致添加失败,请刷新浏览器重新添加", { icon: 5, time: 2000 });
+                            } else {
+                                for (var i = 0; i < result.StartDate.length; i++) {
+                                    if (result.StartDate[i] != result.EndDate[i]) {
+                                        var dateMinus = window.DateMinus(result.StartDate[i], result.EndDate[i]);
+                                        if (dateMinus != 0) {
+                                            for (var j = 0; j <= dateMinus; j++) {
+                                                errorStr += window.GetAddDayDate(result.StartDate[i], j) + " " + result.StartHourAndMinutes[i] + "-" + result.EndHourAndMinutes[i] + "时间段重复，添加失败、\n";
+                                            }
+                                        }
+                                    }
+                                    if (result.StartDate[i] == result.EndDate[i]) {
+                                        errorStr += result.StartDate[i] + " " + result.StartHourAndMinutes[i] + "-" + result.EndHourAndMinutes[i] + "时间段重复，添加失败、"
+                                    }
+                                }
+                                layer.alert(errorStr);
+                                DeleteSubject(entity.CSID);
+                            }
+                        }
+                    }
+
+                }
+                window.NewAJAX(getDistributeWorkParam);
+            }
+            return;
+        }
+        var getSubjectParam = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { distributeWorkJson: JSON.stringify(entity), userRoleType: userRoleType },
+            url: "Ajax/AppointmentManagement.ashx?operationType=AddDistributeWork",
+            callBack: function (result) {
+                if (result.State) {
+                    layer.msg("添加成功", { icon: 6, time: 2000 });
+                    LoadDistributeWork(counselorID);
+                    $("#showDistriWork").modal("hide")
+
+                }
+                else {
+                    var errorStr = "";
+                    if (result.StartDate == undefined) {
+                        layer.msg("未知原因导致添加失败,请刷新浏览器重新添加", { icon: 5, time: 2000 });
+                    } else {
+                        for (var i = 0; i < result.StartDate.length; i++) {
+                            if (result.StartDate[i] != result.EndDate[i]) {
+                                var dateMinus = window.DateMinus(result.StartDate[i], result.EndDate[i]);
+                                if (dateMinus != 0) {
+                                    for (var j = 0; j <= dateMinus; j++) {
+                                        errorStr += window.GetAddDayDate(result.StartDate[i], j) + " " + result.StartHourAndMinutes[i] + "-" + result.EndHourAndMinutes[i] + "时间段重复，添加失败、\n";
+                                    }
+                                }
+                            }
+                            if (result.StartDate[i] == result.EndDate[i]) {
+                                errorStr += result.StartDate[i] + " " + result.StartHourAndMinutes[i] + "-" + result.EndHourAndMinutes[i] + "时间段重复，添加失败、"
+                            }
+                        }
+                        layer.alert(errorStr)
+                    }
+                }
+            }
+        }
+        window.NewAJAX(getSubjectParam);
+        LoadDistributeWork(counselorID);
+    }
+    //根据用户ID，星期集合，开始日期，结束日期得到预约实体
+    function GetEntity(uid, weekList, startDate, endDate) {
+        var setPersonAmount = 1;
+        var subjectID = 0;
+        var questionTypeID = 0;
+        var consultWayText = $("#consultWay").find("option:selected").text();
+        var consultPlace = "";
+        if (consultWayText == "团体(在线)" || consultWayText == "团体(面谈)") {
+            setPersonAmount = $("#setPersonAmount").val().trim();
+            subjectID = $("#subject").find("option:selected").val();
+        }
+        if (consultWayText == "团体(面谈)" || consultWayText == "个体(面谈)") {
+            consultPlace = $("#consultPlace").val();
+        }
+        if (consultWayText == "个体(在线)" || consultWayText == "个体(面谈)") {
+            questionTypeID = $("#subjectType").find("option:selected").val();
+        }
+        var uid = uid;
+        var subjectText = $("#consultSubject").find("option:selected").text();
+        var entity = {};
+        var consultWayID = $("#consultWay").find("option:selected").val();
+        var startHour = $("#startHour").find("option:selected").text();
+        var startMinutes = $("#startMinutes").find("option:selected").text();
+        var endHour = $("#endHour").find("option:selected").text();
+        var endMinutes = $("#endMinutes").find("option:selected").text();
+        var prevApplyDays = $("#prevApplyDays").val();
+        if (prevApplyDays == null) {
+            prevApplyDays = 0;
+        }
+        entity.DWID = 0;
+        entity.CWID = consultWayID;
+        entity.QTID = questionTypeID;
+        entity.DWStartDate = startDate;
+        entity.DWEndDate = endDate;
+        entity.DWDistributeWeek = weekList.join(',');
+        entity.DWStartHourAndMinutes = startHour + ':' + startMinutes;
+        entity.DWEndHourAndMinutes = endHour + ':' + endMinutes;
+        entity.CSID = subjectID;
+        entity.DWConsultPlace = consultPlace;
+        entity.DWMoveUpAppTime = prevApplyDays;
+        if (setPersonAmount == "") {
+            setPersonAmount = 0;
+        }
+        entity.DWServiceUserAmount = setPersonAmount;
+        entity.DWConsultTeacher = uid;
+        entity.IsDelete = 0;
+        return entity;
+    }
+
+    //删除预约方法
+    function DeleteAppointmentInfo() {
+        var event = tempEvent;
+        var startDate = event.startDate;
+        var endDate = event.endDate;
+        var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd");
+        var uid = $("#counselor").find("option:selected").val();
+        var beforeWeekArray = (event.distributeWeek).split(",");
+        if (startDate != endDate) {
+
+            if (start == startDate) {
+                var entityArray = [];
+                var entity = {};
+                var firstStartDate = window.GetAddDayDate(start, 1);
+                var firstEndDate = endDate;
+                var tempWeekArray = window.GetWeekArray(firstStartDate, firstEndDate)
+                var firstWeekArray = window.GetIntersectArray(beforeWeekArray, tempWeekArray);
+                entity.DWID = event.distriID;
+                entity.CWID = event.consultWayID;
+                entity.QTID = event.questionTypeID;
+                entity.DWStartDate = firstStartDate;
+                entity.DWEndDate = firstEndDate;
+                entity.DWDistributeWeek = firstWeekArray.join(',');
+                entity.DWStartHourAndMinutes = event.startHourAndMinutes;
+                entity.DWEndHourAndMinutes = event.endHourAndMinutes;
+                entity.CSID = event.consultSubjectID;
+                entity.DWConsultPlace = event.consultPlace;
+                entity.DWMoveUpAppTime = event.prevConsultDateTime;
+                entity.DWServiceUserAmount = event.serviceUsersAmount;
+                entity.DWConsultTeacher = event.counselor;
+                entity.IsDelete = 0;
+                entityArray.push(entity);
+                var deleteAppointmentParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entityArray), distriID: event.id },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=UpdateDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            layer.msg("删除成功", { icon: 6, time: 2000 });
+                            LoadDistributeWork(counselorID);
+                        }
+                        else {
+                            layer.msg("删除失败", { icon: 5, time: 2000 });
+                        }
+                    }
+
+                }
+                window.NewAJAX(deleteAppointmentParam);
+                return;
+            }
+            if (start == endDate) {
+                var firstStartDate = startDate;
+                var firstEndDate = window.GetAddDayDate(start, -1);
+                var tempWeekArray = window.GetWeekArray(firstStartDate, firstEndDate)
+                var firstWeekArray = window.GetIntersectArray(beforeWeekArray, tempWeekArray);
+                var entityArray = [];
+                var entity = {};
+                entity.DWID = event.distriID;
+                entity.CWID = event.consultWayID;
+                entity.QTID = event.questionTypeID;
+                entity.DWStartDate = firstStartDate;
+                entity.DWEndDate = firstEndDate;
+                entity.DWDistributeWeek = firstWeekArray.join(',');
+                entity.DWStartHourAndMinutes = event.startHourAndMinutes;
+                entity.DWEndHourAndMinutes = event.endHourAndMinutes;
+                entity.CSID = event.consultSubjectID;
+                entity.DWConsultPlace = event.consultPlace;
+                entity.DWMoveUpAppTime = event.prevConsultDateTime;
+                entity.DWServiceUserAmount = event.serviceUsersAmount;
+                entity.DWConsultTeacher = event.counselor;
+                entity.IsDelete = 0;
+                entityArray.push(entity);
+                var deleteAppointmentParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entityArray), distriID: event.id },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=UpdateDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            layer.msg("删除成功", { icon: 6, time: 2000 });
+                            LoadDistributeWork(counselorID);
+                        }
+                        else {
+                            layer.msg("删除失败", { icon: 5, time: 2000 });
+                        }
+                    }
+
+                }
+                window.NewAJAX(deleteAppointmentParam);
+                return;
+            }
+            if (start != startDate && start != endDate) {
+                var entityArray = [];
+                var entity = {};
+                var firstStartDate = startDate;
+                var firstEndDate = window.GetAddDayDate(start, -1);
+                var firstTempWeekArray = window.GetWeekArray(firstStartDate, firstEndDate);
+                var firstWeekArray = window.GetIntersectArray(beforeWeekArray, firstTempWeekArray)
+                entity.DWID = event.distriID;
+                entity.CWID = event.consultWayID;
+                entity.QTID = event.questionTypeID;
+                entity.DWStartDate = firstStartDate;
+                entity.DWEndDate = firstEndDate;
+                entity.DWDistributeWeek = firstWeekArray.join(',');
+                entity.DWStartHourAndMinutes = event.startHourAndMinutes;
+                entity.DWEndHourAndMinutes = event.endHourAndMinutes;
+                entity.CSID = event.consultSubjectID;
+                entity.DWConsultPlace = event.consultPlace;
+                entity.DWMoveUpAppTime = event.prevConsultDateTime;
+                entity.DWServiceUserAmount = event.serviceUsersAmount;
+                entity.DWConsultTeacher = event.counselor;
+                entity.IsDelete = 0;
+                entityArray.push(entity);
+                var secondStartDate = window.GetAddDayDate(start, 1);
+                var secondEndDate = endDate;
+                var secondTempWeekArray = window.GetWeekArray(secondStartDate, secondEndDate);
+                var secondWeekArray = window.GetIntersectArray(beforeWeekArray, secondTempWeekArray);
+                var secondEntity = {};
+                secondEntity.DWID = event.distriID;
+                secondEntity.CWID = event.consultWayID;
+                secondEntity.QTID = event.questionTypeID;
+                secondEntity.DWStartDate = secondStartDate;
+                secondEntity.DWEndDate = secondEndDate;
+                secondEntity.DWDistributeWeek = secondWeekArray.join(',');
+                secondEntity.DWStartHourAndMinutes = event.startHourAndMinutes;
+                secondEntity.DWEndHourAndMinutes = event.endHourAndMinutes;
+                secondEntity.CSID = event.consultSubjectID;
+                secondEntity.DWConsultPlace = event.consultPlace;
+                secondEntity.DWMoveUpAppTime = event.prevConsultDateTime;
+                secondEntity.DWServiceUserAmount = event.serviceUsersAmount;
+                secondEntity.DWConsultTeacher = event.counselor;
+                secondEntity.IsDelete = 0;
+                entityArray.push(secondEntity);
+                var deleteAppointmentParam = {
+                    type: "get",
+                    dataType: "json",
+                    async: false,
+                    data: { distributeWorkJson: JSON.stringify(entityArray), distriID: event.id },
+                    url: "Ajax/AppointmentManagement.ashx?operationType=UpdateDistributeWork",
+                    callBack: function (result) {
+                        if (result.State) {
+                            layer.msg("删除成功", { icon: 6, time: 2000 });
+                            LoadDistributeWork(counselorID);
+                        }
+                        else {
+                            layer.msg("删除失败", { icon: 5, time: 2000 });
+                        }
+                    }
+
+                }
+                window.NewAJAX(deleteAppointmentParam);
+                return;
+            }
+        }
+        var deleteAppointmentParam = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { distriID: event.id },
+            url: "Ajax/AppointmentManagement.ashx?operationType=DeleteAppointmentInfo",
+            callBack: function (result) {
+                if (result.State) {
+                    layer.msg("删除成功", { icon: 6, time: 2000 });
+                    LoadDistributeWork(counselorID);
+                }
+                else {
+                    layer.msg("删除失败", { icon: 5, time: 2000 });
+                }
+            }
+
+        }
+        window.NewAJAX(deleteAppointmentParam);
+    }
+    //填写预约信息
+    function FillInAppointmentInfo() {
+        $("#appointmentModal").modal("show");
+        $("#appTel").val("");
+        $("#questionDescribe").val("");
+        $("#appointmentModal").find(".modal-title").text("预约");
+        var getUserInfoParameter = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            url: "Ajax/AppointmentManagement.ashx?operationType=GetUserInfo",
+            callBack: function (result) {
+                $("#userName").val(result.UserName);
+                $("#loginName").val(result.LoginName);
+                $("#sex").val(result.Sex);
+            }
+        }
+        window.NewAJAX(getUserInfoParameter);
+        $("#appConsultWay").val(tempEvent.consultWay);
+        $("#appQuestionType").val(tempEvent.questionTypeName);
+        if (tempEvent.questionTypeID == 0) {
+            $("#appSubjectType").show();
+            $("#appQuestionType").hide();
+            LoadAppQuestionType();
+        } else {
+            $("#appSubjectType").hide();
+            $("#appQuestionType").show();
+        }
+    }
+    //普通用户预约方法
+    function UserApplyAppointment() {
+        if ($("#appTel").val().trim() == "" || $("#questionDescribe").val().trim() == "") {
+            layer.alert("请将必填项填写完整!");
+            return;
+        }
+        if (!window.ValidateCellPhone($("#appTel").val().trim())) {
+            layer.alert("请输入11位数字");
+            return;
+        }
+        var date = $.fullCalendar.formatDate(tempEvent.start, "yyyy-MM-dd");
+        var time = $.fullCalendar.formatDate(tempEvent.start, "HH:mm");
+        var questionTypeID = 0;
+        if (tempEvent.questionTypeID == 0) {
+            questionTypeID = $("#appSubjectType").find("option:selected").val();
+        } else {
+            questionTypeID = tempEvent.questionTypeID;
+        }
+        FillAppointmentInfoModal();
+        //此举是为拆分单个日期
+        UpdateAppointmentInfo();
+        var getDistriIDParameter = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { date: date, time: time, questionTypeID: questionTypeID, userRoleTypeID: userRoleType, questionDescribe: $("#questionDescribe").val(), counselorID: counselorID, appTel: $("#appTel").val() },
+            url: "Ajax/AppointmentManagement.ashx?operationType=UserApplyAppointment",
+            callBack: function (result) {
+                if (result.State) {
+                    layer.msg("预约成功！需咨询师进行审核，审核通过后会以站内信的形式进行通知，请及时查看。", { icon: 6, time: 2000 });
+                    $("#appointmentModal").modal("hide");
+                    LoadDistributeWork(counselorID);
+                }
+                else {
+                    layer.msg("预约失败!", { icon: 5, time: 2000 });
+                }
+            }
+        }
+        window.NewAJAX(getDistriIDParameter);
+    }
+    function HandleWithAppointment() {
+        top.location.href = "DisposeAppointment.aspx?distriID=" + tempEvent.id + ""
+    }
+    function UserCancelAppointment() {
+        var distriID = tempEvent.id;
+        layer.confirm("您确认取消此预约吗?", {
+            btn: ["确定", "取消"]
+        }, function () {
+            var deleteAppointmentParameter = {
+                type: "get",
+                dataType: "json",
+                async: false,
+                data: { distriID: distriID },
+                url: "Ajax/AppointmentManagement.ashx?operationType=DeleteAppointment",
+                callBack: function (result) {
+                    if (result.State) {
+                        layer.msg("取消预约成功", { icon: 6, time: 2000 });
+                        $("#appointmentModal").modal("hide");
+                        LoadDistributeWork(counselorID);
+                    }
+                    else {
+                        layer.msg("取消预约失败!", { icon: 5, time: 2000 });
+                    }
+                }
+            }
+            window.NewAJAX(deleteAppointmentParameter);
+        }, function () {
+            layer.closeAll();
+        }
+            )
+    }
+    function ShowStartModel() {
+        $("#starRateModel").modal("show");
+        $("#starLevel").rating({
+            size: 'xs',
+            showClear: false,
+            showCaption: false,
+            language: 'zh',
+            min: 0,
+            max: 5,
+            step: 1
+        });
+    }
+    function AddConsultResultComment() {
+        if ($("#starLevel").val().trim() == "") {
+            layer.alert("评分星级不能为空，请选择评分星级");
+            return;
+        }
+        var addCommentParameter = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { level: $("#starLevel").val(), appID: tempEvent.appointmentID },
+            url: "Ajax/AppointmentManagement.ashx?operationType=AddConsultResultComment",
+            callBack: function (result) {
+                if (result.State) {
+                    layer.msg("评价成功", { icon: 6, time: 2000 });
+                    $("#starRateModel").modal("hide");
+                    LoadDistributeWork(counselorID);
+
+                }
+                else {
+                    layer.msg("评价失败!", { icon: 5, time: 2000 });
+                }
+            }
+        }
+        window.NewAJAX(addCommentParameter);
+    }
+    function InitiateAppointment() {
+        $("#initiateAppointmentModal").modal("show");
+        $("#counLoginName").val("");
+    }
+    function AddInitiateAppointmentInfo() {
+        var loginName = $("#counLoginName").val().trim();
+        if (loginName == "") {
+            layer.alert("用户登录名不能为空!");
+            return;
+        }
+        var judgeLoginName = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { loginName: loginName },
+            url: "Ajax/AppointmentManagement.ashx?operationType=JudgeLoginName",
+            callBack: function (result) {
+                if (result.State) {
+                    AddInitiateAppointment();
+                }
+                else {
+                    layer.msg("未找到此登录名的用户!", { icon: 5, time: 2000 });
+                    return;
+                }
+            }
+        }
+        window.NewAJAX(judgeLoginName);
+    }
+    function AddInitiateAppointment() {
+        var loginName = $("#counLoginName").val().trim();
+        var date = $.fullCalendar.formatDate(tempEvent.start, "yyyy-MM-dd");
+        var time = $.fullCalendar.formatDate(tempEvent.start, "HH:mm");
+        FillAppointmentInfoModal();
+        //此举是为拆分单个日期
+        UpdateAppointmentInfo('AddAppointment');
+        var counAppointmentParameter = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { date: date, time: time, questionTypeID: tempEvent.questionTypeID, userRoleTypeID: userRoleType, loginName: loginName, counselorID: counselorID },
+            url: "Ajax/AppointmentManagement.ashx?operationType=CounAppointment",
+            callBack: function (result) {
+                if (result.State) {
+                    layer.msg("预约成功!", { icon: 6, time: 2000 });
+                    $("#initiateAppointmentModal").modal("hide");
+                    LoadDistributeWork(counselorID);
+                    var tempArray = result.Data;
+                    for (var i = 0; i < tempArray.length; i++) {
+                        window.SendWebLetter(tempArray[i], "预约拒绝", date + " " + time + "时间段咨询师已预约其他用户，您的预约请求被拒绝!");
+                    }
+                }
+                else {
+                    layer.msg("预约失败!", { icon: 5, time: 2000 });
+                }
+            }
+        }
+        window.NewAJAX(counAppointmentParameter);
+    }
+    //取消预约
+    function CancelAppointment() {
+        var distributeWorkID = tempEvent.id;
+        var appointmentID = tempEvent.appointmentID;
+        layer.confirm("取消预约后用户端也将同步删除该预约记录，是否取消？", {
+            btn: ["确定", "取消"]
+        }, function () {
+            $.ajax({
+                url: "Ajax/AppointmentManagement.ashx?operationType=CancelAppointment",
+                type: "GET",
+                data: { distributeWorkID: distributeWorkID, appointmentID: appointmentID },
+                dataType: "json",
+                success: function (result) {
+                    if (result.State) {
+                        layer.msg("取消预约成功", { icon: 6, time: 2000 })
+                        LoadDistributeWork(counselorID);
+                    } else {
+                        layer.msg("取消预约失败", { icon: 5, time: 2000 });
+                    }
+                }
+            })
+        }, function () {
+            layer.closeAll();
+        })
+    }
+    //查看预约信息
+    function CheckAppointment() {
+        var appID = tempEvent.appointmentID;
+        var GetAppointmentInfoParam = {
+            type: "get",
+            dataType: "json",
+            async: false,
+            data: { appID: appID },
+            url: "Ajax/DisposeAppointment.ashx?operationType=GetAppointmentInfo",
+            callBack: function (result) {
+                $("#showAppointmentInfo").modal("show");
+                $("#lbUserName").text(result.UserName);
+                $("#lbLoginName").text(result.LoginName);
+                $("#lbSex").text(result.Sex);
+                $("#department").text(result.DepartmentName);
+                $("#lbConsultWay").text(result.ConsultWayName);
+                $("#contactWay").text(result.ContactWay);
+                $("#lbQuestionDetail").text(result.QuestionDetail);
+                $("#questionType").text(result.QuestionTypeName);
+            }
+        }
+        window.NewAJAX(GetAppointmentInfoParam);
+    }
+    function CheckGroupAppointment() {
+        top.location.href = "DisposeAppointment.aspx?distriID=" + tempEvent.id + ""
+    }
+    function ClearDistributeWorkInfo() {
+        $("#consultWay").find("option:eq(0)")[0].selected = true;
+        if ($("#subjectType").find("option").length == 0) {
+            $("#subjectType").append("<option value ='0'>不限</option>");
+        }
+        $("#subjectType").find("option:eq(0)")[0].selected = true;
+        $("#startDate").val("");
+        $("#endDate").val("");
+        var weekArray = $("#weekList").find("input");
+        for (var i = 0; i < weekArray.length; i++) {
+            $(weekArray[i]).checked = false;
+            $(weekArray[i]).attr("disabled", "disabled")
+
+        }
+        $("#startHour").val("00");
+        $("#startMinutes").val("00");
+        $("#endHour").val("00");
+        $("#endMinutes").val("00");
+        $("#subjectType").hide();
+        $("#setPersonAmountDiv").hide();
+        $("#subjectDiv").hide();
+        $("#subjectContentDiv").hide();
+        $("#applyConditionDiv").hide();
+        $("#consultSubjectDiv").hide();
+        $("#subjectTypeText").hide();
+        $("#subjectType").show();
+        $("#consultPlace").val("");
+        $("#consultSubject").val("已有主题");
+        $("#newConsultSubject").val("");
+        $("#subjectContent").val("");
+        $("#applyCondition").val("");
+        $("#subjectTypeText").val("");
+        $("#setPersonAmount").val("");
+        $("#prevApplyDays").val("");
+        $("#setPersonAmount").val("");
+    }
+    function DeleteSubject(val) {
+        $.ajax({
+            url: "Ajax/AppointmentManagement.ashx?operationType=DeleteSubject",
+            type: "get",
+            data: { subjectID: val },
+            dataType: "text",
+            success: function (result) {
+
+            }
+        })
+    }
+</script>

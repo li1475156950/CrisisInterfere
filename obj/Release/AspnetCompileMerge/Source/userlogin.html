@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="assets/js/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(function () {
+            aatest();
+            function aatest() {
+                $.ajax({
+                    url: "logins.ashx?Type=userlogin",
+                    type: "GET",
+                    data: { id: "" },
+                    dataType: "jsonp",
+                    jsonp: "callbackparam",
+                    jsonpCallback: "jsonpCallback1",
+                    success: function (result) {
+                        
+                        if (result[0].strte == 0) {
+                            window.location.href = "Index.aspx";
+                        } else {
+                            window.location.href = "login.html";
+
+                        }
+                    }
+                })
+            }
+        });
+    </script>
+</body>
+</html>

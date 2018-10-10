@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="98c4d04c-c9ff-489c-bf81-71dae204d8de" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.EnterpriseServices" />
+      <ReferencedAssembly AssemblyName="System.IdentityModel" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel.Channels" />
+      <ReferencedAssembly AssemblyName="System.Web" />
+      <ReferencedAssembly AssemblyName="System.Web.ApplicationServices" />
+      <ReferencedAssembly AssemblyName="System.Web.DynamicData" />
+      <ReferencedAssembly AssemblyName="System.Web.Entity" />
+      <ReferencedAssembly AssemblyName="System.Web.Extensions" />
+      <ReferencedAssembly AssemblyName="System.Web.Services" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8012/BasicsServices/DistributeRecordService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item8.xsd" MetadataType="Schema" ID="9650a8f3-1e40-4161-943f-9dec46e45d1f" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd7" />
+    <MetadataFile FileName="item81.xsd" MetadataType="Schema" ID="10b1e634-b864-4762-b930-73f07a010d99" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd8" />
+    <MetadataFile FileName="item82.xsd" MetadataType="Schema" ID="1e3f4270-9503-437f-8956-94ed4842e561" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd6" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="130c9fe0-ab41-40f7-b1f5-ad8301ba021f" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?disco" />
+    <MetadataFile FileName="item83.xsd" MetadataType="Schema" ID="da123420-d3b9-450a-b302-827714f49407" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd4" />
+    <MetadataFile FileName="item84.xsd" MetadataType="Schema" ID="01cf36d8-e669-4321-b843-7e265f3378b4" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd5" />
+    <MetadataFile FileName="DistributeRecordService1.wsdl" MetadataType="Wsdl" ID="d7a2e810-c533-470f-bb27-0520da8a245c" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?wsdl" />
+    <MetadataFile FileName="item85.xsd" MetadataType="Schema" ID="ba1874f4-be1e-4eb0-9606-a1a9303afda1" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd3" />
+    <MetadataFile FileName="item86.xsd" MetadataType="Schema" ID="33cfa0cb-41b7-400c-9782-e10d464d7642" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd0" />
+    <MetadataFile FileName="item87.xsd" MetadataType="Schema" ID="820c9ceb-780b-4106-ae6e-2e6a7cb4a8d9" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd1" />
+    <MetadataFile FileName="item88.xsd" MetadataType="Schema" ID="923998c2-aa5e-423e-8ee5-f9e55d75df28" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/DistributeRecordService/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

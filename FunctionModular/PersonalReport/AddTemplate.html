@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>京师博仁危机干预个体报告-新增模板</title>
+    <link rel="shortcut icon" id="icons" href="" />
+    <!-- Bootstrap Styles-->
+    <link href="/CSS/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <!-- Custom Styles-->
+    <link href="/CSS/custom-styles.css" rel="stylesheet" />
+    <link href="/CSS/custom-styles_1.css" rel="stylesheet" />
+    <link href="/CSS/font-awesome.min.css" rel="stylesheet" />
+    <link href="/CSS/base.css" rel="stylesheet" />
+    <link href="/CSS/rysz.css" rel="stylesheet" />
+    <link href="/CSS/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="/assets/skin/layer.css" rel="stylesheet" />
+    <link href="/CSS/bootstrapValidator.min.css" rel="stylesheet" />
+    <link href="/CSS/ligerFrom/ligerui-form.css" rel="stylesheet" />
+    <link href="/CSS/ligerFrom/ligerui-tree.css" rel="stylesheet" />
+    <link href="/JS/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="/CSS/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="../../assets/skin/layer.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <!-- 头部导航 -->
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div>
+                <a class="navbar-brand" href="/Index.aspx" style="width: auto;">
+                    <img class="pull-left" src="./statics/images/w_logo.png" id="newbox" />
+                    <p class="white fb f24 pull-left">京师博仁心理危机干预系统</p>
+                </a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right pr30">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img src="./statics/images/w_email.png">
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages" id="MsgID">
+                        <li id="lis1">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider1" style="display: none"></li>
+                        <li id="lis2" style="display:none">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider2" style="display: none"></li>
+                        <li id="lis3" style="display:none">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider3" style="display: none"></li>
+                        <li>
+                            <a class="text-center" href="../../FunctionModular/Letter/LetterList.aspx">
+                                <strong>查看所有消息</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img class="pull-left" src="./statics/images/w_tx.png">
+                        <p class="f16 white pull-left">Yilia_S</p>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="/FunctionModular/PersonalInfo/PersonalInfo.aspx"><i class="fa fa-user fa-fw"></i>个人信息</a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li>
+                            <a onclick="LoginOut()"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- 左侧  -->
+        <nav class="navbar-default navbar-side w_color" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="w_blue">
+                        <a id="MyIndex" href="../../Index.aspx"><i class="fa fa-desktop c666"></i>桌面</a>
+                    </li>
+                    <li>
+                        <a class="zhuse" href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic1.png" alt=""></i>人员设置<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse in">
+                            <li><a data-id="10" href="/FunctionModular/BasicSetting/RoleManagement.aspx" onclick="return OnSetCollapseIn(this);">角色管理</a></li>
+                            <li><a data-id="11" href="/FunctionModular/BasicSetting/DepartmentMain.aspx" onclick="return OnSetCollapseIn(this);">部门管理</a></li>
+                            <li class="xia_acitve"><a data-id="12" href="/FunctionModular/BasicSetting/MemberManagement.aspx" onclick="return OnSetCollapseIn(this);">成员管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic2.png" alt=""></i>心理测评<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="14" href="/FunctionModular/Heartevaluation/Heartevaluation.aspx" onclick="return OnSetCollapseIn(this);">量表管理</a></li>
+                            <li><a data-id="15" href="/FunctionModular/HeartEvaluation_DistributionRecord/DistributionRecord.aspx" onclick="return OnSetCollapseIn(this);">分配记录</a></li>
+                            <li><a data-id="16" href="/FunctionModular/PersonalReport/PersonalReport.aspx" onclick="return OnSetCollapseIn(this);">个体报告</a></li>
+                            <li><a data-id="17" href="/FunctionModular/GroupReport/GroupReport.aspx" onclick="return OnSetCollapseIn(this);">团体报告</a></li>
+                            <li><a data-id="18" href="/FunctionModular/StatisticalAnalysis/Statistical.aspx" onclick="return OnSetCollapseIn(this);">统计分析</a></li>
+                            <li><a data-id="19" href="/FunctionModular/HeartEvaluation/MyTest.aspx" onclick="return OnSetCollapseIn(this);">我的测验</a></li>
+                            <li><a data-id="20" href="/FunctionModular/HeartEvaluation/ViewResult.aspx" onclick="return OnSetCollapseIn(this);">查看结果</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic3.png" alt=""></i>危机干预<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="21" href="/FunctionModular/Warning/CrisisWarning.aspx" onclick="return OnSetCollapseIn(this);">危机预警</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic4.png" alt=""></i>预约咨询<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="23" href="/FunctionModular/Questionnaire_Record/Questionnaire_Manage.aspx" onclick="return OnSetCollapseIn(this);">问卷管理</a></li>
+                            <li><a data-id="24" href="/FunctionModular/Questionnaire_Record/QuestionnaireRecord.aspx" onclick="return OnSetCollapseIn(this);">分配记录</a></li>
+                            <li><a data-id="25" href="/FunctionModular/Questionnaire_Record/SurveyResult.aspx" onclick="return OnSetCollapseIn(this);">调查结果</a></li>
+                            <li><a data-id="26" href="/FunctionModular/Questionnaire_Record/MyQuestionnaire.aspx" onclick="return OnSetCollapseIn(this);">我的问卷</a></li>
+                            <li><a data-id="27" href="/FunctionModular/Questionnaire_Record/AnwserRecord.aspx" onclick="return OnSetCollapseIn(this);">作答记录</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic5.png" alt=""></i>档案管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="28" href="/FunctionModular/AppointmentConsult/QuestionType.aspx" onclick="return OnSetCollapseIn(this);">参数设置</a></li>
+                            <li><a data-id="29" href="/FunctionModular/AppointmentConsult/AppointmentManagement.aspx" onclick="return OnSetCollapseIn(this);">预约管理</a></li>
+                            <li><a data-id="34" href="/FunctionModular/AdvisoryStatistics/AdvisoryStatistics.aspx" onclick="return OnSetCollapseIn(this);">咨询统计</a></li>
+                            <li><a data-id="35" href="/FunctionModular/AppointmentConsult/CaseanalysisList.aspx" onclick="return OnSetCollapseIn(this);">案例分析</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic6.png" alt=""></i>其他服务<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="37" href="/FunctionModular/EvaluationFiles/EvaluationFiles.aspx" onclick="return OnSetCollapseIn(this);">测评档案</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic7.png" alt=""></i>危机预防方案<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="37" href="/FunctionModular/EvaluationFiles/EvaluationFiles.aspx" onclick="return OnSetCollapseIn(this);">测评档案</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic8.png" alt=""></i>回收站<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="140" href="/FunctionModular/RecycleBin/RecycleBin.aspx" onclick="return OnSetCollapseIn(this);">回收站</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- 右侧  -->
+        <div id="page-wrapper">
+
+            <div id="page-inner">
+
+                <div class="row"><div class="col-md-12 col-xs-5 "><div id="useradds"> </div></div></div>
+                <div style="margin-top:20px;text-align:center"><button class="btn btn-primary btn-sm" id="Save" onclick="Save()">保存</button></div>
+           
+            </div>
+        </div>
+            </div>
+</body>
+</html>
+<!-- JS Scripts-->
+<!-- 左侧下拉框 Js -->
+<script src="/JS/jquery-2.0.3.min.js"></script>
+<script src="/JS/jquery.metismenu.js"></script>
+<script src="/JS/custom-scripts.js"></script>
+<script src="/JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="/JS/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="/JS/bootstrap-datepicker.js"></script>
+<script src="/JS/ligerComboBox/ligerComboBox.js"></script>
+<script src="/JS/layer.js"></script>
+<script src="/JS/bootstrapValidator.min.js"></script>
+<script src="/JS/ligerComboBox/ligerTree.js"></script>
+<script type="text/javascript">
+    var navName = '/FunctionModular/PersonalReport/PersonalReport.aspx';
+    LoadUserInfo();
+    function LoadUserInfo() {
+        $.ajax({
+            url: "Ajax/AddTemplate.ashx?operationType=LoadTemplate",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+
+                if (data != null && data != "" && data != undefined) {
+                    var json = JSON.parse(data["_addfiletemplate"]);
+                    $.each(json, function (name, item) {
+                        var tr = "";
+
+                        if (item["Value"] == true || item["Value"] == "True") {
+                            tr += "<div class='col-sm-2 UserID'  style='margin-top:20px;' ><span><input type='checkbox'  data-name='value' checked='checked' /></span>";
+                        } else {
+                            tr += "<div class='col-sm-2 UserID'  style='margin-top:20px;' ><input type='checkbox' data-name='value' />";
+                        }
+                        tr += "<span data-name='field'>" + item["Field"] + "</span>";
+                        //tr += "</div>";
+                        $("#useradds").append(tr);
+                    });
+                }
+            }
+
+        })
+    }
+    //保存
+    function Save() {
+        var strJson = [];
+        /*获取用户自定义信息json串 */
+        var fields = $("[data-name=field]");
+        var value = $("[data-name=value]");
+        var U_Consult = $("#U_Consult").val();
+        var GoodField = $("#GoodField").val();
+        var strJson = [];
+        if (fields.length > 0) {
+            for (var i = 0; i < fields.length; i++) {
+
+                var values = false;
+
+                if ($(value[i]).is(':checked')) {
+                    values = true;
+                }
+                if ($(fields[i]).val() == "" && $(fields[i]).text() != "") {
+                    var field = $(fields[i]).text().replace(":", "");
+
+                    var str = { 'Field': field, 'Value': values };
+                }
+                if ($(fields[i]).val() != "") {
+                    var field = $(fields[i]).val().replace(":", "");
+                    var str = { 'Field': field, 'Value': values };
+                }
+                strJson.push(str);
+            }
+        }
+        $.ajax({
+            url: "Ajax/AddTemplate.ashx?operationType=Save",
+            dataType: "json",
+            data: { strJson: JSON.stringify(strJson), },
+            async: false,
+            success: function (data) {
+                layer.msg('保存成功！', { icon: 1 });
+                setTimeout(function () {
+                    window.location.href = "PersonalReport.aspx";
+                }, 2000);
+
+
+            }
+        });
+
+    }
+</script>

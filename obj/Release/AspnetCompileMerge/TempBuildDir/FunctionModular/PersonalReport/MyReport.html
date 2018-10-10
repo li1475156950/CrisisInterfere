@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="../../JS/jquery-1.10.2.js"></script>
+    <script>
+       
+        /*-----根据答题ID加载报告信息-------*/
+        var AnswerJson = "";//测试人答题的Json
+        var AmountCode = "";//答题的量表编码
+        var SubjectTotal = 0;//量表题干数量
+        //var 
+        var sexval = 0;
+        var AgeVal = 0;
+        var strJsonA = [];
+        var Request = new Object();
+        Request = GetRequest();
+        InitPages();
+        function InitPages() {
+            var answer_id = Request["A_ID"];
+            $.ajax({
+                type: "POST",
+                url: "Ajax/PersonalReportInfo.ashx",
+                data: {
+                    Remark: "InitPages",
+                    A_ID: answer_id
+                },//要执行查询的数据参数
+                success: function (msg) {
+
+                    if (msg != "") {
+                        var obj = eval(msg);
+                        if (obj != null && obj.length > 0) {
+                            filename = obj[10] + "-" + obj[11];
+                            AmountName = obj[10];
+                           
+                            AnswerJson = obj[1];//答案Json数据集合
+                            AmountCode = obj[8];//量表编码
+                            LB_Code = obj[8];//量表编码
+                            SubjectTotal = obj[9];//量表题干数量
+                            var loginName = obj[2];
+                            var UserName = obj[11];
+                            var SexVal = obj[12];
+                            var UserBirdth = obj[13];
+                            var RCreatime = obj[4];                                                   
+                            var StartTimeA = obj[4];
+                            var EndtimeA = obj[13];
+                            AgeVal = DateDiff(StartTimeA, EndtimeA);
+                            var strD = { 'UserInfo': { 'UserLoginName': loginName, 'UserName': UserName, 'sex': SexVal, 'Birdth': UserBirdth, 'RCretime': RCreatime, 'sexval': sexval, 'AgeVal': AgeVal } };
+                            strJsonA.push(strD)
+                            Acodes = AmountCode;
+                            DrawWD_Analysis(AmountCode, AnswerJson, sexval, AgeVal, 0);//加载维度总评
+                        }
+
+                    }
+                }
+            });
+
+        }
+        function DateDiff(sDate1, sDate2) {  //sDate1和sDate2是yyyy-MM-dd格式
+
+            var aDate, oDate1, oDate2, iDays;
+            aDate = sDate1.split("-");
+            oDate1 = new Date(sDate1.replace("-", "/").replace("-", "/"));  //转换为yyyy-MM-dd格式
+            aDate = sDate2.split("-");
+            oDate2 = new Date(sDate2.replace("-", "/").replace("-", "/"));
+            var IDays = parseInt(Math.abs(oDate1 - oDate2));
+            var results = getDifference(IDays);
+
+
+
+            return results;
+
+        }
+        var OperationList;
+        var Allscore = "";
+        var strjson = "";
+        var NewJson = "";
+        var RoleType = 0;
+
+        function DrawWD_Analysis(Acode, _AnswerJson, sexval, AgeVal, recoverys) {
+            var AnswerIDs = getUrlParam("A_ID");
+            $.ajax({
+                type: "POST",
+                url: "Ajax/PersonalReportInfo.ashx",
+                data: {
+                    Remark: "InitWDPages",
+                    A_code: Acode,
+                    An_json: _AnswerJson,
+                    AnswerId: AnswerIDs,
+                },//要执行查询的数据参数
+                success: function (msg) {
+
+                
+                    var WdJsonName = "";
+
+                    var scorejson = "";
+                    var MinScore = 0;
+                    var MaxScore = 0;
+                    if (msg != "") {
+                        var msgs = eval("(" + msg + ")");
+                        strjson = msgs.OldJson;
+                        if (strjson != null && strjson != "") {
+                            states = 1
+                        }
+                        NewJson = msgs.Newjson;
+                        RoleType = msgs.RoleType;
+                        var Mins = msgs.Minjson;
+                        var Maxs = msgs.Maxjson;
+                        MinScore = Mins;
+                        MaxScore = Maxs;
+                        var WDlength = msgs.datas.length;
+                        //var CMAllscore = msgs.
+                        //WdJson = msgs.AS;
+                        var StrWD = [];
+                        $.each(msgs.datas, function (index, item) {
+                            index++;
+                            var Score = "";
+                            if (item.ScoreType == 1) {
+                                Score = parseFloat(eval(item.ConversionFormula).toFixed(2));
+                                if (LB_Code == "LB_14810142054270") {
+                                    if (item.WD_Name != "总评") {
+                                        scorejson += Score + ",";
+                                    }
+                                } else {
+                                    scorejson += Score + ",";
+                                }
+                                var Forms = item.Formulas;
+                                if (Score < MinScore) {
+                                    MinScore = Score
+                                } if (Score > MaxScore) {
+                                    MaxScore = Score;
+                                }
+
+                            } else {
+                                if (LB_Code == "LB_14810142054270") {
+                                    if (item.WD_Name != "总评") {
+                                        Score = item.Score.toFixed(2);
+                                        scorejson += parseFloat(item.Score.toFixed(2)) + ",";
+                                    } else { Score = item.Score.toFixed(2); }
+                                } else {
+                                    Score = item.Score.toFixed(2);
+                                    scorejson += parseFloat(item.Score.toFixed(2)) + ",";
+                                }
+
+
+                            }
+
+
+                            var NormName = "";//状态
+                            var Result = "";//结果
+                            var Proposal = "";
+                            var cmmlists = item.CmmodelList;
+                            var sageOrder = cmmlists.sort(
+                function (a, b) {
+                    return (a.CMstartScore - b.CMstartScore);
+                });
+
+                            //循环遍历状态
+                            //var CMScorce = item.Score.toFixed(2);
+                            var Startsorse = "";
+                            var Endsorse = "";
+                            var CmHtmls = "";//颜色div拼接
+                            var CMNumber = "";//数字div拼接
+                            var CMLengthNew = "";                         
+                            if ((Score != null && Score != "") || Score == 0) {
+                                for (var i = 0; i < cmmlists.length; i++) {
+                                    var StartAgeA = cmmlists[i].NormStartAge <= AgeVal;
+                                    var EndAgeA = AgeVal <= cmmlists[i].NormEndAge;
+                                    //区分性别和年龄
+                                    if (cmmlists[i].NormSex > 0 && (cmmlists[i].NormStartAge >= 0 && cmmlists[i].NormEndAge > 0)) {
+                                        if (cmmlists[i].NormSex == sexval && (StartAgeA && EndAgeA)) {
+                                            if (item.ScoreType == 1) {
+                                                Startsorse = cmmlists[i].StartScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                                Endsorse = cmmlists[i].EndScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                            } else {
+                                                Startsorse = cmmlists[i].StartScore.replace("Scores", item.Score.toFixed(2));
+                                                Endsorse = cmmlists[i].EndScore.replace("Scores", item.Score.toFixed(2));
+                                            }
+                                            var Startstr = Startsorse.replace(/\≤/g, "<=");
+                                            var Endstr = Endsorse.replace(/\≤/g, "<=");
+                                            var TsStart = eval(Startstr);
+                                            var Tsend = eval(Endstr);
+                                            if (TsStart && Tsend) {
+                                                NormName = cmmlists[i].NormName;
+                                                Result = cmmlists[i].Result;
+                                                Proposal = cmmlists[i].Proposal;
+                                            }
+                                        }
+                                    } //不区分性别，区分年龄
+                                    else if (cmmlists[i].NormSex == 0 && (cmmlists[i].NormStartAge >= 0 && cmmlists[i].NormEndAge > 0)) {
+
+                                        if (StartAgeA && EndAgeA) {
+                                            if (item.ScoreType == 1) {
+                                                Startsorse = cmmlists[i].StartScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                                Endsorse = cmmlists[i].EndScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                            } else {
+                                                Startsorse = cmmlists[i].StartScore.replace("Scores", item.Score.toFixed(2));
+                                                Endsorse = cmmlists[i].EndScore.replace("Scores", item.Score.toFixed(2));
+                                            }
+                                            var Startstr = Startsorse.replace(/\≤/g, "<=");
+                                            var Endstr = Endsorse.replace(/\≤/g, "<=");
+
+                                            var TsStart = eval(Startstr);
+                                            var Tsend = eval(Endstr);
+
+                                            if (TsStart && Tsend) {
+                                                NormName = cmmlists[i].NormName;
+                                                Result = cmmlists[i].Result;
+                                                Proposal = cmmlists[i].Proposal;
+
+                                            }
+                                        }
+                                    }  //区分性别,不区分年龄
+                                    else if (cmmlists[i].NormSex > 0 && (cmmlists[i].NormStartAge == 0) && (cmmlists[i].NormEndAge == "0" || cmmlists[i].NormEndAge == "999")) {
+                                        if (cmmlists[i].NormSex == sexval) {
+                                            if (item.ScoreType == 1) {
+                                                Startsorse = cmmlists[i].StartScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                                Endsorse = cmmlists[i].EndScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                            } else {
+                                                Startsorse = cmmlists[i].StartScore.replace("Scores", item.Score.toFixed(2));
+                                                Endsorse = cmmlists[i].EndScore.replace("Scores", item.Score.toFixed(2));
+                                            }
+                                            var Startstr = Startsorse.replace(/\≤/g, "<=");
+                                            var Endstr = Endsorse.replace(/\≤/g, "<=");
+                                            var TsStart = eval(Startstr);
+                                            var Tsend = eval(Endstr);
+                                            if (TsStart && Tsend) {
+                                                NormName = cmmlists[i].NormName;
+                                                Result = cmmlists[i].Result;
+                                                Proposal = cmmlists[i].Proposal;
+
+                                            }
+                                        }
+                                    }//年龄和性别不区分
+                                    else {
+
+                                        if (item.ScoreType == 1) {
+                                            Startsorse = cmmlists[i].StartScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                            Endsorse = cmmlists[i].EndScore.replace("Scores", eval(item.ConversionFormula).toFixed(2));
+                                        } else {
+                                            Startsorse = cmmlists[i].StartScore.replace("Scores", item.Score.toFixed(2));
+                                            Endsorse = cmmlists[i].EndScore.replace("Scores", item.Score.toFixed(2));
+                                        }
+                                        var Startstr = Startsorse.replace(/\≤/g, "<=");
+                                        var Endstr = Endsorse.replace(/\≤/g, "<=");
+                                        var TsStart = eval(Startstr);
+                                        var Tsend = eval(Endstr);
+                                        if (TsStart && Tsend) {
+                                            NormName = cmmlists[i].NormName;
+                                            Result = cmmlists[i].Result;
+                                            Proposal = cmmlists[i].Proposal;
+                                        }
+                                    }
+                                }
+                            }
+                            //CMNumber += "<div class=\"progress-barB \"style=\"width: " + CMLength*MaxScore + "%;text-align:right\">" + MaxScore + "</div>";
+                            OperationList = item.Tz_List;
+                            Allscore = item.Allscore;
+                            var SectioName = "";
+                            //SectioName = "result" + SectionToChinese(index);
+                            SectionValue = item.Result;
+                            if (LB_Code == "LB_14810142054270") {
+                                if (item.WD_Name != "总评") {
+                                    WdJsonName += item.WD_Name + ",";
+                                }
+                            } else {
+                                WdJsonName += item.WD_Name + ",";
+                            }
+                            var WDName = "";
+                            if (WDlength == 1) {
+                                WDName = item.WD_Name;
+                            }
+                            else {
+                                WDName = "维度" + ":&nbsp;&nbsp;" + item.WD_Name;
+
+                            }
+                            var zt_Type = "";
+                            zt_Type = NormName == "" || NormName.length == 0 ? "无" : NormName
+                            var YScoreA = item.Score.toFixed(2);
+                            var CScoreA = eval(item.ConversionFormula).toFixed(2);
+                            if ((YScoreA == null || YScoreA == "") || (CScoreA == null || CScoreA == "")) {
+                                YScoreA = "--";
+                                CScoreA = "--";
+                            }
+                           
+                            var strS = { 'WDName': WDName, 'YScoreA': YScoreA, 'CScoreA': CScoreA, 'zt_Type': zt_Type, 'Result': Result, 'Proposal': Proposal };
+
+                            StrWD.push(strS);
+                        });
+                        var strA = { 'DimensionEntitys': StrWD }
+                        strJsonA.push(strA);                        
+                        var strB = { 'Maxmin': { 'MinScore': MinScore, 'MaxScore': MaxScore } }
+                        strJsonA.push(strB);
+                        var strC = { 'AnswerRecord': msgs.AnswerR }
+                        strJsonA.push(strC);                         
+                        Load(strJsonA)
+                    }
+                }
+            });
+
+        }
+        function getDifference(period) {
+            var yearLevelValue = 365 * 24 * 60 * 60 * 1000;
+            var monthLevelValue = 30 * 24 * 60 * 60 * 1000;
+            var dayLevelValue = 24 * 60 * 60 * 1000;
+            var hourLevelValue = 60 * 60 * 1000;
+            var minuteLevelValue = 60 * 1000;
+            var secondLevelValue = 1000;
+            /*******计算出时间差中的年、月、日、天、时、分、秒*******/
+            var year = parseInt(getYear(period));
+            var month = parseInt(getMonth(period - year * yearLevelValue));
+            var result = 0;
+            if (year != 0) {
+                result = year;
+            }
+
+            function getYear(period) {
+                return parseInt(period) / yearLevelValue;
+            }
+            function getMonth(period) {
+                return parseInt(period) / monthLevelValue;
+            }
+            return result;
+        }
+      
+        //Load(json)
+        function Load(obj)
+        {
+            obj = JSON.stringify(obj)
+            //window.location.href = "Ajax/MyReport.ashx?Json=" + obj;
+            $.ajax({
+                type: "POST",
+                url: "Ajax/MyReport.ashx",
+                async: false,
+                data: {
+                    Type:0,
+                    Json:obj
+                },
+                success: function (msg) {
+                    window.location.href = "Ajax/MyReport.ashx?type="+1;
+                }
+            });
+        }
+        /*获取浏览器网址参数*/
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+        //获取url中的参数
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        function SectionToChinese(section) {
+            var strIns = '', chnStr = '';
+            var unitPos = 0;
+            var zero = true;
+            while (section > 0) {
+                var v = section % 10;
+                if (v === 0) {
+                    if (!zero) {
+                        zero = true;
+                        chnStr = chnNumChar[v] + chnStr;
+                    }
+                } else {
+                    zero = false;
+                    strIns = chnNumChar[v];
+                    strIns += chnUnitChar[unitPos];
+                    chnStr = strIns + chnStr;
+                }
+
+                unitPos++;
+                section = Math.floor(section / 10);
+
+            }
+            if (chnStr.indexOf("一十") >= 0 && chnStr.length <= 3) {
+                chnStr = chnStr.replace("一十", "十");
+            }
+            return chnStr;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

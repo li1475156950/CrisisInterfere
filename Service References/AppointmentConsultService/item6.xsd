@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.AppointmentConsultModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.AppointmentConsultModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DistributeWorkModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CSID" type="xs:int" />
+      <xs:element minOccurs="0" name="CWID" type="xs:int" />
+      <xs:element minOccurs="0" name="DWConsultPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DWConsultTeacher" type="xs:int" />
+      <xs:element minOccurs="0" name="DWCreatePerson" type="xs:int" />
+      <xs:element minOccurs="0" name="DWCreateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DWDistributeWeek" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DWEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DWEndHourAndMinutes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DWID" type="xs:int" />
+      <xs:element minOccurs="0" name="DWMoveUpAppTime" type="xs:int" />
+      <xs:element minOccurs="0" name="DWServiceUserAmount" type="xs:int" />
+      <xs:element minOccurs="0" name="DWStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DWStartHourAndMinutes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDelete" type="xs:int" />
+      <xs:element minOccurs="0" name="QTID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DistributeWorkModel" nillable="true" type="tns:DistributeWorkModel" />
+  <xs:complexType name="ArrayOfCounselorModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CounselorModel" nillable="true" type="tns:CounselorModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCounselorModel" nillable="true" type="tns:ArrayOfCounselorModel" />
+  <xs:complexType name="CounselorModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Introduce" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Score" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Sex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkilledField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UID" type="xs:int" />
+      <xs:element minOccurs="0" name="U_Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CounselorModel" nillable="true" type="tns:CounselorModel" />
+  <xs:complexType name="ArrayOfDistributeWorkViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DistributeWorkViewModel" nillable="true" type="tns:DistributeWorkViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDistributeWorkViewModel" nillable="true" type="tns:ArrayOfDistributeWorkViewModel" />
+  <xs:complexType name="DistributeWorkViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplyPerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplyUserCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ApplyUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="AppointmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="AppointmentState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AwaitAuditPeople" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsultPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultResultCommentLevel" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsultSubject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultSubjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsultSubjectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultWay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultWayID" type="xs:int" />
+      <xs:element minOccurs="0" name="Counselor" type="xs:int" />
+      <xs:element minOccurs="0" name="DistributeWeek" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistributeWorkID" type="xs:int" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndHourAndMinutes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrevConsultDateTime" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RefuseReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceUsersAmount" type="xs:int" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartHourAndMinutes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThroughAuditPeople" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DistributeWorkViewModel" nillable="true" type="tns:DistributeWorkViewModel" />
+  <xs:complexType name="ArrayOfConsultWayViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConsultWayViewModel" nillable="true" type="tns:ConsultWayViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConsultWayViewModel" nillable="true" type="tns:ArrayOfConsultWayViewModel" />
+  <xs:complexType name="ConsultWayViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsultWayID" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsultWayName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsultWayViewModel" nillable="true" type="tns:ConsultWayViewModel" />
+  <xs:complexType name="ArrayOfConsultSubjectViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConsultSubjectViewModel" nillable="true" type="tns:ConsultSubjectViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConsultSubjectViewModel" nillable="true" type="tns:ArrayOfConsultSubjectViewModel" />
+  <xs:complexType name="ConsultSubjectViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsultSubjectApplyCondition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultSubjectContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultSubjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsultSubjectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultSubjectTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsultSubjectViewModel" nillable="true" type="tns:ConsultSubjectViewModel" />
+  <xs:complexType name="ConsultSubjectModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CSApplyCondition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSCreatePerson" type="xs:int" />
+      <xs:element minOccurs="0" name="CSCreateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CSID" type="xs:int" />
+      <xs:element minOccurs="0" name="CSName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EnterpriseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDelete" type="xs:int" />
+      <xs:element minOccurs="0" name="QTID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsultSubjectModel" nillable="true" type="tns:ConsultSubjectModel" />
+  <xs:complexType name="AppointmentViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsultWayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactWay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionDetail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentViewModel" nillable="true" type="tns:AppointmentViewModel" />
+  <xs:complexType name="AppointmentBasicInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsultDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsultWay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PeopleCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentBasicInfo" nillable="true" type="tns:AppointmentBasicInfo" />
+  <xs:complexType name="AppointmentModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ASID" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DWID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDelete" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionDescribe" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RefuseReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentModel" nillable="true" type="tns:AppointmentModel" />
+  <xs:complexType name="ArrayOfAwaitStateAppointmentModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AwaitStateAppointmentModel" nillable="true" type="tns:AwaitStateAppointmentModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAwaitStateAppointmentModel" nillable="true" type="tns:ArrayOfAwaitStateAppointmentModel" />
+  <xs:complexType name="AwaitStateAppointmentModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AwaitStateAppointmentModel" nillable="true" type="tns:AwaitStateAppointmentModel" />
+</xs:schema>

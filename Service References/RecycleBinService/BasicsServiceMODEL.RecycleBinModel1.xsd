@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.RecycleBinModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.RecycleBinModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RecycleBinModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EnterpriseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PB_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RBDeleteFieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RBDeleteTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RBExcutePerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RBFieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RBFieldValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RBID" type="xs:int" />
+      <xs:element minOccurs="0" name="RBModularID" type="xs:int" />
+      <xs:element minOccurs="0" name="RBTableName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RBTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecycleBinModel" nillable="true" type="tns:RecycleBinModel" />
+  <xs:complexType name="RecycleBinEntity">
+    <xs:sequence>
+      <xs:element name="_enterpriseCode" nillable="true" type="xs:string" />
+      <xs:element name="_rbdeletefieldname" nillable="true" type="xs:string" />
+      <xs:element name="_rbdeletetime" type="xs:dateTime" />
+      <xs:element name="_rbexcuteperson" nillable="true" type="xs:string" />
+      <xs:element name="_rbfieldname" nillable="true" type="xs:string" />
+      <xs:element name="_rbfieldvalue" nillable="true" type="xs:string" />
+      <xs:element name="_rbid" type="xs:int" />
+      <xs:element name="_rbisdelete" type="xs:int" />
+      <xs:element name="_rbmodularid" type="xs:int" />
+      <xs:element name="_rbtablename" nillable="true" type="xs:string" />
+      <xs:element name="_rbtitle" nillable="true" type="xs:string" />
+      <xs:element name="_type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecycleBinEntity" nillable="true" type="tns:RecycleBinEntity" />
+</xs:schema>

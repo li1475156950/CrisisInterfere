@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../../assets/skin/layer.css" rel="stylesheet" />
+</head>
+
+<body>
+
+</body>
+</html>
+<script src="../../JS/jquery-1.10.2.js"></script>
+<script src="../../JS/layer.js"></script>
+<script>
+    //layer.alert("当前未有任何用户登录，无权访问该页面，点击确定将转到登录页面", {
+    //    skin: "layerui-layer-lan",
+    //    closeBtn:0
+    //}, function () {
+    extl();
+    function extl()
+    {
+        var uaerr = window.location;
+        var name = uaerr.toString().split('/');
+        var na = "http://" + name[1] + name[2] + "/login.html";
+        window.location = na
+    }
+    //})
+
+    //查询按钮绑定回车键
+    //$(document).keydown(function (event) {
+    //    if (event.keyCode == 13) {
+    //        $(".layui-layer-btn0").click();
+    //    }
+    //});
+</script>

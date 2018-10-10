@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebaa0a74-301b-41e1-8d8c-85ee82389142" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.EnterpriseServices" />
+      <ReferencedAssembly AssemblyName="System.IdentityModel" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel.Channels" />
+      <ReferencedAssembly AssemblyName="System.Web" />
+      <ReferencedAssembly AssemblyName="System.Web.ApplicationServices" />
+      <ReferencedAssembly AssemblyName="System.Web.DynamicData" />
+      <ReferencedAssembly AssemblyName="System.Web.Entity" />
+      <ReferencedAssembly AssemblyName="System.Web.Extensions" />
+      <ReferencedAssembly AssemblyName="System.Web.Services" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8014/BasicsServices/AppointmentConsultService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="3e896b30-793c-44c3-82ce-efe88648bf34" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="934c9b05-2182-4b4d-9955-08516cff2f04" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="71370cc7-4007-4861-bf0e-e7a9b086b437" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?xsd=xsd5" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ce020efa-6d07-463b-a173-c7e6784c8ca4" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?xsd=xsd6" />
+    <MetadataFile FileName="AppointmentConsultService.wsdl" MetadataType="Wsdl" ID="fce7cb55-7a96-4d84-a1e3-b16426706059" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="f16042c8-2b61-406e-969b-eac0c5ac1335" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?xsd=xsd3" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="96f5431d-9807-4f05-ae18-062e32cf5ca6" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?xsd=xsd1" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="4269acf6-c2d7-4999-8ef7-971e3819bda6" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?xsd=xsd4" />
+    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="af1fcfd4-ee84-481a-8223-7d9e90c2fde6" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/AppointmentConsultService/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

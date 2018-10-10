@@ -1,0 +1,248 @@
+﻿ @charset "utf-8";
+/* CSS Document */
+/*心理测评-查看报告详情页面*/
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+border-bottom: 1px solid #ccc;}
+.x_report .x_list{
+max-width: 1080px;
+margin:0 auto;
+}
+.x_report .x_list table td{width: 33%;text-align: left;padding-left: 15px}
+.x_report .x_list div.tc{width:650px;height: 410px;margin:30px auto 0; }
+.x_report .x_list textarea{width: 100%;border-color: #ccc;resize:none;outline: none;padding:10px;font-size: 14px}
+.x_content #page-inner{overflow-y:auto;}
+/*.x_content .scrollbar {
+margin-left: 30px;
+float: left;
+height: 300px;
+width: 65px;
+background: #F5F5F5;
+overflow-y: scroll;
+margin-bottom: 25px;
+}*/
+/*.x_content #page-inner::-webkit-scrollbar {
+width: 10px;
+background-color: #F5F5F5;
+}*/
+#page-inner::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+background-color: #ccc;
+}
+.x_content #page-inner::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+background-color: #F5F5F5;
+}
+/* =======================================心理测评-分配记录========================================== */
+#datetimeStart,#datetimeEnd{background-color: #fff;}
+.x_tx input,.x_txs input{margin-top: 7px;}
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn{opacity: 1}
+/* =======================================心理测评-个体报告========================================== */
+button{font-family: '微软雅黑'!important;color: #333}
+.x_list .x_tablefirst{
+    background:#d0d0d0;
+    font-weight: bold;
+
+}
+.x_list tr td p{text-indent: 1cm}
+.x_list_3 tr td{width: auto!important;font-family: '微软雅黑';}
+button.x_xiugai{
+width: 80px;
+height: 30px;
+background: #fff;
+color: #f9906f;
+border: 1px solid #f9906f;
+text-align: center;
+border-radius: 5px;
+position: absolute;
+right: 5%;
+top: -30px;
+}
+button.x_xiugai:hover{color: #f9906f}
+.x_report_hide{display: none;}
+.x_zs_btn button{width: 32px!important;
+    font-size: 20px;}
+.x_zs_btn button#x_btn1{display: none;}
+.x_sjdc{position: relative;}
+.x_sjdc:hover i.x_sjdc_icon{color: #fff!important;z-index: 9999}
+i.x_sjdc_icon {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    color: #f9906f;
+    z-index: 9999
+}
+
+/* ================================心理测评-我的测验-答题页面============================== */
+.x_test .regular-radio {
+    display: none;
+}
+
+.x_test .regular-radio + label {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 2px solid #50ace2;
+    padding: 7px;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.x_test .regular-radio:checked + label:after {
+    content: ' ';
+    width: 8px;
+    height: 8px;
+    border-radius: 50px;
+    position: absolute;
+    top: 3px;
+    background: #50ace2;
+    text-shadow: 0px;
+    left: 3px;
+    font-size: 32px;
+}
+
+.x_test .regular-radio:checked + label {
+    background-color: #fff;
+    color: #99a1a7;
+    border: 2px solid #50ace2;
+}
+
+.x_test .regular-radio + label:active, .x_test .regular-radio:checked + label:active {
+
+}
+
+.x_test .big-radio + label {
+    padding: 16px;
+}
+
+.x_test .big-radio:checked + label:after {
+    width: 24px;
+    height: 24px;
+    left: 4px;
+    top: 4px;
+}
+.x_test .x_wcircle{
+    width: 800px;
+border: 2px solid #d2d2d2;
+border-radius: 30px;
+height: 20px;
+margin: 0 auto;
+padding:2px;
+display: inline-block;
+vertical-align: sub;
+}
+.x_test .x_ncircle{
+    background: #50ace2;
+    width: 2%;
+    height: 100%;
+border-radius: 10px;
+
+}
+.x_test .x_text_jd{margin-top: 150px;text-align: center;}
+.x_test .x_test_tm .btn:hover{
+    background: #f9906f;
+    color: #fff!important
+}
+.x_test .x_test_tm button.cszt{
+    background: #b2b2b2;
+    border-color:#b2b2b2;
+    color: #fff!important
+}
+.x_test .x_test_tm button.cszt:hover{
+    background: #b2b2b2;
+    border-color:#b2b2b2;
+    color: #fff!important
+}
+
+/* =============================================心理测评-量表管理-量表分配============================= */
+.x_lbgl .bs-example-tabs ul li{
+    width: 200px;
+    text-align: left;
+    height: auto;
+}
+.x_lbgl .nav-tabs > li.active > a,.x_lbgl .nav-tabs > li.active > a:hover,
+.x_lbgl .nav-tabs > li.active > a:focus{
+    border:1px solid #50ace2;
+    border-radius: 0;
+    color: #50ace2;
+    font-size: 18px;
+    height: 34px;
+    line-height: 14px;
+}
+.x_lbgl .nav-tabs > li > a {
+    height: 34px;
+    line-height: 14px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-size: 18px;
+    color: #666;
+    margin-right: 0;
+}
+.x_lbgl .bs-example-tabs ul{
+    background: #fff;
+    border-left:0;
+    border-right:0;
+    border-top:0;
+}
+.x_lbgl .nav-tabs > li.active > a{
+    color: #50ace2
+}
+.x_lbgl .nav-tabs > li{border-left:0;}
+.x_lbgl .nav-tabs > li > a:hover{
+    background: #fff
+}
+/* 查看量表弹窗 */
+#x_chakan .modal-dialog{
+    width: 800px;
+    height: 650px;
+    margin-top: 10%
+}
+#x_chakan .modal-dialog .modal-content{
+    height: 655px;
+}
+#x_chakan p{text-indent: 1cm}
+#x_chakan .modal-dialog .modal-body{
+    height: 600px;
+    overflow-y:auto;
+}
+#x_chakan .modal-dialog .modal-body::-webkit-scrollbar,.x_bianji .modal-dialog .modal-body::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+#x_chakan .modal-dialog .modal-body::-webkit-scrollbar-thumb,.x_bianji .modal-dialog .modal-body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #b2b2b2;
+}
+#x_chakan .modal-dialog .modal-body::-webkit-scrollbar-track,.x_bianji .modal-dialog .modal-body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.x_bianji .modal-dialog{
+    width: 560px!important;
+    height: 650px;
+    margin-top: 10%
+}
+.x_bianji .checkbox{margin-bottom: 20px}
+.x_bianji .laxt_checkbox{
+    margin-top: 50px
+}
+.x_bianji .modal-dialog .modal-content{
+    height: 655px;
+}
+.x_bianji p{text-indent: 1cm}
+.x_bianji .modal-dialog .modal-body{
+    height: 600px;
+    overflow-y:auto;
+}
+
+
+
+
+
+
+
+

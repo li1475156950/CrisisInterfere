@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.ReservationModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.ReservationModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="YT_YuYueTimeEntity">
+    <xs:sequence>
+      <xs:element name="_themid" type="xs:int" />
+      <xs:element name="_yt_bdate" type="xs:dateTime" />
+      <xs:element name="_yt_btime" nillable="true" type="xs:string" />
+      <xs:element name="_yt_conselingaddress" type="xs:int" />
+      <xs:element name="_yt_conselingtype" type="xs:int" />
+      <xs:element name="_yt_createperson" nillable="true" type="xs:string" />
+      <xs:element name="_yt_createtime" type="xs:dateTime" />
+      <xs:element name="_yt_describe" nillable="true" type="xs:string" />
+      <xs:element name="_yt_edate" type="xs:dateTime" />
+      <xs:element name="_yt_etime" nillable="true" type="xs:string" />
+      <xs:element name="_yt_id" type="xs:int" />
+      <xs:element name="_yt_state" type="xs:int" />
+      <xs:element name="_yt_userid" type="xs:int" />
+      <xs:element name="_yt_week" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="YT_YuYueTimeEntity" nillable="true" type="tns:YT_YuYueTimeEntity" />
+  <xs:complexType name="YNT_YuyueNewThemEntity">
+    <xs:sequence>
+      <xs:element name="_ynt_createperson" nillable="true" type="xs:string" />
+      <xs:element name="_ynt_createtime" type="xs:dateTime" />
+      <xs:element name="_ynt_describe" nillable="true" type="xs:string" />
+      <xs:element name="_ynt_entrycondition" nillable="true" type="xs:string" />
+      <xs:element name="_ynt_id" type="xs:int" />
+      <xs:element name="_ynt_str" nillable="true" type="xs:string" />
+      <xs:element name="_ynt_str2" nillable="true" type="xs:string" />
+      <xs:element name="_ynt_themname" nillable="true" type="xs:string" />
+      <xs:element name="_yt_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="YNT_YuyueNewThemEntity" nillable="true" type="tns:YNT_YuyueNewThemEntity" />
+  <xs:complexType name="YOT_YuyueOldThemEntity">
+    <xs:sequence>
+      <xs:element name="_ynt_id" type="xs:int" />
+      <xs:element name="_yot_createperson" nillable="true" type="xs:string" />
+      <xs:element name="_yot_createtime" type="xs:dateTime" />
+      <xs:element name="_yot_id" type="xs:int" />
+      <xs:element name="_yot_str" nillable="true" type="xs:string" />
+      <xs:element name="_yot_str2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="YOT_YuyueOldThemEntity" nillable="true" type="tns:YOT_YuyueOldThemEntity" />
+  <xs:complexType name="Y_UserYuYueEntity">
+    <xs:sequence>
+      <xs:element name="_yt_id" type="xs:int" />
+      <xs:element name="_yu_createperson" nillable="true" type="xs:string" />
+      <xs:element name="_yu_createtime" type="xs:dateTime" />
+      <xs:element name="_yu_data" type="xs:dateTime" />
+      <xs:element name="_yu_delete" type="xs:int" />
+      <xs:element name="_yu_id" type="xs:int" />
+      <xs:element name="_yu_qdescribe" nillable="true" type="xs:string" />
+      <xs:element name="_yu_questiontype" type="xs:int" />
+      <xs:element name="_yu_state" type="xs:int" />
+      <xs:element name="_yu_str" nillable="true" type="xs:string" />
+      <xs:element name="_yu_str2" nillable="true" type="xs:string" />
+      <xs:element name="_yu_time" nillable="true" type="xs:string" />
+      <xs:element name="_yu_userid" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Y_UserYuYueEntity" nillable="true" type="tns:Y_UserYuYueEntity" />
+</xs:schema>

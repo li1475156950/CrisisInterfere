@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.BasicSettingModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.BasicSettingModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CounselorModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CouIntroduce" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CouSkilledField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CounseType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CounselorModel" nillable="true" type="tns:CounselorModel" />
+  <xs:complexType name="BatchaddModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatePeple" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EnterpriseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumEnd" type="xs:int" />
+      <xs:element minOccurs="0" name="NumStart" type="xs:int" />
+      <xs:element minOccurs="0" name="Pwd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PwdR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="R_ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName03" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName04" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserNameR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nametype" type="xs:int" />
+      <xs:element minOccurs="0" name="username_ty" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BatchaddModel" nillable="true" type="tns:BatchaddModel" />
+  <xs:complexType name="UTemplateEntity">
+    <xs:sequence>
+      <xs:element name="_addfiletemplate" nillable="true" type="xs:string" />
+      <xs:element name="_createtime" type="xs:dateTime" />
+      <xs:element name="_id" type="xs:int" />
+      <xs:element name="_u_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UTemplateEntity" nillable="true" type="tns:UTemplateEntity" />
+</xs:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.IndividualConsultationModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.IndividualConsultationModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="IndividualConsultationFileModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsultantId" type="xs:int" />
+      <xs:element minOccurs="0" name="ConsultantName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDelete" type="xs:int" />
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Record" nillable="true" type="tns:IndividualConsultationRecordModel" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDateStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Summary" nillable="true" type="tns:IndividualConsultationSummaryModel" />
+      <xs:element minOccurs="0" name="SummaryTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserAge" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserDepartment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserRole" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserSex" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualConsultationFileModel" nillable="true" type="tns:IndividualConsultationFileModel" />
+  <xs:complexType name="IndividualConsultationRecordModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IndividualConsultationFileId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualConsultationRecordModel" nillable="true" type="tns:IndividualConsultationRecordModel" />
+  <xs:complexType name="IndividualConsultationSummaryModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsultingEffect" type="xs:int" />
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IndividualConsultationFileId" type="xs:int" />
+      <xs:element minOccurs="0" name="OtherContent" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualConsultationSummaryModel" nillable="true" type="tns:IndividualConsultationSummaryModel" />
+</xs:schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceBLL.BasicSettingBLL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceBLL.BasicSettingBLL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfRF_Entity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RF_Entity" nillable="true" type="tns:RF_Entity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRF_Entity" nillable="true" type="tns:ArrayOfRF_Entity" />
+  <xs:complexType name="RF_Entity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Btn_Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Btn_Mark" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Class" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fun_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fun_ParentID" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Type" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RF_Entity" nillable="true" type="tns:RF_Entity" />
+</xs:schema>

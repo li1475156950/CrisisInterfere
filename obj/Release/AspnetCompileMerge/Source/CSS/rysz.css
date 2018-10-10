@@ -1,0 +1,206 @@
+﻿ @charset "utf-8";
+/* CSS Document */
+.btn-or {
+    color: #f9906f;
+    background-color: #fff;
+    border-color: #f9906f;
+}
+.btn-or:hover{
+    background: #f9906f;
+    color: #fff
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary{
+    background: #f9906f!important;
+    color: #fff
+}
+.btn-sm, .btn-group-sm > .btn{
+    background: #fff;
+    color: #f9906f!important;
+    border-color: #f9906f!important;
+    height: 30px;
+    line-height: 15px;
+    font-size: 14px;
+}
+/* 弹框样式 */
+.xia_title{
+    background:#50ace2;
+    color: #fff;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+}
+.modal-dialog{width: 500px;}
+.modal-content{border-radius: 0}
+button.btn.btn-sm.x_btn.f14 {
+    background: #f9906f;
+    padding: 0;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff!important;
+    width: 80px;
+    height: 24px;
+    line-height: 20px;
+}
+button.btn.btn-sm.x_btn.f15 {
+    background: white;
+    padding: 0;
+    text-align: center;
+    border-radius: 5px;
+    color: orange!important;
+    width: 80px;
+    height: 24px;
+    line-height: 20px;
+}
+button.btn.btn-sm.x_btn1{
+    border:1px solid #f9906f;
+    color: #f9906f;
+    padding: 0;
+    text-align: center;
+    border-radius: 5px;
+    width: 80px;
+    height: 24px;
+    line-height: 20px;
+
+}
+#editRole input,#editRole select,#editRole textarea{
+    width: 280px!important;
+}
+.x_edit input,.x_edit select,.x_edit textarea{
+    width: 280px!important;
+}
+
+/* 人员设置-角色管理-编辑权限 */
+.x_form {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.x_form .panel-heading.profile-info-name{
+    background: #f5f5f5;
+    height: 38px;
+        border-bottom: 1px solid #ddd;
+}
+.x_form .panel-heading.profile-info-name h4{line-height: 32px;}
+.x_form .panel-heading.profile-info-name h4 input{vertical-align: text-top;}
+.x_form .panel-heading.profile-info-name h4 a{color: #50ace2;margin-right: 5px}
+.x_form input{vertical-align: sub;margin-right: 2px}
+.x_qx input{vertical-align: text-top;}
+
+.x_new input,.x_new select,.x_new textarea,.x_add input,.x_add select,.x_add textarea{
+    /*width: 280px!important;*/
+}
+
+/* 人员设置-成员管理 */
+.ckzl .modal-header{padding:0;}
+.ckzl .modal-dialog{width: 800px}
+.ckzl legend{border-bottom: 0;color: #50ace2;}
+.ckzl input,.ckzl select,.ckzl textarea{width: 200px;}
+.x_plzy select{width: 200px}
+
+.x_ckzl .x_zlxq .jbxx .pull-left{width: 345px;}
+.x_ckzl .x_zlxq .jbxx .pull-left label{font-size: 14px!important;width: 70px;text-align: right}
+.x_ckzl .x_zlxq .jbxx .pull-left .form-group{overflow: hidden;margin-bottom: 30px}
+.x_ckzl .x_zlxq .jbxx .fl.c333.grjj{width: 490px}
+.x_ckzl .modal-dialog{margin-top: 10%}
+.x_ckzl input,.x_ckzl select,.x_ckzl textarea{width: 200px;height: 30px;outline: none;padding:0 5px;border:1px solid #ccc;}
+.x_ckzl .x_zlxq.x_zlxq_xgzl{display: none}
+.x_ckzl .x_zlxq.x_zlxq_xgzl .pull-left{width: 370px}
+.x_ckzl .x_zlxq.x_zlxq_xgzl .jbxx_last textarea,.x_ckzl .x_zlxq.x_zlxq_xgzl .jbxx_last input{width: 550px}
+.x_ckzl .x_zlxq.x_zlxq_xgzl .jbxx_last textarea{height: 60px;resize:none;}
+
+/* 标签页样式修改 */
+.tjcy .modal-dialog{width: 800px;}
+.tjcy .modal-dialog .modal-header{border-radius: 0;padding:0;height: 725px}
+.tjcy .bs-example-tabs{width: 690px;margin:0 auto;}
+.tjcy .bs-example-tabs ul li{
+    width: 229px;
+    text-align: center;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+.tjcy .bs-example-tabs ul li.acitve a,.x_lbgl .bs-example-tabs ul li.acitve a{
+    border-top: 0;
+    border-left:0;
+    border-right: 0;
+
+}
+.tjcy .bs-example-tabs ul,{height: 41px;border-bottom: 0}
+.tjcy .bs-example-tabs ul li a{
+    border-radius: 0;
+    border-top:0;
+    border-left:0;
+    border-right:1px dashed #ccc;
+    outline: none;
+    height: 39px;
+    background: #fff;
+    font-size: 16px;
+    color: #666;
+    line-height: 17px;
+}
+.tjcy .bs-example-tabs ul li:last-child a{border-right: 0;width: 230px}
+.tjcy .bs-example-tabs ul li.active:last-child a{border-right: 0;}
+.tjcy .bs-example-tabs ul li.active{border-bottom: none}
+
+.tjcy .nav-tabs > li.active > a,.tjcy .nav-tabs > li.active > a:hover,.tjcy .nav-tabs > li.active > a:focus{
+    border-top:0;
+    border-bottom: 2px solid #50ace2;
+    color: #50ace2;
+
+}
+.tjcy .nav-tabs > li.active > a,.tjcy .nav-tabs > li.active > a:hover,.tjcy .nav-tabs > li.active > a:focus {
+    border-left:0;
+    border-right: 1px dashed #ccc;
+    height: 40px;
+}
+.tjcy .nav-tabs > li > a:hover{border-bottom: none}
+.tjcy.x_ckzl .x_zlxq.x_zlxq_xgzl .pull-left{width: 320px}
+.tjcy.x_ckzl .x_zlxq.x_zlxq_xgzl .jbxx_last textarea,.tjcy.x_ckzl .x_zlxq.x_zlxq_xgzl .jbxx_last input{
+    width: 527px
+}
+.tjcy .pltj{position: relative;}
+.tjcy .pltj input{
+    width: 230px;
+    border:1px solid #ccc;
+}
+.tjcy .pltj .form-group{width: 375px;margin:0 auto 30px;}
+.tjcy .pltj .x_xhfw:after{
+    content: '(单次最多添加300个，包含所填序号)';
+    position: absolute;
+    color: #666;
+    font-size: 12px;
+    top: 155px;
+    padding-left: 5px
+}
+.tjcy .pltj .x_xhfw input{width: 107px}
+.tjcy .pltj .x_qz:after{
+    content: '(用户名生成规则：用户名=前缀+序号)';
+    position: absolute;
+    color: #666;
+    font-size: 12px;
+    top: 215px;
+    padding-left: 5px
+}
+.pldr input{width: 230px;}
+.pldr .x_upload {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    font-size: 12px;
+    color: #f9906f;
+    border: 1px solid #f9906f;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 18px;
+    margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.pldr .x_upload input {
+    width: 36px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: -2px;
+    opacity: 0;
+}

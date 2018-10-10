@@ -1,0 +1,17 @@
+﻿.windowMain{ float:left; clear:left;width: 100%; font-size:14px;}
+.windowMain .box{ border: 2px solid #d0d0d0;border-collapse:separate;padding:5px;}
+
+
+.windowMain .windowLeft{float:left;width:70%;}
+.windowMain .windowLeft .chatBox{border-bottom: none;height: 300px;width:100%; }
+.windowMain .windowLeft .chatBox .chatMain{float:left;}
+.windowMain .windowLeft .chatBox .chatMain .chatHeadPortrait{ float:left; width:16px;height:16px; background-image: url("Icon/Her.ico");background-repeat: no-repeat;}
+.windowMain .windowLeft .chatBox .chatMain .chatTitle{ float:left;line-height:16px; font-size:12px;}
+.windowMain .windowLeft .chatBox .chatMain .chatContext{ width:16px;height:16px; background-image: url("Icon/Her.ico");background-repeat: no-repeat;}
+
+.windowMain .windowLeft .inputBox{height:150px;width:100%;}
+
+
+
+.windowMain .windowRight{float:left;width:30%;}
+.windowMain .windowRight .infoBox{ border-left: none;height: 450px;}

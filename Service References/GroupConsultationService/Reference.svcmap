@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a877b5ac-45f3-4356-97c3-6b89c97acb68" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.EnterpriseServices" />
+      <ReferencedAssembly AssemblyName="System.IdentityModel" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel.Channels" />
+      <ReferencedAssembly AssemblyName="System.Web" />
+      <ReferencedAssembly AssemblyName="System.Web.ApplicationServices" />
+      <ReferencedAssembly AssemblyName="System.Web.DynamicData" />
+      <ReferencedAssembly AssemblyName="System.Web.Entity" />
+      <ReferencedAssembly AssemblyName="System.Web.Extensions" />
+      <ReferencedAssembly AssemblyName="System.Web.Services" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8012/BasicsServices/GroupConsultationService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="41b665d3-9d55-43e5-aa5d-ec06593a9d81" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?disco" />
+    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="a978ac96-00c3-4ed9-8f83-52c65039bb77" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?xsd=xsd5" />
+    <MetadataFile FileName="GroupConsultationService1.wsdl" MetadataType="Wsdl" ID="6d27d026-7404-4809-a207-13dfeb826f6e" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?wsdl" />
+    <MetadataFile FileName="item61.xsd" MetadataType="Schema" ID="b80bc67c-97ea-4926-b686-8ed0872444c0" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?xsd=xsd3" />
+    <MetadataFile FileName="item62.xsd" MetadataType="Schema" ID="9b124ff3-1265-4f9b-b19c-e9090c835950" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?xsd=xsd4" />
+    <MetadataFile FileName="item63.xsd" MetadataType="Schema" ID="f1fb9817-bedd-4eac-8a08-a4206e64ff60" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?xsd=xsd1" />
+    <MetadataFile FileName="item64.xsd" MetadataType="Schema" ID="ee04c041-d8bf-4096-b71a-a5974d43320b" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?xsd=xsd2" />
+    <MetadataFile FileName="item65.xsd" MetadataType="Schema" ID="6caa5fd6-59ea-4ef6-a761-454b9150622c" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/GroupConsultationService/?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

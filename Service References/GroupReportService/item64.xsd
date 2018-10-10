@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.GroupReportModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.GroupReportModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfExplainModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExplainModel" nillable="true" type="tns:ExplainModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExplainModel" nillable="true" type="tns:ArrayOfExplainModel" />
+  <xs:complexType name="ExplainModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DimensionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DimensionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndFraction" type="xs:int" />
+      <xs:element minOccurs="0" name="ExplainCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExplainName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstSymbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NormEndAge" type="xs:int" />
+      <xs:element minOccurs="0" name="NormExplain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NormSex" type="xs:int" />
+      <xs:element minOccurs="0" name="NormStartAge" type="xs:int" />
+      <xs:element minOccurs="0" name="SecondSymbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartFraction" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExplainModel" nillable="true" type="tns:ExplainModel" />
+  <xs:complexType name="ArrayOfNormWarningModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NormWarningModel" nillable="true" type="tns:NormWarningModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNormWarningModel" nillable="true" type="tns:ArrayOfNormWarningModel" />
+  <xs:complexType name="NormWarningModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndFraction" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstSymbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxAge" type="xs:int" />
+      <xs:element minOccurs="0" name="MinAge" type="xs:int" />
+      <xs:element minOccurs="0" name="SecondSymbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sex" type="xs:int" />
+      <xs:element minOccurs="0" name="StartFraction" type="xs:int" />
+      <xs:element minOccurs="0" name="WarningCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NormWarningModel" nillable="true" type="tns:NormWarningModel" />
+</xs:schema>

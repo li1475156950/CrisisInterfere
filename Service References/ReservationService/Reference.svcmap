@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="58b1b9d2-93ca-4770-bd19-31c57660558e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.EnterpriseServices" />
+      <ReferencedAssembly AssemblyName="System.IdentityModel" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel.Channels" />
+      <ReferencedAssembly AssemblyName="System.Web" />
+      <ReferencedAssembly AssemblyName="System.Web.ApplicationServices" />
+      <ReferencedAssembly AssemblyName="System.Web.DynamicData" />
+      <ReferencedAssembly AssemblyName="System.Web.Entity" />
+      <ReferencedAssembly AssemblyName="System.Web.Extensions" />
+      <ReferencedAssembly AssemblyName="System.Web.Services" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8012/BasicsServices/ReservationService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="ce22c8a1-960b-4c2e-8577-75b388e29d37" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/ReservationService/?xsd=xsd1" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="21d70f64-7142-48c1-9335-207684a6031c" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/ReservationService/?disco" />
+    <MetadataFile FileName="item51.xsd" MetadataType="Schema" ID="13fb8d7f-784b-4b61-bb11-85e5e856d164" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/ReservationService/?xsd=xsd0" />
+    <MetadataFile FileName="item52.xsd" MetadataType="Schema" ID="2b64ffa5-8670-473e-94da-9bfc2244a356" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/ReservationService/?xsd=xsd3" />
+    <MetadataFile FileName="item53.xsd" MetadataType="Schema" ID="61438229-2ce9-4ca3-9616-b002237c2323" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/ReservationService/?xsd=xsd2" />
+    <MetadataFile FileName="ReservationService1.wsdl" MetadataType="Wsdl" ID="5e6d5b78-6201-4181-bd55-2ba22e9aa192" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/ReservationService/?wsdl" />
+    <MetadataFile FileName="item54.xsd" MetadataType="Schema" ID="360a8400-dd2e-4c54-ba24-131a5dac9888" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/ReservationService/?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

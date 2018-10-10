@@ -1,0 +1,55 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link href="../../CSS/zTreeStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="content_wrap">
+        <div class="zTreeDemoBackground left">
+            <ul class="list">
+                <li class="title">&nbsp;&nbsp;<span class="highlight_red">勾选 checkbox 或者 点击节点 进行选择</span></li>
+                <li class="title">
+                    &nbsp;&nbsp;Test: <input id="citySel" type="text" readonly value="" style="width:120px;" onclick="showMenu();" />
+                    &nbsp;<a id="menuBtn" href="#" onclick="showMenu(); return false;">select</a>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <ul class="info">
+                <li class="title">
+                    <h2>实现方法说明</h2>
+                    <ul class="list">
+                        <li>用 checkbox 也可以轻松实现多选的下拉菜单</li>
+                        <li>此 Demo 主要用于 和 其他下拉菜单进行对比</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+        <ul id="treeDemo" class="ztree" style="margin-top:0; width:180px; height: 300px;"></ul>
+    </div>
+</body>
+</html>
+<script src="../../JS/jquery-1.10.2.js"></script>
+<script>
+    $.ajax({
+        url: "Ajax/Test.ashx?operationType=GetAmountDimensionTree",
+        type: "GET",
+        data: { amountID: 1, amountTypeID: 2 },
+        success: function (data)
+        {
+
+        }
+
+    })
+</script>
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="WorkArchivesSearchModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkArchivesSearchModel" nillable="true" type="tns:WorkArchivesSearchModel" />
+  <xs:complexType name="WarningPeopleViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Higher" type="xs:int" />
+      <xs:element minOccurs="0" name="Highest" type="xs:int" />
+      <xs:element minOccurs="0" name="Lower" type="xs:int" />
+      <xs:element minOccurs="0" name="Medium" type="xs:int" />
+      <xs:element minOccurs="0" name="NA" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WarningPeopleViewModel" nillable="true" type="tns:WarningPeopleViewModel" />
+  <xs:complexType name="ArrayOfCounselorWorkStatisticsViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CounselorWorkStatisticsViewModel" nillable="true" type="tns:CounselorWorkStatisticsViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCounselorWorkStatisticsViewModel" nillable="true" type="tns:ArrayOfCounselorWorkStatisticsViewModel" />
+  <xs:complexType name="CounselorWorkStatisticsViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentPeopleCount" type="xs:int" />
+      <xs:element minOccurs="0" name="CounselorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisposalPeopleCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CounselorWorkStatisticsViewModel" nillable="true" type="tns:CounselorWorkStatisticsViewModel" />
+  <xs:complexType name="ConsultQuestionTypePeopleCountViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Action" type="xs:int" />
+      <xs:element minOccurs="0" name="Job" type="xs:int" />
+      <xs:element minOccurs="0" name="Marriage" type="xs:int" />
+      <xs:element minOccurs="0" name="Mood" type="xs:int" />
+      <xs:element minOccurs="0" name="Other" type="xs:int" />
+      <xs:element minOccurs="0" name="Parentage" type="xs:int" />
+      <xs:element minOccurs="0" name="Personal" type="xs:int" />
+      <xs:element minOccurs="0" name="Society" type="xs:int" />
+      <xs:element minOccurs="0" name="Studies" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsultQuestionTypePeopleCountViewModel" nillable="true" type="tns:ConsultQuestionTypePeopleCountViewModel" />
+  <xs:complexType name="ArrayOfSeriousLevelViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeriousLevelViewModel" nillable="true" type="tns:SeriousLevelViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeriousLevelViewModel" nillable="true" type="tns:ArrayOfSeriousLevelViewModel" />
+  <xs:complexType name="SeriousLevelViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstLevelPeopleCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FithLevelPeopleCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FouthLevelPeopleCount" type="xs:int" />
+      <xs:element minOccurs="0" name="QuestionTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondLevelPeopleCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ThirdLevelPeopleCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeriousLevelViewModel" nillable="true" type="tns:SeriousLevelViewModel" />
+  <xs:complexType name="DisposalDistributionPeopleCountModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllDayCustody" type="xs:int" />
+      <xs:element minOccurs="0" name="GoHeartConsult" type="xs:int" />
+      <xs:element minOccurs="0" name="NotNeedHelp" type="xs:int" />
+      <xs:element minOccurs="0" name="NoticeAdmin" type="xs:int" />
+      <xs:element minOccurs="0" name="SeeD" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DisposalDistributionPeopleCountModel" nillable="true" type="tns:DisposalDistributionPeopleCountModel" />
+</xs:schema>

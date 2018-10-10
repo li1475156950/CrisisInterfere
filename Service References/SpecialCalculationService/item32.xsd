@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceBLL.SpecialCalculationBLL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceBLL.SpecialCalculationBLL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfMMPI_Result_Json">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MMPI_Result_Json" nillable="true" type="tns:MMPI_Result_Json" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMMPI_Result_Json" nillable="true" type="tns:ArrayOfMMPI_Result_Json" />
+  <xs:complexType name="MMPI_Result_Json">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NormExplainList" nillable="true" type="tns:ArrayOfNormExplainEntity" />
+      <xs:element minOccurs="0" name="UserInfo" nillable="true" type="tns:UserInfo" />
+      <xs:element minOccurs="0" name="WD_BZF" type="xs:double" />
+      <xs:element minOccurs="0" name="WD_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WD_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WD_ZHGS" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MMPI_Result_Json" nillable="true" type="tns:MMPI_Result_Json" />
+  <xs:complexType name="ArrayOfNormExplainEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NormExplainEntity" nillable="true" type="tns:NormExplainEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNormExplainEntity" nillable="true" type="tns:ArrayOfNormExplainEntity" />
+  <xs:complexType name="NormExplainEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndFraction" type="xs:double" />
+      <xs:element minOccurs="0" name="ExplainCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExplainName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="First_Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NormExplain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NormProposal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NormSex" type="xs:int" />
+      <xs:element minOccurs="0" name="Second_Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartFraction" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NormExplainEntity" nillable="true" type="tns:NormExplainEntity" />
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Anscode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnswerDate1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Birthday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Uname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usex" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+</xs:schema>

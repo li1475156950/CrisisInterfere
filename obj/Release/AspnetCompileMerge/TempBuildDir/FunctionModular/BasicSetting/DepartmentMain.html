@@ -1,0 +1,893 @@
+﻿
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>京师博仁危机干预人员设置-部门管理</title>
+    <link rel="shortcut icon" id="icons" href="" />
+    <!-- Bootstrap Styles-->
+    <link href="/CSS/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <!-- Custom Styles-->
+    <link href="/CSS/custom-styles.css" rel="stylesheet" />
+    <link href="/CSS/custom-styles_1.css" rel="stylesheet" />
+    <link href="/CSS/font-awesome.min.css" rel="stylesheet" />
+    <link href="/CSS/base.css" rel="stylesheet" />
+    <link href="/CSS/rysz.css" rel="stylesheet" />
+    <link href="/CSS/ligerFrom/ligerui-form.css" rel="stylesheet" />
+    <link href="/CSS/ligerFrom/ligerui-tree.css" rel="stylesheet" />
+    <link href="/JS/TreeTables/vsStyle/jquery.treeTable.css" rel="stylesheet" />
+    <link href="../../assets/skin/layer.css" rel="stylesheet" />
+    <script src="/JS/jquery-1.10.2.js"></script>
+    <script src="/JS/TreeTables/jquery.treeTable.js"></script>
+    <script src="/JS/jquery.metismenu.js"></script>
+
+    <script src="/JS/custom-scripts.js"></script>
+    <!-- 左侧下拉框 Js 结束 -->
+    <!-- Bootstrap Js -->
+    <script src="/JS/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/JS/bootstrap-table.min.js"></script>
+    <script src="/JS/ligerComboBox/ligerComboBox.js"></script>
+    <script src="/JS/ligerComboBox/ligerForm.js"></script>
+    <script src="/JS/ligerComboBox/ligerTree.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- 头部导航 -->
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div>
+                <a class="navbar-brand" href="/Index.aspx" style="width: auto;">
+                    <img class="pull-left" src="./statics/images/w_logo.png" id="newbox" />
+                    <p class="white fb f24 pull-left">京师博仁心理危机干预系统</p>
+                </a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right pr30">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img src="./statics/images/w_email.png">
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages" id="MsgID">
+                        <li id="lis1">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider1" style="display: none"></li>
+                        <li id="lis2" style="display:none">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider2" style="display: none"></li>
+                        <li id="lis3" style="display:none">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider3" style="display: none"></li>
+                        <li>
+                            <a class="text-center" href="../../FunctionModular/Letter/LetterList.aspx">
+                                <strong>查看所有消息</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img class="pull-left" src="./statics/images/w_tx.png">
+                        <p class="f16 white pull-left">Yilia_S</p>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="/FunctionModular/PersonalInfo/PersonalInfo.aspx"><i class="fa fa-user fa-fw"></i>个人信息</a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li>
+                            <a onclick="LoginOut()"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- 左侧  -->
+        <nav class="navbar-default navbar-side w_color" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="w_blue">
+                        <a id="MyIndex" href="../../Index.aspx"><i class="fa fa-desktop c666"></i>桌面</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic1.png" alt=""></i>人员设置<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse in">
+                            <li><a data-id="10" href="/FunctionModular/BasicSetting/RoleManagement.aspx" onclick="return OnSetCollapseIn(this);">角色管理</a></li>
+                            <li class="xia_acitve"><a data-id="11" href="/FunctionModular/BasicSetting/DepartmentMain.aspx" onclick="return OnSetCollapseIn(this);">部门管理</a></li>
+                            <li><a data-id="12" href="/FunctionModular/BasicSetting/MemberManagement.aspx" onclick="return OnSetCollapseIn(this);">成员管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic2.png" alt=""></i>心理测评<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="14" href="/FunctionModular/Heartevaluation/Heartevaluation.aspx" onclick="return OnSetCollapseIn(this);">量表管理</a></li>
+                            <li><a data-id="15" href="/FunctionModular/HeartEvaluation_DistributionRecord/DistributionRecord.aspx" onclick="return OnSetCollapseIn(this);">分配记录</a></li>
+                            <li><a data-id="16" href="/FunctionModular/PersonalReport/PersonalReport.aspx" onclick="return OnSetCollapseIn(this);">个体报告</a></li>
+                            <li><a data-id="17" href="/FunctionModular/GroupReport/GroupReport.aspx" onclick="return OnSetCollapseIn(this);">团体报告</a></li>
+                            <li><a data-id="18" href="/FunctionModular/StatisticalAnalysis/Statistical.aspx" onclick="return OnSetCollapseIn(this);">统计分析</a></li>
+                            <li><a data-id="19" href="/FunctionModular/HeartEvaluation/MyTest.aspx" onclick="return OnSetCollapseIn(this);">我的测验</a></li>
+                            <li><a data-id="20" href="/FunctionModular/HeartEvaluation/ViewResult.aspx" onclick="return OnSetCollapseIn(this);">查看结果</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic3.png" alt=""></i>危机干预<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="21" href="/FunctionModular/Warning/CrisisWarning.aspx" onclick="return OnSetCollapseIn(this);">危机预警</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic4.png" alt=""></i>预约咨询<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="23" href="/FunctionModular/Questionnaire_Record/Questionnaire_Manage.aspx" onclick="return OnSetCollapseIn(this);">问卷管理</a></li>
+                            <li><a data-id="24" href="/FunctionModular/Questionnaire_Record/QuestionnaireRecord.aspx" onclick="return OnSetCollapseIn(this);">分配记录</a></li>
+                            <li><a data-id="25" href="/FunctionModular/Questionnaire_Record/SurveyResult.aspx" onclick="return OnSetCollapseIn(this);">调查结果</a></li>
+                            <li><a data-id="26" href="/FunctionModular/Questionnaire_Record/MyQuestionnaire.aspx" onclick="return OnSetCollapseIn(this);">我的问卷</a></li>
+                            <li><a data-id="27" href="/FunctionModular/Questionnaire_Record/AnwserRecord.aspx" onclick="return OnSetCollapseIn(this);">作答记录</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic5.png" alt=""></i>档案管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="28" href="/FunctionModular/AppointmentConsult/QuestionType.aspx" onclick="return OnSetCollapseIn(this);">参数设置</a></li>
+                            <li><a data-id="29" href="/FunctionModular/AppointmentConsult/AppointmentManagement.aspx" onclick="return OnSetCollapseIn(this);">预约管理</a></li>
+                            <li><a data-id="34" href="/FunctionModular/AdvisoryStatistics/AdvisoryStatistics.aspx" onclick="return OnSetCollapseIn(this);">咨询统计</a></li>
+                            <li><a data-id="35" href="/FunctionModular/AppointmentConsult/CaseanalysisList.aspx" onclick="return OnSetCollapseIn(this);">案例分析</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic6.png" alt=""></i>其他服务<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="37" href="/FunctionModular/EvaluationFiles/EvaluationFiles.aspx" onclick="return OnSetCollapseIn(this);">测评档案</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic7.png" alt=""></i>危机预防方案<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="37" href="/FunctionModular/EvaluationFiles/EvaluationFiles.aspx" onclick="return OnSetCollapseIn(this);">测评档案</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic8.png" alt=""></i>回收站<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="140" href="/FunctionModular/RecycleBin/RecycleBin.aspx" onclick="return OnSetCollapseIn(this);">回收站</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- 右侧  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="content">
+                    <!-- 新建角色 -->
+                    <div class="row">
+                        <div style="padding-bottom: 20px" class="col-md-12 col-sm-12 col-xs-12">
+                            <a class="btn btn-sm pull-right" name="QX_NewDepartment" data-toggle="modal" onclick="DepartmentTX()" data-target=".x_new" style="border:1px solid orange; color: orange">+新建部门</a>
+                        </div>
+                    </div>
+                    <!-- 表格 -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" style="width: 100%" id="treeTable">
+                                        <thead>
+                                            <tr>
+
+                                                <th class="text-center" style="width: 26%">部门名称</th>
+                                                <th class="text-center" style="width: 16%">成员数量</th>
+                                                <th class="text-center" style="width: 26%">部门描述</th>
+                                                <th class="text-center" style="width: 32%">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!--<div class="dataTables_info" id="tableGrid_info" role="status" aria-live="polite">每页显示10条，共 30 项</div><div class="dataTables_paginate paging_simple_numbers" id="tableGrid_paginate"><a class="paginate_button previous disabled" aria-controls="tableGrid" data-dt-idx="0" tabindex="0" id="tableGrid_previous">上页</a><span><a class="paginate_button current" aria-controls="tableGrid" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="tableGrid" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="tableGrid" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="tableGrid" data-dt-idx="4" tabindex="0">4</a></span><a class="paginate_button next" aria-controls="tableGrid" data-dt-idx="5" tabindex="0" id="tableGrid_next">下页</a></div>-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 新建部门色弹框 -->
+            <div class="modal fade x_new" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog" style="width:600px">
+                    <div class="modal-content" style="margin-top: 35%; width: 100%">
+                        <h4 class="modal-title text-center xia_title">
+                            新建部门
+                        </h4>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group  text-right">
+                                    <label class="col-sm-3  col-xs-4 control-label">*部门名称:</label>
+                                    <div class="col-sm-6  col-xs-6">
+                                        <input id="D_ID" type="text" style="display: none">
+                                        <input id="D_name" maxlength="20" type="text" style="width: 100%" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group  text-right" style="margin-top: 20px">
+                                    <label class="col-sm-3  col-xs-4 control-label"> 隶属部门:</label>
+                                    <div class="col-sm-6 col-xs-6">
+                                        <input maxlength="20" id="T_parent" name="T_parent" type="text" style="width:100%">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group  text-right" style="margin-top: 20px">
+                                    <label class="col-sm-3  col-xs-4 control-label">部门描述:</label>
+                                    <div class="col-sm-6  col-xs-6">
+                                        <textarea id="D_Remark" style="width: 100%; height: 200px" maxlength="500" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-sm-6  col-xs-6 text-right">
+                                    <button onclick="DeInsert()" type="button" class="btn btn-sm x_btn f14">保存</button>
+                                </div>
+                                <div class="col-sm-2  col-xs-3  text-right">
+                                    <button type="button" class="btn btn-sm x_btn1 f14" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- 添加下级弹框 -->
+            <div class="modal fade x_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog" style="width:600px">
+                    <div class="modal-content" style="margin-top: 35%; width: 100%">
+                        <h4 class="modal-title text-center xia_title">
+                            添加下级
+                        </h4>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group  text-right">
+                                    <label class="col-sm-3  col-xs-4 control-label">*部门名称:</label>
+                                    <div class="col-sm-6  col-xs-6">
+                                        <input id="editRoleID" type="text" style="display: none">
+                                        <input id="editRoleName" maxlength="20" type="text" style="width: 100%" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group  text-right" style="margin-top: 20px">
+                                    <label class="col-sm-3  col-xs-4 control-label">*隶属部门:</label>
+                                    <div class="col-sm-6 col-xs-6">
+                                        <input maxlength="20" type="text" style="width: 100%" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group  text-right" style="margin-top: 20px">
+                                    <label class="col-sm-3  col-xs-4 control-label">部门描述:</label>
+                                    <div class="col-sm-6  col-xs-6">
+                                        <textarea id="editRoleDescribe" style="width: 100%; height: 200px" maxlength="500" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-sm-6  col-xs-6 text-right">
+                                    <button onclick="EditRoleValue()" type="button" class="btn btn-sm x_btn f14">保存</button>
+                                </div>
+                                <div class="col-sm-2  col-xs-3  text-right">
+                                    <button type="button" class="btn btn-sm x_btn1 f14" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- 修改部门弹框 -->
+            <div class="modal fade" id="editRole" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog" style="width:600px;">
+                    <div class="modal-content" style="margin-top: 35%; width: 100%">
+                        <h4 class="modal-title text-center xia_title">
+                            修改部门
+                        </h4>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group  text-right">
+                                    <label class="col-sm-3  col-xs-4 control-label">*部门名称:</label>
+                                    <div class="col-sm-6  col-xs-6">
+                                        <input id="editRoleID" type="text" style="display: none">
+                                        <input id="editRoleName" maxlength="20" type="text" style="width: 100%" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group  text-right" style="margin-top: 20px">
+                                    <label class="col-sm-3  col-xs-4 control-label">*隶属部门:</label>
+                                    <div class="col-sm-6 col-xs-6">
+                                        <input maxlength="20" type="text" style="width: 100%" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group  text-right" style="margin-top: 20px">
+                                    <label class="col-sm-3  col-xs-4 control-label">部门描述:</label>
+                                    <div class="col-sm-6  col-xs-6">
+                                        <textarea id="editRoleDescribe" style="width: 100%; height: 200px" maxlength="500" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-sm-6  col-xs-6 text-right">
+                                    <button onclick="EditRoleValue()" type="button" class="btn btn-sm f14 x_btn">保存</button>
+                                </div>
+                                <div class="col-sm-2  col-xs-3  text-right ml20">
+                                    <button type="button" class="btn btn-sm x_btn1 f14" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- 删除部门弹框 -->
+            <div class="modal fade x_del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="margin-top: 50%; width: 100%">
+                        <h4 class="modal-title text-center xia_title">
+                            提示
+                        </h4>
+                        <div class="modal-body">
+                            <div class="row">
+                                <p class="f16 c666 pl30 pr20 mt15 pb50">删除后将同步清除本部门在回收站中的成员及其数据，确定删除吗？</p>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-sm-6  col-xs-6 text-right">
+                                    <button onclick="EditRoleValue()" type="button" class="btn btn-sm x_btn f14">确定</button>
+                                </div>
+                                <div class="col-sm-2  col-xs-3  text-right">
+                                    <button type="button" class="btn btn-sm x_btn1 f14" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+<!-- JS Scripts-->
+<!-- 左侧下拉框 Js -->
+
+<script src="../../JS/layer.js"></script>
+<script>
+
+    //非法字符
+    var reg = /^(?!.*?[\~\`\·\！\!@\#\￥\$%\……\^&\*\(\)\（\）\_\-\——\+\=\【\】\[\]\{\}\|\、\\\：\:\;\；\"\”\“\’\'\'\<\>\《\》\,\，\。\.\?\？\/]).*$/;
+
+
+    var navName = '/FunctionModular/BasicSetting/DepartmentMain.aspx';
+    //隶属部门ID
+    var Dep_ID = 0;
+    //var D_ID = 0;//部门ID
+    var TitleAdd;
+    function DepartmentTX() {
+
+        Empty();
+        OperationType = "add";
+        $("#Sumit").text("保存");
+        $("#TitleAdd").html("新增部门");
+        $('#Insertmdoels').modal('show');
+        $('#T_parent').removeAttr("disabled");
+        $("#D_name").val();
+        $("#D_Remark").val("");
+        $("#D_ID").val("");
+        $("#T_parent").val("");
+    }
+
+    OnLoadTreeCom();
+    function OnLoadTreeCom() {
+        $("#T_parent").ligerComboBox({
+            width: "100%",
+            selectBoxWidth: "85%",
+            selectBoxHeight: 150,
+            valueField: 'id',
+            textField: 'text',
+            treeLeafOnly: false,
+            tree: {
+                onBeforeSelect: function (node) {
+                    Dep_ID = node.data['id'];
+                },
+                url: 'Ajax/DepartmentMain.ashx?Remark=GetDepartments&rnd=' + Math.random(),
+                usericon: 'd_icon',
+                idFieldName: 'id',
+                checkbox: false
+            }
+        });
+    }
+    OnLoadDEP();
+
+    function OnLoadDEP() {
+        $.ajax({
+            type: "POST",
+            url: "Ajax/DepartmentMain.ashx",
+            data: "Remark=InitDep",//要执行查询的数据参数
+            success: function (msg) {
+                if (msg != "") {
+                    var obj1 = eval('[' + msg + ']');
+                    var $treeTable = $("#treeTable");
+                    for (var i = 0; i < obj1[0].data.length; i++) {
+                        var tableHtmltd = "<td>" + obj1[0].data[i][1] + "</td><td>" + obj1[0].data[i][3] + "</td><td>" + obj1[0].data[i][2] + "</td><td><button class=\"btn btn-link\" name='QX_NewsDepartment' onclick='AddNext(" + obj1[0].data[i][0] + ")' >添加下级</button>  <button name='QX_UpdateDepartment' class=\"btn btn-link\" onclick='UpdateDep(" + obj1[0].data[i][0] + ")' >修改</button>    <button class=\"btn btn-link\" name='QX_DeleteDepartment' onclick='D_delete(this)'value=" + obj1[0].data[i][0] + ">删除</button></td>";
+                        var TableHtml = "<tr id=\"" + obj1[0].data[i][0] + "\" pId=\"" + obj1[0].data[i][5] + "\">" + tableHtmltd + "</tr>";
+                        $treeTable.append(TableHtml);
+                    }
+                    DrawOption();
+                }
+            }
+        });
+
+    }
+
+    function DrawOption() {
+        var $treeTable = $("#treeTable");
+        var option = {
+            theme: 'vsStyle',
+            expandLevel: 1,
+            beforeExpand: function ($treeTable, id) {
+                if ($('.' + id, $treeTable).length) { return; }
+            },
+            afterExpand: function ($treeTable, id) {
+                alert(id);
+            }
+            ,
+            onSelect: function ($treeTable, id) {
+                alert(1);
+            }
+
+        };
+        $treeTable.treeTable(option);
+    }
+
+
+    function TabEmpty() {
+        $("#treeTable  tbody").empty("");
+        OnLoadDEP();
+    }
+
+    function desem() {
+        $('#Sumit').removeAttr("disabled")  //部门解禁 禁用
+    }
+    function IsChildElement(Pid, Cid) {
+        if (Pid == Cid)
+            return 0;//属于Pid下的子节点
+        if (Cid == 0)
+            return 2;//已查到最顶级，不属于Pid下的子节点
+        var childElement = $("#treeTable tr[id=" + Cid + "]");
+        if (childElement.length == 0)
+            return 1;//未找到该节点的父节点，刷新再重试
+        var _pid = childElement.eq(0).attr("pid");
+        if (_pid == 0)
+            return 2;//已查到最顶级，不属于Pid下的子节点
+        if (Pid == _pid)
+            return 0;//属于Pid下的子节点
+        else
+            return IsChildElement(Pid, _pid);//查询该节点的父节点是否为Pid下子节点
+    }
+
+    function DeInsert() {
+        $("#Sumit").attr({ "disabled": "disabled" });
+        setInterval('desem()', 2000);
+        var D_name = $("#D_name").val();
+
+        var reg = /\s/;
+        if (reg.exec(D_name) != null) {
+            layer.alert('部门名称不能包含空格！', {
+                skin: 'layui-layer-lan',
+                closeBtn: 0
+            });
+            return;
+        }
+        var D_Remark = $("#D_Remark").val();
+        var D_ID = $("#D_ID").val();
+        if (D_ID != 0) {
+            Updete();
+            return;
+        }
+        if (D_ID == null || D_ID == 0 || D_ID == "") {
+            D_ID = "空";
+        }
+        /*为空*/
+        function trim(str) {
+            return str.replace(/(^\s*)|(\s*$)/g, "");
+        }
+        if (trim(D_name) == "") {
+            layer.alert('请输入部门名称！', {
+                skin: 'layui-layer-lan',
+                closeBtn: 0
+            });
+            return;
+        }
+        //非法字符
+        var reg = /^(?!.*?[\~\`\·\！\!@\#\￥\$%\……\^&\*\(\)\（\）\_\-\——\+\=\【\】\[\]\{\}\|\、\\\：\:\;\；\"\”\“\’\'\'\<\>\《\》\,\，\。\.\?\？\/]).*$/;
+
+
+        if (!reg.test(D_name)) {
+            layer.alert('部门名称不可以为特殊字符!', {
+                skin: 'layui-layer-lan', //样式类名
+                closeBtn: 0,
+                //shift: 2,//动画效果
+            })
+            return;
+        }
+
+        var chiID = $("#T_parent_val").val();
+
+        $.ajax({
+            url: "Ajax/Department.ashx",
+            type: "GET",
+            data: { D_name: D_name, type: 7, D_ID: D_ID, D_chiID: chiID },
+            dataType: "text",
+            async: false,
+            success: function (data) {
+                if (data.trim() == "True") {
+                    layer.alert('该部门已存在！', {
+                        skin: 'layui-layer-lan',
+                        closeBtn: 0
+                    });
+                    return;
+                }
+                else {
+                    insertinto()
+                }
+            }
+        })
+    }
+
+    ///添加
+    function insertinto() {
+        var D_name = $("#D_name").val();
+        var D_chiID = $("#T_parent_val").val();
+        var D_Remark = $("#D_Remark").val();
+
+        if (OperationType == "add") {
+            if (D_name == "" || D_name == null) {
+                layer.alert('请输入部门名称!', {
+                    skin: 'layui-layer-lan', //样式类名
+                    closeBtn: 0,
+                    //shift: 1,//动画效果
+                })
+                return;
+            }
+            /*为空*/
+            function trim(str) {
+                return str.replace(/(^\s*)|(\s*$)/g, "");
+            }
+
+            if (trim(D_name) == "") {
+                layer.alert('请输入部门名称', {
+                    skin: 'layui-layer-lan',
+                    closeBtn: 0
+                });
+                return;
+            }
+            //非法字符
+            var reg = /^(?!.*?[\~\`\·\！\!@\#\￥\$%\……\^&\*\(\)\（\）\_\-\——\+\=\【\】\[\]\{\}\|\、\\\：\:\;\；\"\”\“\’\'\'\<\>\《\》\,\，\。\.\?\？\/]).*$/;
+
+
+            if (!reg.test(D_name)) {
+                layer.alert('部门名称不可以为特殊字符!', {
+                    skin: 'layui-layer-lan', //样式类名
+                    closeBtn: 0,
+                    //shift: 1,//动画效果
+                })
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "Ajax/DepartmentMain.ashx",
+                data: {
+                    Remark: "DepAdd",
+                    D_name: D_name,
+                    D_chiID: D_chiID,
+                    D_Remark: D_Remark
+                },
+                success: function (result) {
+
+                    if (result = "1") {
+                        layer.msg("保存成功！", { time: 2000, icon: 6 }, function () {
+                            window.location = "DepartmentMain.aspx"
+                        });
+                        $('#Insertmdoels').modal("hide");
+                        $("#D_name").val("");
+                        $("#D_Remark").val("");
+                        $("#D_ID").val("");
+                        $("#T_parent").val("");
+                        //window.location = "DepartmentMain.aspx"
+                        // OnLoadDEP();
+                        //DrawOption()
+                    }
+                    else {
+                        layer.msg("添加失败", { time: 2000, icon: 6 }, function () {
+
+                        });
+
+                    }
+                }
+            });
+        }
+    }
+
+    //删除
+    function D_delete(D_ID) {
+
+        var classs = D_ID.parentNode.parentNode.childNodes[0].childNodes[1].className;
+        if (classs == "vsStyle_active_node vsStyle_shut" || classs == "vsStyle_active_node vsStyle_open") {
+            layer.alert('该部门下存在归属部门，请将其移除再进行此项操作', {
+                skin: 'layui-layer-lan', //样式类名
+                closeBtn: 0
+            })
+            return;
+        }
+        //var wei = D_ID.parentNode.parentNode.childNodes[2].childNodes[0].nodeValue;
+
+        //if (wei != 0 && wei != "") {
+        //    layer.alert('该部门下有' + wei + '名成员，请将其转移成员后,再进行此项操作!', {
+        //        skin: 'layui-layer-lan', //样式类名
+        //        closeBtn: 0
+        //    })
+        //    return;
+        //}
+        var D_ID = D_ID.getAttribute('value')
+        //var childDepart = $("." + D_ID + "")
+        //if (childDepart.length > 0) {
+        //    layer.alert('该部门已存在!', {
+        //        skin: 'layui-layer-lan', //样式类名
+        //        closeBtn: 0
+        //    })
+        //    return;
+        //}
+
+        //if()
+        layer.confirm('删除后将同步清除本部门在回收站中的成员及其数据，确定删除吗？', {
+            btn: ['是', '否'] //按钮
+        }, function () {
+            //先提示删除部门后会清空该部门相关的所有数据，点击确定先删除相关用户
+            $.ajax({
+                type: "post",
+                data: { Remark: "befor_delete", D_ID: D_ID },
+                url: "Ajax/DepartmentMain.ashx",
+                success: function (msg) {
+                    if (msg == "0") {
+                        layer.msg("删除失败", { time: 2000, icon: 6 }, function () {
+                        });
+                    } else {
+                        //删除相关数据成功后再删部门
+                        $.ajax({
+                            type: "post",
+                            data: { Remark: "de_del", D_ID: D_ID },
+                            url: "Ajax/DepartmentMain.ashx",
+                            success: function (result) {
+                                if (result = "1") {
+                                    layer.msg("删除成功", { time: 2000, icon: 1 }, function () {
+                                        window.location = "DepartmentMain.aspx"
+                                    });
+
+                                } else {
+                                    layer.msg("删除失败", { time: 2000, icon: 6 }, function () {
+                                    });
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        });
+
+    }
+    var Membership = "";
+
+    function UpdateDep(obj, Dname) {
+        Empty();
+
+        OnLoadTreeCom(obj);
+        Dep_ID = obj;
+        OperationType = "up";
+        $("#Sumit").text("保存");
+        $("#TitleAdd").html("修改部门");
+        $('#T_parent').removeAttr("disabled")  //隶属部门禁用
+        $.ajax({
+            type: "POST",
+            data: { type: 5 },
+            dataType: "html",
+            url: "Ajax/DepartmentMain.ashx",
+            data: { Remark: "sel_ID", UP_D_ID: Dep_ID },
+            success: function (result) {
+
+                result = eval('(' + result + ')');
+                $("#D_name").val(result._d_name);
+                Dep_ID = result._d_chiid;
+                $("#D_ID").val(result._d_id)
+
+                $("#T_parent").ligerGetComboBoxManager().selectValue(result._d_chiid);
+                if ($("#T_parent").val() == "" || $("#T_parent").val() == "null") {
+                    $("#T_parent").val("无")
+                }
+                else {
+                    $("#T_parent").ligerGetComboBoxManager().selectValue(result._d_chiid);
+                }
+
+                $("#D_Remark").val(result._d_remark);
+            }
+        })
+
+        $('#Insertmdoels').modal('show');
+    }
+
+    //修改
+    function Updete() {
+
+        var D_name = $("#D_name").val();
+        var D_Remark = $("#D_Remark").val();
+        var D_ID = $("#D_ID").val();
+        var D_chiID = Dep_ID;
+        if ($("#T_parent").val().length == 0)
+            D_chiID = 0;
+
+        if (D_chiID == D_ID) {
+            layer.alert('录属部门不能关联自己!', {
+                skin: 'layui-layer-lan', //样式类名
+                closeBtn: 0,
+                //shift: 1,//动画效果
+            })
+            return;
+        }
+        var isChild = IsChildElement(D_ID, D_chiID);
+        if (isChild != 2) {
+            if (isChild == 0) {
+                layer.alert('所选隶属部门属于该部门下的子部门，请重新选择！', {
+                    skin: 'layui-layer-lan',
+                    closeBtn: 0
+                });
+                return;
+            }
+            if (isChild == 1) {
+                layer.alert('未找到隶属部门，请刷新后重试！', {
+                    skin: 'layui-layer-lan',
+                    closeBtn: 0
+                });
+                return;
+            }
+        }
+        /*为空*/
+        function trim(str) {
+            return str.replace(/(^\s*)|(\s*$)/g, "");
+        }
+        if (trim(D_name) == "") {
+            layer.alert('请输入部门名称!', {
+                skin: 'layui-layer-lan', //样式类名
+                closeBtn: 0,
+            })
+            return;
+        }
+        //非法字符
+        var reg = /^(?!.*?[\~\`\·\！\!@\#\￥\$%\……\^&\*\(\)\（\）\_\-\——\+\=\【\】\[\]\{\}\|\、\\\：\:\;\；\"\”\“\’\'\'\<\>\《\》\,\，\。\.\?\？\/]).*$/;
+
+
+        if (!reg.test(D_name)) {
+            layer.alert('部门名称不可以为特殊字符!', {
+                skin: 'layui-layer-lan', //样式类名
+                closeBtn: 0,
+                //shift: 1,//动画效果
+            })
+            return;
+        }
+
+        $.ajax({
+            url: "Ajax/Department.ashx",
+            type: "GET",
+            data: { D_name: D_name, type: 7, D_ID: D_ID },
+            dataType: "text",
+            success: function (data) {
+                //得到录属部门
+                if (data.trim() == "True") {
+                    layer.alert('该部门已存在！', {
+                        skin: 'layui-layer-lan',
+                        closeBtn: 0
+                    });
+                    return;
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "html",
+                        url: "Ajax/DepartmentMain.ashx",
+                        data: { Remark: "DepUp", D_name: D_name, D_Remark: D_Remark, UP_D_IDS: D_ID, ChildID: D_chiID },
+                        success: function (result) {
+                            if (result = "1") {
+                                layer.msg("保存成功！", { time: 2000, icon: 6 }, function () {
+                                    // $("#treeTable").DataTable().draw();
+                                    //$("#treeTable  tr:not(:first)").html("");
+                                    window.location = "DepartmentMain.aspx"
+                                });
+                                $('#Insertmdoels').modal("hide");
+                                $("#D_name").val("");
+                                $("#D_Remark").val("");
+                                $("#D_ID").val("");
+                                $("#T_parent").val("");
+                                // TabEmpty();
+                            }
+                            else {
+                                layer.msg("保存失败", { time: 2000, icon: 6 }, function () { });
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    }
+    var OperationType = "";//add添加  up修改
+    function AddNext(id) {
+        Empty();
+
+        $("#T_parent").ligerGetComboBoxManager().selectValue(id);
+        Dep_ID = id;
+        OperationType = "add";
+        $("#Sumit").text("保存");
+        $("#TitleAdd").html("添加下级");
+        $('#T_parent').attr("disabled", "disabled");  //隶属部门禁用
+        // $("#T_parent").attr("style", " width: 278px;");
+        $('#Insertmdoels').modal('show');
+        $("#D_name").val();
+        $("#D_Remark").val("");
+        $("#D_ID").val("");
+
+    }
+
+    function Empty() {
+        $("#Insertmdoels").find("input").val("");
+        $("#Insertmdoels").find("textarea").val("");
+    }
+
+
+</script>

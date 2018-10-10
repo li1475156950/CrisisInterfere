@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.DiscriminateEstimateModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.DiscriminateEstimateModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8014/BasicsServices/DiscriminateEstimateService/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="DiscriminateEstimateSearchModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CounselorID" type="xs:int" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="DisposalSuggestionID" type="xs:int" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="Sex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      <xs:element minOccurs="0" name="WarningLevel" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DiscriminateEstimateSearchModel" nillable="true" type="tns:DiscriminateEstimateSearchModel" />
+  <xs:complexType name="DiscernEstimateReportModel">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BelongToCode" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="CounselorID" type="xs:int" />
+      <xs:element minOccurs="0" name="DEID" type="xs:int" />
+      <xs:element minOccurs="0" name="DiscernEstimateDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DiscernEstimateReport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisposalSuggestion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionType" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      <xs:element minOccurs="0" name="WarningLevel" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DiscernEstimateReportModel" nillable="true" type="tns:DiscernEstimateReportModel" />
+</xs:schema>

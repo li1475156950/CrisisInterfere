@@ -1,0 +1,505 @@
+﻿
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>京师博仁心理测评档案管理系统</title>
+    <link rel="shortcut icon" id="icons" href="" />
+    <!-- Bootstrap Styles-->
+    <!-- FontAwesome Styles-->
+    <!-- Custom Styles-->
+    <link href="/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="/CSS/custom-styles.css" rel="stylesheet" />
+    <link href="/CSS/base.css" rel="stylesheet" />
+    <link href="/CSS/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- 头部导航 -->
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div>
+                <a class="navbar-brand" href="/Index.aspx" style="width: auto;">
+                    <img class="pull-left" src="./statics/images/w_logo.png" id="newbox" />
+                    <p class="white fb f24 pull-left">京师博仁心理危机干预系统</p>
+                </a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right pr30">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img src="./statics/images/w_email.png">
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages" id="MsgID">
+                        <li id="lis1">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider1" style="display: none"></li>
+                        <li id="lis2" style="display:none">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider2" style="display: none"></li>
+                        <li id="lis3" style="display:none">
+                            <a href="../../FunctionModular/Letter/LetterList.aspx">
+                                <div>
+                                    <span class="pull-right text-muted">
+                                        <em></em>
+                                    </span>
+                                </div>
+                                <div>暂无消息</div>
+                            </a>
+                        </li>
+                        <li class="divider" id="divider3" style="display: none"></li>
+                        <li>
+                            <a class="text-center" href="../../FunctionModular/Letter/LetterList.aspx">
+                                <strong>查看所有消息</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img class="pull-left" src="./statics/images/w_tx.png">
+                        <p class="f16 white pull-left">Yilia_S</p>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="/FunctionModular/PersonalInfo/PersonalInfo.aspx"><i class="fa fa-user fa-fw"></i>个人信息</a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li>
+                            <a onclick="LoginOut()"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- 左侧  -->
+        <nav class="navbar-default navbar-side w_color" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="w_blue">
+                        <a id="MyIndex" href="../../Index.aspx"><i class="fa fa-desktop"></i>桌面</a>
+                    </li>
+                    <!--<li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic1.png" alt=""></i>人员设置<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="10" href="/FunctionModular/BasicSetting/RoleManagement.aspx" onclick="return OnSetCollapseIn(this);">角色管理</a></li>
+                            <li><a data-id="11" href="/FunctionModular/BasicSetting/DepartmentMain.aspx" onclick="return OnSetCollapseIn(this);">部门管理</a></li>
+                            <li><a data-id="12" href="/FunctionModular/BasicSetting/MemberManagement.aspx" onclick="return OnSetCollapseIn(this);">成员管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic2.png" alt=""></i>心理测评<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="14" href="/FunctionModular/Heartevaluation/Heartevaluation.aspx" onclick="return OnSetCollapseIn(this);">量表管理</a></li>
+                            <li><a data-id="15" href="/FunctionModular/HeartEvaluation_DistributionRecord/DistributionRecord.aspx" onclick="return OnSetCollapseIn(this);">分配记录</a></li>
+                            <li><a data-id="16" href="/FunctionModular/PersonalReport/PersonalReport.aspx" onclick="return OnSetCollapseIn(this);">个体报告</a></li>
+                            <li><a data-id="17" href="/FunctionModular/GroupReport/GroupReport.aspx" onclick="return OnSetCollapseIn(this);">团体报告</a></li>
+                            <li><a data-id="18" href="/FunctionModular/StatisticalAnalysis/Statistical.aspx" onclick="return OnSetCollapseIn(this);">统计分析</a></li>
+                            <li><a data-id="19" href="/FunctionModular/HeartEvaluation/MyTest.aspx" onclick="return OnSetCollapseIn(this);">我的测验</a></li>
+                            <li><a data-id="20" href="/FunctionModular/HeartEvaluation/ViewResult.aspx" onclick="return OnSetCollapseIn(this);">查看结果</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic3.png" alt=""></i>危机干预<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="21" href="/FunctionModular/Warning/CrisisWarning.aspx" onclick="return OnSetCollapseIn(this);">危机预警</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic4.png" alt=""></i>预约咨询<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="23" href="/FunctionModular/Questionnaire_Record/Questionnaire_Manage.aspx" onclick="return OnSetCollapseIn(this);">问卷管理</a></li>
+                            <li><a data-id="24" href="/FunctionModular/Questionnaire_Record/QuestionnaireRecord.aspx" onclick="return OnSetCollapseIn(this);">分配记录</a></li>
+                            <li><a data-id="25" href="/FunctionModular/Questionnaire_Record/SurveyResult.aspx" onclick="return OnSetCollapseIn(this);">调查结果</a></li>
+                            <li><a data-id="26" href="/FunctionModular/Questionnaire_Record/MyQuestionnaire.aspx" onclick="return OnSetCollapseIn(this);">我的问卷</a></li>
+                            <li><a data-id="27" href="/FunctionModular/Questionnaire_Record/AnwserRecord.aspx" onclick="return OnSetCollapseIn(this);">作答记录</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic5.png" alt=""></i>档案管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="28" href="/FunctionModular/AppointmentConsult/QuestionType.aspx" onclick="return OnSetCollapseIn(this);">参数设置</a></li>
+                            <li><a data-id="29" href="/FunctionModular/AppointmentConsult/AppointmentManagement.aspx" onclick="return OnSetCollapseIn(this);">预约管理</a></li>
+                            <li><a data-id="34" href="/FunctionModular/AdvisoryStatistics/AdvisoryStatistics.aspx" onclick="return OnSetCollapseIn(this);">咨询统计</a></li>
+                            <li><a data-id="35" href="/FunctionModular/AppointmentConsult/CaseanalysisList.aspx" onclick="return OnSetCollapseIn(this);">案例分析</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic6.png" alt=""></i>其他服务<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="37" href="/FunctionModular/EvaluationFiles/EvaluationFiles.aspx" onclick="return OnSetCollapseIn(this);">测评档案</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic7.png" alt=""></i>危机预防方案<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="37" href="/FunctionModular/EvaluationFiles/EvaluationFiles.aspx" onclick="return OnSetCollapseIn(this);">测评档案</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return OnSetCollapseIn(this);"><i class="null"><img src="./statics/images/w_xpic8.png" alt=""></i>回收站<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a data-id="140" href="/FunctionModular/RecycleBin/RecycleBin.aspx" onclick="return OnSetCollapseIn(this);">回收站</a></li>
+                        </ul>
+                    </li>-->
+                </ul>
+            </div>
+        </nav>
+        <!-- 右侧  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+<!-- JS Scripts-->
+<!-- 左侧下拉框 Js -->
+<script src="/JS/jquery-1.10.2.js"></script>
+<script src="/JS/jquery.metismenu.js"></script>
+<script src="/JS/custom-scripts.js"></script>
+<!-- 左侧下拉框 Js 结束 -->
+<!-- Bootstrap Js -->
+<script src="/JS/bootstrap.min.js"></script>
+<script>
+    JudgeLogin();
+
+    LoadModularByLoginName();
+
+    function JudgeLogin() {
+        $.ajax({
+            url: "/FunctionModular/LoginAndRegister/Ajax/LoginAndRegister.ashx?operationType=JudgeLogin",
+            type: "GET",
+            dataType: "text",
+            async: false,
+            success: function (data) {
+                if (data == "True") {
+                    window.location.href = "/FunctionModular/LoginAndRegister/JudgeLogin.html";
+                }
+            }
+        })
+    }
+    //导航栏定位
+    function OnSetCollapseIn(obj) {
+        //$("#main-menu").find("a[class='active-menu']").removeClass("active-menu")
+
+        //$(obj).addClass('active-menu');
+        return;
+    }
+    function LoginOut() {
+        $.ajax({
+            url: "/FunctionModular/LoginAndRegister/Ajax/LoginAndRegister.ashx?operationType=LoginOut",
+            type: "GET",
+            dataType: "text",
+            success: function (data) {
+                if (data == "True") {
+                    var url = window.location;
+                    var urlArr = url.toString().split('/');
+                    var ustr = "http://" + urlArr[2] + "/login.html";
+                    window.location.href = ustr;
+                    //window.location("http://" + urlArr[2] + "/login.html")
+                }
+            }
+        })
+    }
+
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+
+    function LoadModularByLoginName() {
+        var firstNavMenu = "";
+        var secondNavMenu = "";
+        var endHtml = "";
+        $.ajax({
+            type: "POST",
+            url: "/FunctionModular/Index/data/Index.ashx?Remark=LoadLeftMenu",
+            dataType: "json",
+            async: false,
+            success: function (msg) {
+
+                $.each(eval(msg.firstMenu), function (index, itemFirst) {
+
+                    if (parseInt(itemFirst["Fun_ParentID"]) == 0) {
+                        firstNavMenu = "<li>" +
+                   "<a href='#' onclick='return OnSetCollapseIn(this);'><i class='" + itemFirst["Fun_Class"] + "'></i>" + itemFirst["Fun_Name"] + "<span class='fa arrow'></span></a>" +
+                       "<ul class='nav nav-second-level'>";
+                        secondNavMenu = "";
+                        $.each(eval(msg.secondMenu), function (index, itemSecond) {
+
+                            if (parseInt(itemSecond["Fun_ParentID"]) == parseInt(itemFirst["Fun_ID"])) {
+
+                                secondNavMenu += "<li>" +
+                               "<a data-id=" + itemSecond["Fun_ID"] + " href=" + itemSecond["Fun_Url"] + " onclick='return OnSetCollapseIn(this);'>" + itemSecond["Fun_Name"] + "</a>" +
+                           "</li>";
+                            }
+                        })
+                        endHtml = "</ul></li>";
+
+                        $("#main-menu").append(firstNavMenu + secondNavMenu + endHtml);
+
+                    }
+
+
+                });
+
+
+            }
+        });
+    }
+    //站内信下拉列表
+    Mail();
+    //setInterval('Mail()', 30000);
+    var lengths = 0;
+    var num = 0;
+    function Mail() {
+
+        //var tests = 0;
+        //var obj = { one: "我是标题1", two: "我是标题2", three: "我是标题3" };
+        //$.each(obj, function (key, val) {
+        //    $("#wrapper").find("ul.nav:eq(0)>li:eq(0)>ul.dropdown-menu>li:eq(" + tests + ")>a>div:eq(1)").html(obj[key]);
+        //    tests=tests+2;
+
+        //});
+        $.ajax({
+            url: "/FunctionModular/Letter/Ajax/Letter.ashx?Type=15",
+            type: "GET",
+            dataType: "text",
+            success: function (data) {
+                var obj = eval('(' + data + ')');
+                var tests = 0;
+                var Length = obj.length;
+                if (Length >= 3) {
+                    $("#lis1").show();
+                    $("#divider1").show();
+                    $("#lis2").show();
+                    $("#divider2").show();
+                    $("#lis3").show();
+                    $("#divider3").show();
+
+                } else if (Length == 2) {
+                    $("#lis1").show();
+                    $("#divider1").show();
+                    $("#lis2").show();
+                    $("#divider2").show();
+                    $("#lis3").hide();
+                    $("#divider3").hide();
+                } else if (Length == 1) {
+
+                    $("#lis1").show();
+                    $("#divider1").show();
+                    $("#lis2").hide();
+                    $("#divider2").hide();
+                    $("#lis3").hide();
+                    $("#divider3").hide();
+                }
+                $.each(obj, function (key, val) {
+                    var vals = obj[key]._ul_title;
+                    var EndVal = "";
+                    if (vals.length > 8) {
+                        EndVal = (vals.substring(0, 8) + "...")
+                    } else {
+                        EndVal = vals;
+                    }
+                    $("#wrapper").find("ul.nav:eq(0)>li:eq(1)>ul.dropdown-menu>li:eq(" + tests + ")>a>div:eq(1)").html(EndVal);
+                    $("#wrapper").find("ul.nav:eq(0)>li:eq(1)>ul.dropdown-menu>li:eq(" + tests + ")>a>div:eq(0)>span>em").html(obj[key]._ul_time);
+                    if (obj[key]._ul_total != null || obj[key]._ul_total != "" || obj[key]._ul_total > 0) {
+                        $(".notification").show();
+                        $("#wrapper").find("ul.nav:eq(0)>li:eq(1)>a>span").html(obj[key]._ul_total);
+                    }
+                    tests = tests + 2;
+
+                });
+            }
+        })
+    }
+
+    //跳转方法
+    function RedirectURL(url, target) {
+        window.location.href = url;
+    }
+    function onsetcollapsein() {
+        return;
+    }
+    userinfo();
+    function userinfo() {
+        $.ajax({
+            url: "/FunctionModular/LoginAndRegister/Ajax/LoginAndRegister.ashx?operationType=userinfo",
+            //dataType: "post",
+            success: function (result) {
+                var results = eval('(' + result + ')');
+                $(".user-info").html(results.loginName)
+            }
+        })
+    }
+    img();
+    function img() {
+        $.ajax({
+            url: "/FunctionModular/LoginAndRegister/Ajax/LoginAndRegister.ashx?operationType=imgs",
+            //dataType: "post",
+            success: function (result) {
+                if (result == "") {
+                    $("#imgs").attr("src", "/assets/images/gallery/userimg.jpg")
+                }
+                else {
+                    $("#imgs").attr("src", result)
+                }
+            }
+        })
+
+    }
+    $(document).ready(function () {
+        LoadSelectedMenuClass(navName);
+
+    })
+    function LoadSelectedMenuClass(val) {
+        $("[href='" + val + "']").css("color", "white");
+        $("[href='" + val + "']").parent().css("background-color", "RGB(56,100,153)");
+        $("[href='" + val + "']").parent().parent().attr("class", "nav nav-second-level collapse in");
+        $("[href='" + val + "']").parent().parent().parent().attr("class", "active");
+        $("[href='" + val + "']").parent().parent().css("height", "auto");
+    }
+    $(".newbox img").addClass("carousel-inner img-responsive img-rounded");
+
+    $(document).ready(function () {
+        GetFunction();
+    });
+
+    /*------------------设置页面的控件权限---------------------*/
+    function GetFunction() {
+        //alert('0000000000000');
+        $.ajax({
+            type: "POST",
+            url: "/FunctionModular/Index/data/Index.ashx?Remark=SetFunction",
+            dataType: "json",
+            async: false,
+            success: function (msg) {
+
+                if (msg == "LoginOutTime") {
+                    var url = window.location;
+                    var urlArr = url.toString().split('/');
+                    var ustr = "http://" + urlArr[2] + "/login.html";
+                    window.location.href = ustr;
+                } else {
+                    var entityALL = msg.All_RF;
+                    var entityEV = msg.EV_RF;
+
+                    for (var i = 0; i < entityALL.length; i++) {
+
+                        var entityALL_info = entityALL[i];
+                        var Btn_Mark = entityALL_info.Btn_Mark; //1: 元素ID  2：元素名称
+                        var btn_Content = entityALL_info.Btn_Content;
+                        var objectinfo;
+
+                        if (Btn_Mark == "1") {
+                            objectinfo = $("#" + btn_Content);
+                        } else {
+                            objectinfo = $("[name='" + btn_Content + "']");
+                        }
+                        if (objectinfo.length > 0) {
+                            if (objectinfo.length == 1) {
+                                var Hav = false;
+                                for (var t = 0; t < entityEV.length; t++) {
+                                    if (entityEV[t].Btn_Content == btn_Content) {
+                                        Hav = true;
+                                        break;
+                                    }
+                                }
+                                if (!Hav) {
+                                    $(objectinfo).attr("onclick", "return PublicClick();");
+                                }
+                            } else {
+                                objectinfo.each(function (index, element) {
+
+                                    var HavN = false;
+                                    for (var t = 0; t < entityEV.length; t++) {
+                                        if (entityEV[t].Btn_Content == btn_Content) {
+                                            HavN = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!HavN) {
+                                        $(objectinfo[index]).attr("onclick", "return PublicClick();");
+                                    }
+
+
+                                }
+                                )
+                            }
+
+                        }
+                    }
+
+                }
+            }
+        });
+    }
+
+    function PublicClick() {
+        layer.alert("未获得相关权限！", {
+            skin: "layui-layer-lan",
+            closeBtn: 0
+        });
+
+        return false;
+    }
+    icons();
+    function icons() {
+        var urlarr = window.location;
+        var url = urlarr.toString().split("/");
+
+        $("#icons").attr("href", url[0] + "/" + url[1] + "favicon.ico")
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

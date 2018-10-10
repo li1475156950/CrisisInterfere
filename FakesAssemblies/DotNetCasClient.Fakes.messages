@@ -1,0 +1,65 @@
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.CasAuthentication 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.CasAuthenticationModule 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.CasAuthenticationTicket 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.GatewayStatus 生成存根: 类型是一个值类型。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.CasSaml11Response 生成存根: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.SamlUtils 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.Cas10TicketValidator 生成存根: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.Cas20ServiceTicketValidator 生成存根: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.ITicketValidator 生成存根: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.Saml11TicketValidator 生成存根: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.AuthnContextComparisonType 生成存根: 类型是一个值类型。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.DecisionType 生成存根: 类型是一个值类型。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.Metadata.ContactTypeType 生成存根: 类型是一个值类型。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.Metadata.KeyTypes 生成存根: 类型是一个值类型。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml11.Assertion.DecisionType 生成存根: 类型是一个值类型。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.AuthenticationFailure 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.AuthenticationSuccess 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.ProxyFailure 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.ProxySuccess 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.ServiceResponse 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.ClearPass.ClearPassFailure 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.ClearPass.ClearPassResponse 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Cas20.ClearPass.ClearPassSuccess 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.AssertionUtil 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.CommonUtils 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.HttpUtil 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.RequestEvaluator 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.UrlUtil 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.MemoryCacheManager 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.MemoryCacheServiceTicketManager 生成存根: 类型已密封。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Security.ICasPrincipal 生成存根: method System.Security.Principal.IIdentity System.Security.Principal.IPrincipal.get_Identity() unstubbable: 方法是抽象的，因此无法用作存根，类型 System.Security.Principal.IPrincipal 在目标框架版本中不可用。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Logging.Category 生成存根: 类型没有系列可见的构造函数。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.GatewayStatus 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.CasSaml11Response 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.SamlUtils 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.Cas10TicketValidator 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.Cas20ServiceTicketValidator 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.ITicketValidator 生成填充码: 类型是一个接口。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.TicketValidator.Saml11TicketValidator 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.XmlDsig.KeyInfoType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.XmlDsig.PgpDataType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.XmlDsig.X509DataType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Xenc.ReferenceList+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.AuthnContextComparisonType 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.DecisionType 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.EvidenceType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.Protocol.RequestedAuthnContextType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.Metadata.ContactTypeType 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.Metadata.KeyTypes 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.Assertion.AdviceType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml20.Assertion.AuthnContextType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml11.Protocol.Request.RequestType+ItemsElementNames 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Validation.Schema.Saml11.Assertion.DecisionType 生成填充码: 类型是一个枚举。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.EnhancedUriBuilder+QueryItemCollection 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.HttpUtil 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Utils.RequestEvaluator 生成填充码: 类型对 exported or assembly(DotNetCasClient.Fakes) 不可见。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.IProxyTicketManager 生成填充码: 类型是一个接口。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.IServiceTicketManager 生成填充码: 类型是一个接口。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.MemoryCacheManager+<>c 生成填充码: 类型不受支持，因为存在内部限制。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.MemoryCacheServiceTicketManager+<GetAllServiceTickets>d__13 生成填充码: 类型不受支持，因为存在内部限制。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.MemoryCacheServiceTicketManager+<GetAllTickets>d__11 生成填充码: 类型不受支持，因为存在内部限制。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.MemoryCacheServiceTicketManager+<GetUserServiceTickets>d__14 生成填充码: 类型不受支持，因为存在内部限制。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.State.MemoryCacheServiceTicketManager+<GetUserTickets>d__12 生成填充码: 类型不受支持，因为存在内部限制。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Security.IAssertion 生成填充码: 类型是一个接口。
+E:\危机干预系统\测评客户端源代码\Cloud_Evaluation\WebPages\Fakes\DotNetCasClient.fakes : warning : 无法为 DotNetCasClient.Security.ICasPrincipal 生成填充码: 类型是一个接口。

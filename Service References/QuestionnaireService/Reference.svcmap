@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6940765d-d69c-45fd-a821-f375033c3c47" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.EnterpriseServices" />
+      <ReferencedAssembly AssemblyName="System.IdentityModel" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel.Channels" />
+      <ReferencedAssembly AssemblyName="System.Web" />
+      <ReferencedAssembly AssemblyName="System.Web.ApplicationServices" />
+      <ReferencedAssembly AssemblyName="System.Web.DynamicData" />
+      <ReferencedAssembly AssemblyName="System.Web.Entity" />
+      <ReferencedAssembly AssemblyName="System.Web.Extensions" />
+      <ReferencedAssembly AssemblyName="System.Web.Services" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8012/BasicsServices/QuestionnaireService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="467d4061-0b39-48f2-8b0c-357773f2db3a" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?xsd=xsd5" />
+    <MetadataFile FileName="QuestionnaireService1.wsdl" MetadataType="Wsdl" ID="e28f4994-9555-45ea-84d3-d59bdad8aafb" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?wsdl" />
+    <MetadataFile FileName="item51.xsd" MetadataType="Schema" ID="1d4bc325-5175-43bd-9063-bcdc86f6d930" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?xsd=xsd4" />
+    <MetadataFile FileName="item52.xsd" MetadataType="Schema" ID="519a067e-bc22-45ca-8d52-87cafcde9910" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?xsd=xsd2" />
+    <MetadataFile FileName="item53.xsd" MetadataType="Schema" ID="e1afefa5-bab6-41c2-b740-1e9cdd473030" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?xsd=xsd3" />
+    <MetadataFile FileName="item54.xsd" MetadataType="Schema" ID="253fb0e1-927a-469a-b25d-2b4b35bb08da" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?xsd=xsd1" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="be0f883e-1f32-4e5d-98fe-67de18aa2071" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?disco" />
+    <MetadataFile FileName="item55.xsd" MetadataType="Schema" ID="e17d66f8-d21c-4cd8-9ab6-a5b18516c9ea" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/QuestionnaireService/?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

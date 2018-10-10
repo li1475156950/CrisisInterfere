@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>DotNetCasClient</id>
+    <version>1.1.0</version>
+    <title>Apereo .NET CAS Client</title>
+    <authors>Marvin S. Addison, Scott Battaglia, Scott Holodak, Misagh Moayyed, William G. Thompson, Jr., Catherine D. Winfrey, Blair Allen, Jason Kanaris</authors>
+    <owners>Marvin S. Addison, Scott Battaglia, Scott Holodak, Misagh Moayyed, William G. Thompson, Jr., Catherine D. Winfrey, Blair Allen, Jason Kanaris</owners>
+    <licenseUrl>https://github.com/apereo/dotnet-cas-client/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/apereo/dotnet-cas-client</projectUrl>
+    <iconUrl>https://avatars2.githubusercontent.com/u/4679233?v=3&amp;s=64</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET client for the Apereo Central Authentication Service (CAS)</description>
+    <summary>The Apereo .NET CAS client provides CAS integration for the Microsoft Windows platform via the .NET framework.</summary>
+    <releaseNotes>Version: 1.1.0	Updated README file.	GitHub Issue #44	GitHub Issue #47	GitHub Issue #54	GitHub Issue #56	GitHub Issue #58	GitHub Issue #60</releaseNotes>
+    <copyright>Copyright (c) 2007-2017 Apereo.  All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>Apereo Jasig CAS Authentication Authn ASP.NET MVC MVC2 MVC3 MVC4 MVC5 WebForms</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Data" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Runtime.Caching" targetFramework=".NETFramework400.0" />
+      <frameworkAssembly assemblyName="System.Web" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Web.ApplicationServices" targetFramework=".NETFramework400.0" />
+      <frameworkAssembly assemblyName="System.Windows.Forms" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

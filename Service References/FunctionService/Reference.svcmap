@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5432a069-7f74-4af0-b797-1e182f55a2d0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.EnterpriseServices" />
+      <ReferencedAssembly AssemblyName="System.IdentityModel" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel.Channels" />
+      <ReferencedAssembly AssemblyName="System.Web" />
+      <ReferencedAssembly AssemblyName="System.Web.ApplicationServices" />
+      <ReferencedAssembly AssemblyName="System.Web.DynamicData" />
+      <ReferencedAssembly AssemblyName="System.Web.Entity" />
+      <ReferencedAssembly AssemblyName="System.Web.Extensions" />
+      <ReferencedAssembly AssemblyName="System.Web.Services" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8014/BasicsServices/FunctionService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2b141b9c-f4e2-49ff-8986-eebfb0c11fda" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="c19e018b-6738-4f4b-a923-7c6fd2bf4727" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?xsd=xsd1" />
+    <MetadataFile FileName="FunctionService.wsdl" MetadataType="Wsdl" ID="599c7613-780e-454b-b78e-f67c1a70ed88" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ceb61b69-dfd2-4047-a5aa-560efc640594" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?xsd=xsd4" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="8e9b4948-e27f-4cb7-9687-03cd7656070f" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?xsd=xsd5" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="b2107ca2-d80a-49db-a568-7011506c2f66" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?disco" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="414f57cc-f1b4-44c6-9cd2-7648f76bc1bc" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?xsd=xsd2" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="dffc2c7e-c36e-43b4-a661-a0824437e35d" SourceId="1" SourceUrl="http://localhost:8014/BasicsServices/FunctionService/?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

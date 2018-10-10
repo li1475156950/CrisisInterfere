@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.QuestionnaireModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.QuestionnaireModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Questionnaire_InfoEntity">
+    <xs:sequence>
+      <xs:element name="_code" nillable="true" type="xs:string" />
+      <xs:element name="_createDate" type="xs:dateTime" />
+      <xs:element name="_enterpriseCode" nillable="true" type="xs:string" />
+      <xs:element name="_id" type="xs:long" />
+      <xs:element name="_instruction" nillable="true" type="xs:string" />
+      <xs:element name="_isDelete" type="xs:boolean" />
+      <xs:element name="_isFinish" type="xs:boolean" />
+      <xs:element name="_jianPin" nillable="true" type="xs:string" />
+      <xs:element name="_name" nillable="true" type="xs:string" />
+      <xs:element name="_pinYin" nillable="true" type="xs:string" />
+      <xs:element name="_state" type="xs:boolean" />
+      <xs:element name="_uId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Questionnaire_InfoEntity" nillable="true" type="tns:Questionnaire_InfoEntity" />
+  <xs:complexType name="Questionnaire_Respondence">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnsRecord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnwserPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Is_Anonymity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Is_Delete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="QD_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Q_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Score" type="xs:float" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SubmitTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="U_ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Questionnaire_Respondence" nillable="true" type="tns:Questionnaire_Respondence" />
+</xs:schema>

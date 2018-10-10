@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7f488c16-1a62-4c87-9325-cad30223687f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="DevComponents.DotNetBar2" />
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.ComponentModel.DataAnnotations" />
+      <ReferencedAssembly AssemblyName="System.Configuration" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="System.Data" />
+      <ReferencedAssembly AssemblyName="System.Data.DataSetExtensions" />
+      <ReferencedAssembly AssemblyName="System.Drawing" />
+      <ReferencedAssembly AssemblyName="System.EnterpriseServices" />
+      <ReferencedAssembly AssemblyName="System.IdentityModel" />
+      <ReferencedAssembly AssemblyName="System.Runtime.Serialization" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel" />
+      <ReferencedAssembly AssemblyName="System.ServiceModel.Channels" />
+      <ReferencedAssembly AssemblyName="System.Web" />
+      <ReferencedAssembly AssemblyName="System.Web.ApplicationServices" />
+      <ReferencedAssembly AssemblyName="System.Web.DynamicData" />
+      <ReferencedAssembly AssemblyName="System.Web.Entity" />
+      <ReferencedAssembly AssemblyName="System.Web.Extensions" />
+      <ReferencedAssembly AssemblyName="System.Web.Services" />
+      <ReferencedAssembly AssemblyName="System.Xml" />
+      <ReferencedAssembly AssemblyName="System.Xml.Linq" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8012/BasicsServices/PersonalReportService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PersonalReportService1.wsdl" MetadataType="Wsdl" ID="a5280431-7663-4b47-af85-8785d3de2448" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?wsdl" />
+    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="1b234be2-1742-489e-b962-264f25340d8f" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?xsd=xsd0" />
+    <MetadataFile FileName="item61.xsd" MetadataType="Schema" ID="cdea6a89-639d-46a8-9f97-f62fa3be1a61" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?xsd=xsd5" />
+    <MetadataFile FileName="item62.xsd" MetadataType="Schema" ID="9b4cef4d-f857-402d-b2b5-edc7786925ad" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?xsd=xsd2" />
+    <MetadataFile FileName="item63.xsd" MetadataType="Schema" ID="5bd8eaaf-a910-4e65-be72-fcc5f15f66cb" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?xsd=xsd1" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="5b2d4f21-97df-419c-b0ca-9d302e896c82" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?disco" />
+    <MetadataFile FileName="item64.xsd" MetadataType="Schema" ID="a35068c8-aa14-45fd-bb79-902791d9d976" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?xsd=xsd3" />
+    <MetadataFile FileName="item65.xsd" MetadataType="Schema" ID="395d5066-5630-4a10-a960-1c97f5d5e08c" SourceId="1" SourceUrl="http://localhost:8012/BasicsServices/PersonalReportService/?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

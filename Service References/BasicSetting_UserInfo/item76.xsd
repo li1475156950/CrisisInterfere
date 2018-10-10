@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/JSBR.Model.BaseTable.Entity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/JSBR.Model.BaseTable.Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="U_UserInfoEntity">
+    <xs:sequence>
+      <xs:element name="_AddFiletemplate" nillable="true" type="xs:string" />
+      <xs:element name="_CouIntroduce" nillable="true" type="xs:string" />
+      <xs:element name="_CouSkilledField" nillable="true" type="xs:string" />
+      <xs:element name="_RFtype" nillable="true" type="xs:string" />
+      <xs:element name="_activatenterprisemark" type="xs:int" />
+      <xs:element name="_activationsnumber" nillable="true" type="xs:string" />
+      <xs:element name="_department_id" nillable="true" type="xs:string" />
+      <xs:element name="_departmentauthority" nillable="true" type="xs:string" />
+      <xs:element name="_enterpriseCode" nillable="true" type="xs:string" />
+      <xs:element name="_isenterprisemark" type="xs:int" />
+      <xs:element name="_r_id" nillable="true" type="xs:string" />
+      <xs:element name="_role_types" nillable="true" type="xs:string" />
+      <xs:element name="_student_id" nillable="true" type="xs:string" />
+      <xs:element name="_u_addfield" nillable="true" type="xs:string" />
+      <xs:element name="_u_address" nillable="true" type="xs:string" />
+      <xs:element name="_u_age" nillable="true" type="xs:string" />
+      <xs:element name="_u_auditid" nillable="true" type="xs:string" />
+      <xs:element name="_u_auditstate" nillable="true" type="xs:string" />
+      <xs:element name="_u_audittime" nillable="true" type="xs:string" />
+      <xs:element name="_u_birthday" nillable="true" type="xs:string" />
+      <xs:element name="_u_email" nillable="true" type="xs:string" />
+      <xs:element name="_u_id" type="xs:int" />
+      <xs:element name="_u_img" nillable="true" type="xs:string" />
+      <xs:element name="_u_isactivate" type="xs:int" />
+      <xs:element name="_u_loginname" nillable="true" type="xs:string" />
+      <xs:element name="_u_mark_delete" nillable="true" type="xs:string" />
+      <xs:element name="_u_name" nillable="true" type="xs:string" />
+      <xs:element name="_u_parentsemail" nillable="true" type="xs:string" />
+      <xs:element name="_u_parentstel" nillable="true" type="xs:string" />
+      <xs:element name="_u_password" nillable="true" type="xs:string" />
+      <xs:element name="_u_remark" nillable="true" type="xs:string" />
+      <xs:element name="_u_sex" nillable="true" type="xs:string" />
+      <xs:element name="_u_str" nillable="true" type="xs:string" />
+      <xs:element name="_u_tel" nillable="true" type="xs:string" />
+      <xs:element name="_u_time" nillable="true" type="xs:string" />
+      <xs:element name="departmentName" nillable="true" type="xs:string" />
+      <xs:element name="role_describe" nillable="true" type="xs:string" />
+      <xs:element name="role_type" nillable="true" type="xs:string" />
+      <xs:element name="u_createperson" nillable="true" type="xs:string" />
+      <xs:element name="u_createtime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="U_UserInfoEntity" nillable="true" type="tns:U_UserInfoEntity" />
+</xs:schema>

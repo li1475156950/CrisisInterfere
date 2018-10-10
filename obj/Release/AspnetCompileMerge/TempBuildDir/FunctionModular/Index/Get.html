@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../../JS/jquery-1.10.2.js"></script>
+    <script src="../../JS/bootstrap.min.js"></script>
+    <link href="../../CSS/bootstrap.css" rel="stylesheet" />
+    <link href="../../CSS/GETindex.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            setInterval(data, 1000);
+        })
+        function data() {
+            var d = new Date();
+            var s = d.getFullYear()
+               + "/" + (d.getMonth() + 1)
+               + "/" + d.getDate()
+               + "/" + d.getHours()
+               + "/" + d.getMinutes()
+               + ":" + d.getSeconds()
+               + "星期:" + d.getDay();
+            document.getElementById('dataclass').innerHTML = s;
+        }
+        function asd() {
+            alert()
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="jumbotron">
+                    <h4 class="weitxt">
+                        您现在的位置：<span class="spans">桌面</span>
+                    </h4>
+                    <div class="userxx">
+                        <p>
+                            <a href="#" class="pull-left">
+                                <img class="img" src="../../assets/images/gallery/userimg.jpg" />
+                            </a>
+                        </p>
+                        <div class="media-body tetujs">管理员，晚上好！</div>
+                        <h4 class="welcome">欢迎您登陆京师博仁心理测评档案管理系统</h4>
+                        <h4 class="userjs">角色：<span class="js">管理员</span></h4>
+                        <h4 class="txtdata">
+                            当前时间：<span id="dataclass"></span>
+                        </h4>
+                    </div>
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">
+                                <h3>常用功能:</h3>
+                                <div class="dinclass">
+                                    <a class="btn" href="#"></a>
+                                    <div class="gnimg"></div>
+                                    <h2>
+                                        添加人员
+                                    </h2>
+                                </div>
+                                <div class="dinclass">
+                                    <a class="btn" href="#"></a>
+                                    <div class="gnimg"></div>
+                                    <h2>
+                                        添加人员
+                                    </h2>
+                                </div>
+                                <div class="dinclass">
+                                    <a class="btn" href="#"></a>
+                                    <div class="gnimg"></div>
+                                    <h3>
+                                        添加人员
+                                    </h3>
+                                </div>
+                                <div class="dinclass" onclick="asd()">
+                                    <a class="btn" href="#"></a>
+                                    <div class="gnimg"></div>
+                                    <h3>
+                                        添加更多
+                                    </h3>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

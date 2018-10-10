@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.DistributeRecordModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.DistributeRecordModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AnswerAddEntity">
+    <xs:sequence>
+      <xs:element name="_amount_code" nillable="true" type="xs:string" />
+      <xs:element name="_answer_createtime" type="xs:dateTime" />
+      <xs:element name="_answer_starttimer" type="xs:dateTime" />
+      <xs:element name="_answer_state" type="xs:int" />
+      <xs:element name="_answeradd_code" nillable="true" type="xs:string" />
+      <xs:element name="_answeradd_id" type="xs:int" />
+      <xs:element name="_answeradd_record" nillable="true" type="xs:string" />
+      <xs:element name="_answeradd_score" type="xs:int" />
+      <xs:element name="_answeralltime" nillable="true" type="xs:string" />
+      <xs:element name="_answerisdelete" type="xs:int" />
+      <xs:element name="_answerpeople" nillable="true" type="xs:string" />
+      <xs:element name="_belongToAmount" nillable="true" type="xs:string" />
+      <xs:element name="_belongToCode" nillable="true" type="xs:string" />
+      <xs:element name="_distriid" nillable="true" type="xs:string" />
+      <xs:element name="_newansweraddrecord" nillable="true" type="xs:string" />
+      <xs:element name="_u_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnswerAddEntity" nillable="true" type="tns:AnswerAddEntity" />
+  <xs:complexType name="DistributionSetEntity">
+    <xs:sequence>
+      <xs:element name="_answerendtime" type="xs:dateTime" />
+      <xs:element name="_answerstarttime" nillable="true" type="xs:dateTime" />
+      <xs:element name="_createtime" type="xs:dateTime" />
+      <xs:element name="_distributionname" nillable="true" type="xs:string" />
+      <xs:element name="_distributionsetid" type="xs:long" />
+      <xs:element name="_is_again" type="xs:int" />
+      <xs:element name="_is_notice" type="xs:int" />
+      <xs:element name="_is_present" type="xs:int" />
+      <xs:element name="_is_seereport" type="xs:int" />
+      <xs:element name="_sendcontent" nillable="true" type="xs:string" />
+      <xs:element name="_u_id" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DistributionSetEntity" nillable="true" type="tns:DistributionSetEntity" />
+  <xs:complexType name="Amount_Distribution_RelationEntity">
+    <xs:sequence>
+      <xs:element name="_a_dis_id" type="xs:long" />
+      <xs:element name="_amount_code" nillable="true" type="xs:string" />
+      <xs:element name="_createtime" type="xs:dateTime" />
+      <xs:element name="_distributionsetid" type="xs:long" />
+      <xs:element name="_disuid" type="xs:long" />
+      <xs:element name="_u_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Amount_Distribution_RelationEntity" nillable="true" type="tns:Amount_Distribution_RelationEntity" />
+  <xs:complexType name="Questionnaire_Distribution_RelationEntity">
+    <xs:sequence>
+      <xs:element name="_code" nillable="true" type="xs:string" />
+      <xs:element name="_createTime" type="xs:dateTime" />
+      <xs:element name="_disUId" nillable="true" type="xs:string" />
+      <xs:element name="_is_Anonymity" type="xs:boolean" />
+      <xs:element name="_is_Delete" type="xs:boolean" />
+      <xs:element name="_qCode" nillable="true" type="xs:string" />
+      <xs:element name="_uId" type="xs:long" />
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Questionnaire_Distribution_RelationEntity" nillable="true" type="tns:Questionnaire_Distribution_RelationEntity" />
+</xs:schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.BasicSettingModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.BasicSettingModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfRoleTypeEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoleTypeEntity" nillable="true" type="tns:RoleTypeEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoleTypeEntity" nillable="true" type="tns:ArrayOfRoleTypeEntity" />
+  <xs:complexType name="RoleTypeEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoleType_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="RoleType_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoleTypeEntity" nillable="true" type="tns:RoleTypeEntity" />
+</xs:schema>

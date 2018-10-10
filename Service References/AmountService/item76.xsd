@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.AmountModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.AmountModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AmountDimensionEntity">
+    <xs:sequence>
+      <xs:element name="_createtime" type="xs:dateTime" />
+      <xs:element name="_dimensioncode" nillable="true" type="xs:string" />
+      <xs:element name="_dimensionid" type="xs:long" />
+      <xs:element name="_dimensionname" nillable="true" type="xs:string" />
+      <xs:element name="_is_delete" type="xs:int" />
+      <xs:element name="_scoringmode" type="xs:int" />
+      <xs:element name="_sort" type="xs:int" />
+      <xs:element name="_subjectnum" type="xs:int" />
+      <xs:element name="_u_id" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AmountDimensionEntity" nillable="true" type="tns:AmountDimensionEntity" />
+  <xs:complexType name="ArrayOfAmountTypeModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AmountTypeModel" nillable="true" type="tns:AmountTypeModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAmountTypeModel" nillable="true" type="tns:ArrayOfAmountTypeModel" />
+  <xs:complexType name="AmountTypeModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmountTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="AmountTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AmountTypeModel" nillable="true" type="tns:AmountTypeModel" />
+  <xs:complexType name="ArrayOfAmountModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AmountModel" nillable="true" type="tns:AmountModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAmountModel" nillable="true" type="tns:ArrayOfAmountModel" />
+  <xs:complexType name="AmountModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmountCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AmountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AmountTypeID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AmountModel" nillable="true" type="tns:AmountModel" />
+</xs:schema>

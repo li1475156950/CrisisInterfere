@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8014/BasicsServices/WorkArchivesService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" />
+  <xs:element name="GetPotentialRiskWarningPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q1:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPotentialRiskWarningPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetPotentialRiskWarningPeopleCountResult" nillable="true" type="q2:WarningPeopleViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIdioctoniaWarningPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q3:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIdioctoniaWarningPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetIdioctoniaWarningPeopleCountResult" nillable="true" type="q4:WarningPeopleViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDiscernEstimateWarningPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q5:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDiscernEstimateWarningPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetDiscernEstimateWarningPeopleCountResult" nillable="true" type="q6:WarningPeopleViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDynamicEstimateWarningPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q7:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDynamicEstimateWarningPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetDynamicEstimateWarningPeopleCountResult" nillable="true" type="q8:WarningPeopleViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCounselorWorkStatisticsByDepartmentID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q9:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCounselorWorkStatisticsByDepartmentIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetCounselorWorkStatisticsByDepartmentIDResult" nillable="true" type="q10:ArrayOfCounselorWorkStatisticsViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestionTypeConsultPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q11:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestionTypeConsultPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetQuestionTypeConsultPeopleCountResult" nillable="true" type="q12:ConsultQuestionTypePeopleCountViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestionTypeSeriousLevelPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q13:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuestionTypeSeriousLevelPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetQuestionTypeSeriousLevelPeopleCountResult" nillable="true" type="q14:ArrayOfSeriousLevelViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSeriousLevelPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q15:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSeriousLevelPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetSeriousLevelPeopleCountResult" nillable="true" type="q16:SeriousLevelViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDisposalDistributionPeopleCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="searchModel" nillable="true" type="q17:WorkArchivesSearchModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDisposalDistributionPeopleCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.WorkArchivesModel" minOccurs="0" name="GetDisposalDistributionPeopleCountResult" nillable="true" type="q18:DisposalDistributionPeopleCountModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.BasicSettingModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BasicsServiceMODEL.BasicSettingModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfFunctionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FunctionEntity" nillable="true" type="tns:FunctionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFunctionEntity" nillable="true" type="tns:ArrayOfFunctionEntity" />
+  <xs:complexType name="FunctionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Fun_Class" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fun_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fun_ParentID" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Sort" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Type" type="xs:int" />
+      <xs:element minOccurs="0" name="Fun_Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FunctionEntity" nillable="true" type="tns:FunctionEntity" />
+  <xs:complexType name="ArrayOfRoleEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoleEntity" nillable="true" type="tns:RoleEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoleEntity" nillable="true" type="tns:ArrayOfRoleEntity" />
+  <xs:complexType name="RoleEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Role_CreatePerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role_CreateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Role_Describe" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role_EditPerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role_EditTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Role_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Role_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role_Type" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoleEntity" nillable="true" type="tns:RoleEntity" />
+</xs:schema>
